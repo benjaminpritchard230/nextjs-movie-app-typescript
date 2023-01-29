@@ -4,6 +4,7 @@ import SecondaryLayout from "@/components/SecondaryLayout";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import type { ReactElement, ReactNode } from "react";
+import { SSRProvider } from "react-bootstrap";
 import "../styles/style.css";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -19,5 +20,5 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout =
     Component.getLayout ??
     ((page) => <SecondaryLayout>{page}</SecondaryLayout>);
-  return getLayout(<Component {...pageProps} />);
+  return <SSRProvider>{getLayout(<Component {...pageProps} />)}</SSRProvider>;
 }
