@@ -1,0 +1,13 @@
+@use "./_colors";
+@use "./fonts";
+
+h1{
+
+    color: colors.$red;
+    font-family: fonts.$quattrocento;
+}
+
+h2{
+    color: colors.$blue;
+    font-family: fonts.$quattrocento;
+}
