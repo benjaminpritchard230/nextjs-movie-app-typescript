@@ -3,6 +3,7 @@
 @use "../node_modules/bootstrap/scss/bootstrap.scss";
 
 
+
 h1{
 
     color: colors.$red;
@@ -13,3 +14,19 @@ h2{
     color: colors.$blue;
     font-family: fonts.$quattrocento;
 }
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: colors.$blue;
+    color: colors.$white;
+    text-align: center;
+}
+
+$primary:colors.$red;
+$navbar-brand-color:colors.$gold;
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss"
+// @import "my-app\node_modules\bootstrap\scss\bootstrap.scss"
