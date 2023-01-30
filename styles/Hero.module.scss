@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Neucha&family=Quattrocento&display=swap");
+@use "../styles/colors";
+@use "../styles/fonts";
+
 .heroColumn {
   height: 100%;
   margin: 0;
@@ -20,13 +22,14 @@
 }
 
 .heroText {
-  font-family: "Quattrocento", serif;
+  font-family: fonts.$quattrocento;
   text-align: center;
   color: white;
 }
 
 .heroHeader {
-  font-family: "Quattrocento", serif;
+  font-family: fonts.$quattrocento;
+
   align-self: center;
   font-size: 50px;
-}/*# sourceMappingURL=Hero.module.css.map */
+}

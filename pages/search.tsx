@@ -2,7 +2,7 @@ import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
 import type { IMovie, IResponse } from "@/types/movies/types";
 import { GetStaticProps } from "next";
-import React from "react";
+import { useRouter } from "next/router";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -11,7 +11,9 @@ interface Props {
   data: IResponse;
 }
 
-const MoviePopular = ({ data }: Props) => {
+const Search = ({ data }: Props) => {
+  const router = useRouter();
+  const searchText = router.query.searchText as string;
   return (
     <>
       <Row>
@@ -30,14 +32,14 @@ const MoviePopular = ({ data }: Props) => {
   );
 };
 
-export default MoviePopular;
+export default Search;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?api_key=9fb5564d1a088cb776b062fc755ea04e&language=en-US&page=1"
+    `https://api.themoviedb.org/3/search/movie?api_key=9fb5564d1a088cb776b062fc755ea04e&language=en-US&query=harry&page=1&include_adult=false`
   );
   const data: IResponse = await res.json();
-
+  console.log(data);
   return {
     props: {
       data,

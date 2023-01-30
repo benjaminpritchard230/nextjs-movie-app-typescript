@@ -1,12 +1,22 @@
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+
 type Props = {};
 
 const NavBar = (props: Props) => {
+  const [searchText, setSearchText] = useState("your text");
+  const router = useRouter();
+  const handleSearch = () => {
+    router.push(`/search?searchText=${searchText}`);
+  };
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -53,6 +63,21 @@ const NavBar = (props: Props) => {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+              value={searchText}
+              onChange={(e) => {
+                setSearchText(e.target.value);
+              }}
+            />
+            <Button onClick={handleSearch} variant="outline-success">
+              Search
+            </Button>
+          </Form>
         </Navbar.Collapse>
       </Container>
     </Navbar>
