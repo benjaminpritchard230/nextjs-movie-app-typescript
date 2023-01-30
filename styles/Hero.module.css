@@ -1,0 +1,30 @@
+.heroColumn {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+.heroImage {
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(red, yellow);
+
+  min-height: 15em;
+  height: 50%;
+  align-self: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroText {
+  text-align: center;
+  color: white;
+}
+
+.heroHeader {
+  align-self: center;
+  font-size: 50px;
+}
