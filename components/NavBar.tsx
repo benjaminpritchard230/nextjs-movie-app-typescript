@@ -11,10 +11,10 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 type Props = {};
 
 const NavBar = (props: Props) => {
-  const [searchText, setSearchText] = useState("your text");
+  const [searchText, setSearchText] = useState("");
   const router = useRouter();
   const handleSearch = () => {
-    router.push(`/search?searchText=${searchText}`);
+    router.push(`/search/movies?searchText=${searchText}`);
   };
 
   return (
