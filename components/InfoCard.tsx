@@ -32,9 +32,15 @@ const InfoCard = ({ movie }: Props) => {
     //   className={styles.card}
     // >
     <div className={styles.card}>
-      <MyImage />
+      <img
+        className={styles.responsive}
+        src={
+          "https://www.themoviedb.org/t/p/w342/kuf6dutpsT0vSVehic3EZIqkOBt.jpg"
+        }
+        alt=""
+      />
       <div className={styles.container}>
-        <h4>
+        <h4 className={styles.title}>
           <b>{movie.title}</b>
         </h4>
         <p>{movie.popularity}</p>

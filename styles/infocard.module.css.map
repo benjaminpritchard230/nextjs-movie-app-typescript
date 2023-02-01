@@ -1,1 +1,1 @@
-{"version":3,"sources":["InfoCard.module.scss","InfoCard.module.css"],"names":[],"mappings":"AAGA;EACE,4CAAA;EACA,gBAAA;EACA,iBAAA;EACA,uCAAA;EACA,cAAA;EACA,mBAAA;ACFF;;ADKA,uCAAA;AACA;EACE,2CAAA;ACFF;;ADKA,+CAAA;AACA;EACE,iBAAA;ACFF","file":"InfoCard.module.css"}
+{"version":3,"sources":["InfoCard.module.scss","InfoCard.module.css"],"names":[],"mappings":"AAEA;EACE,WAAA;EACA,YAAA;ACDF;;ADIA;EACE,4CAAA;EACA,WAAA;EACA,YAAA;EACA,uCAAA;EACA,cAAA;EACA,mBAAA;ACDF;;ADIA;EACE,gBAAA;ACDF;;ADIA,uCAAA;AACA;EACE,2CAAA;ACDF;;ADIA,+CAAA;AACA;EACE,iBAAA;ACDF","file":"InfoCard.module.css"}

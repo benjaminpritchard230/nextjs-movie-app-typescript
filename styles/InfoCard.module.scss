@@ -1,13 +1,21 @@
 @use "../styles/colors";
 
+.responsive{
+  width: 100%;
+  height: auto;
+}
 
 .card {
   /* Add shadows to create the "card" effect */
-  max-width: 440px;
-  min-height: 800px;
+  width: 20em;
+  height: 40em;
   box-shadow: 0 4px 8px 0 rgb(5, 91, 230);
   transition: 1s;
   border-radius: 10px;
+}
+
+.title{
+  min-height: 100%;
 }
 
 /* On mouse-over, add a deeper shadow */
