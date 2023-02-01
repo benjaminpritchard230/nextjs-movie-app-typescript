@@ -26,27 +26,27 @@ const MyImage = (props: any) => {
 
 const InfoCard = ({ movie }: Props) => {
   return (
-    // <Link
-    //   href={`/movies/${movie.id}/`}
-    //   style={{ color: "inherit", textDecoration: "inherit" }}
-    //   className={styles.card}
-    // >
-    <div className={styles.card}>
-      <img
-        className={styles.responsive}
-        src={
-          "https://www.themoviedb.org/t/p/w342/kuf6dutpsT0vSVehic3EZIqkOBt.jpg"
-        }
-        alt=""
-      />
-      <div className={styles.container}>
-        <h4 className={styles.title}>
-          <b>{movie.title}</b>
-        </h4>
-        <p>{movie.popularity}</p>
+    <Link
+      href={`/movies/${movie.id}/`}
+      style={{ color: "inherit", textDecoration: "inherit" }}
+      className={styles.card}
+    >
+      <div className={styles.card}>
+        <img
+          className={styles.responsive}
+          src={
+            "https://www.themoviedb.org/t/p/w342/kuf6dutpsT0vSVehic3EZIqkOBt.jpg"
+          }
+          alt=""
+        />
+        <div className={styles.container}>
+          <h4 className={styles.title}>
+            <b>{movie.title}</b>
+          </h4>
+          <p>{movie.popularity}</p>
+        </div>
       </div>
-    </div>
-    // </Link>
+    </Link>
   );
 };
 

@@ -1,0 +1,10 @@
+@use "../styles/colors";
+
+.header {
+    padding: 60px;
+    text-align: center;
+    background: colors.$blue;
+    color: colors.$white;
+    height: 10em;
+    width: 100%;
+}

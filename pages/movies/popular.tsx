@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
 import type { IMovie, IResponse } from "@/types/movies/types";
@@ -16,7 +17,7 @@ const MoviePopular = ({ data }: Props) => {
   return (
     <Container fluid>
       <Row>
-        <Hero text={"benjamin"} />
+        <Header />
       </Row>
       <Row
         xs={1}
@@ -27,7 +28,7 @@ const MoviePopular = ({ data }: Props) => {
       >
         {data.results.map((movie: IMovie) => {
           return (
-            <Col>
+            <Col key={movie.id}>
               <InfoCard movie={movie} />
             </Col>
           );
