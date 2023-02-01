@@ -1,6 +1,7 @@
 // pages/_app.tsx
 
 import SecondaryLayout from "@/components/SecondaryLayout";
+import { Montserrat } from "@next/font/google";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import type { ReactElement, ReactNode } from "react";
@@ -15,10 +16,20 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
+const montserrat = Montserrat({
+  subsets: ["latin"],
+});
+
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
   const getLayout =
     Component.getLayout ??
     ((page) => <SecondaryLayout>{page}</SecondaryLayout>);
-  return <SSRProvider>{getLayout(<Component {...pageProps} />)}</SSRProvider>;
+  return (
+    <SSRProvider>
+      <main className={montserrat.className}>
+        {getLayout(<Component {...pageProps} />)}
+      </main>
+    </SSRProvider>
+  );
 }

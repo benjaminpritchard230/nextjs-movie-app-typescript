@@ -3,6 +3,7 @@ import InfoCard from "@/components/InfoCard";
 import type { IMovie, IResponse } from "@/types/movies/types";
 import { GetStaticProps } from "next";
 import React from "react";
+import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -13,7 +14,10 @@ interface Props {
 
 const MoviePopular = ({ data }: Props) => {
   return (
-    <>
+    <Container
+      fluid
+      className="d-flex align-items-center justify-content-center"
+    >
       <Row>
         <Hero text={"Popular movies"} />
       </Row>
@@ -26,7 +30,7 @@ const MoviePopular = ({ data }: Props) => {
           );
         })}
       </Row>
-    </>
+    </Container>
   );
 };
 

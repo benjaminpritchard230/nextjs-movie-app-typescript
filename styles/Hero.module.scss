@@ -1,17 +1,15 @@
 @use "../styles/colors";
-@use "../styles/fonts";
 
 .heroColumn {
   height: 100%;
   margin: 0;
-  font-family: Arial;
 }
 
 .heroImage {
   display: flex;
   flex-direction: column;
   background-image: url("../public/pexels-photo-5662857.jpg");
-  min-height: 15em;
+  min-height: 10em;
   height: 50%;
   align-self: center;
   background-repeat: no-repeat;
@@ -22,13 +20,11 @@
 }
 
 .heroText {
-  font-family: fonts.$quattrocento;
   text-align: center;
   color: white;
 }
 
 .heroHeader {
-  font-family: fonts.$quattrocento;
 
   align-self: center;
   font-size: 50px;

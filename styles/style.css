@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Neucha&family=Quattrocento&display=swap");
 /*!
  * Bootstrap  v5.2.3 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
@@ -10934,16 +10933,6 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-h1, .h1 {
-  color: #151722;
-  font-family: "Quattrocento", serif;
-}
-
-h2, .h2 {
-  color: #126da6;
-  font-family: "Quattrocento", serif;
-}
-
 footer {
   position: fixed;
   left: 0;

@@ -1,19 +1,5 @@
 @use "./_colors";
-@use "./fonts";
 @use "../node_modules/bootstrap/scss/bootstrap.scss";
-
-
-
-h1{
-
-    color: colors.$black;
-    font-family: fonts.$quattrocento;
-}
-
-h2{
-    color: colors.$blue;
-    font-family: fonts.$quattrocento;
-}
 
 footer{
     position: fixed;

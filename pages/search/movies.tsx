@@ -22,7 +22,7 @@ const MovieSearch = ({ data }: Props) => {
       <Row xs={1} md={2} lg={3} xl={4} className="g-4">
         {data.results.map((movie: IMovie) => {
           return (
-            <Col>
+            <Col key={movie.id}>
               <InfoCard movie={movie} />
             </Col>
           );
