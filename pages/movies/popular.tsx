@@ -15,17 +15,11 @@ interface Props {
 
 const MoviePopular = ({ data }: Props) => {
   return (
-    <Container fluid>
+    <Container fluid className="justify-content-center">
       <Row>
         <Header />
       </Row>
-      <Row
-        xs={1}
-        md={2}
-        lg={3}
-        xl={5}
-        className="g-4 d-flex align-items-center justify-content-center"
-      >
+      <Row xs={1} md={2} lg={3} xl={5} className="g-4">
         {data.results.map((movie: IMovie) => {
           return (
             <Col key={movie.id}>

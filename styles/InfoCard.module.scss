@@ -1,7 +1,9 @@
 @use "../styles/colors";
+@import "~bootstrap/scss/bootstrap";
 
 .responsive{
   width: 100%;
+  max-width: 100vw;
   height: auto;
 }
 
@@ -9,7 +11,7 @@
   /* Add shadows to create the "card" effect */
   width: 20em;
   height: 40em;
-  box-shadow: 0 4px 8px 0 rgb(5, 91, 230);
+  box-shadow: 0 4px 8px 0 rgb(0, 0, 0);
   transition: 1s;
   border-radius: 10px;
 }
