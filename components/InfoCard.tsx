@@ -1,4 +1,4 @@
-import type { Result } from "@/pages/movies/popular";
+import type { IMovie } from "@/types/movies/types";
 import { profile } from "console";
 import Image, { ImageLoader } from "next/image";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import profilePic from "../public/pib.jpg";
 import styles from "../styles/InfoCard.module.css";
 
 type Props = {
-  movie: Result;
+  movie: IMovie;
 };
 
 interface IImage {
@@ -16,15 +16,22 @@ interface IImage {
   quality: string;
 }
 
-const myLoader = ({ src, width, quality }: any) => {
-  return `https://example.com/${src}?w=${width}&q=${quality || 75}`;
-};
-
-const MyImage = (props: any) => {
-  return <Image src={profilePic} alt="Picture of the author" width={440} />;
-};
-
 const InfoCard = ({ movie }: Props) => {
+  const myLoader = ({ src, width, quality }: any) => {
+    return `https://www.themoviedb.org/t/p/w1280/${movie.poster_path}`;
+  };
+
+  const MyImage = () => {
+    return (
+      <Image
+        loader={myLoader}
+        src="me.png"
+        alt="Picture of the author"
+        width={400}
+        height={600}
+      />
+    );
+  };
   return (
     <Link
       href={`/movies/${movie.id}/`}
@@ -32,13 +39,7 @@ const InfoCard = ({ movie }: Props) => {
       className={styles.card}
     >
       <div className={styles.card}>
-        <Image
-          src={profilePic}
-          alt=""
-          height={660}
-          width={440}
-          className={styles.responsive}
-        />
+        <MyImage />
         <div className={styles.container}>
           <h4 className={styles.title}>
             <b>{movie.title}</b>

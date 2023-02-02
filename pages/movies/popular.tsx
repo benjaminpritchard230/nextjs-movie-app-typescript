@@ -17,7 +17,7 @@ const MoviePopular = ({ data }: Props) => {
   return (
     <Container fluid className="justify-content-center">
       <Row>
-        <Header />
+        <Header text={"Popular movies"} />
       </Row>
       <Row xs={1} md={2} lg={3} xl={5} className="g-4">
         {data.results.map((movie: IMovie) => {

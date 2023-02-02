@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
 import type { IMovie, IResponse } from "@/types/movies/types";
@@ -17,7 +18,7 @@ const MovieSearch = ({ data }: Props) => {
   return (
     <>
       <Row>
-        <Hero text={`Showing movies matching "${searchText}"`} />
+        <Header text={`Showing movies matching "${searchText}"`} />
       </Row>
       <Row xs={1} md={2} lg={3} xl={4} className="g-4">
         {data.results.map((movie: IMovie) => {
