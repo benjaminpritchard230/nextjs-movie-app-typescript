@@ -13,7 +13,6 @@ export default function SecondaryLayout({ children }: any) {
       </Head>
       <NavBar />
       <main>{children}</main>
-      <Footer />
     </>
   );
 }

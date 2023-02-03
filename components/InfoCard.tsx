@@ -29,6 +29,7 @@ const InfoCard = ({ movie }: Props) => {
         alt="Picture of the author"
         width={400}
         height={600}
+        className={"img-fluid"}
       />
     );
   };

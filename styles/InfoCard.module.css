@@ -1,14 +1,13 @@
 .responsive {
-  width: 100%;
+  width: 99%;
   max-width: 100vw;
-  height: auto;
 }
 
 .card {
   /* Add shadows to create the "card" effect */
   width: 20em;
   height: 40em;
-  box-shadow: 0 4px 8px 0 rgb(0, 0, 0);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   transition: 1s;
   border-radius: 10px;
 }
@@ -19,7 +18,8 @@
 
 /* On mouse-over, add a deeper shadow */
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  transform: scale(1.005);
+  transition-duration: 0.1;
 }
 
 /* Add some padding inside the card container */

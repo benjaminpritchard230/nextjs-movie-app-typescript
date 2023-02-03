@@ -10933,16 +10933,6 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #126da6;
-  color: #f6f6ff;
-  text-align: center;
-}
-
 /*!
  * Bootstrap  v5.2.3 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

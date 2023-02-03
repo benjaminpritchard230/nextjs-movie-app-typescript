@@ -4,6 +4,7 @@ import InfoCard from "@/components/InfoCard";
 import type { IMovie, IResponse } from "@/types/movies/types";
 import { GetServerSideProps, GetStaticProps } from "next";
 import { useRouter } from "next/router";
+import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -17,18 +18,22 @@ const MovieSearch = ({ data }: Props) => {
   const searchText = router.query.searchText as string;
   return (
     <>
-      <Row>
-        <Header text={`Showing movies matching "${searchText}"`} />
-      </Row>
-      <Row xs={1} md={2} lg={3} xl={4} className="g-4">
-        {data.results.map((movie: IMovie) => {
-          return (
-            <Col key={movie.id}>
-              <InfoCard movie={movie} />
-            </Col>
-          );
-        })}
-      </Row>
+      <Container fluid>
+        <Row>
+          <Header text={`Showing movies matching "${searchText}"`} />
+        </Row>
+      </Container>
+      <Container fluid className="d-flex justify-content-center">
+        <Row xs={1} md={2} lg={3} xl={5} className="g-4 my-3">
+          {data.results.map((movie: IMovie) => {
+            return (
+              <Col className={"d-flex justify-content-center"} key={movie.id}>
+                <InfoCard movie={movie} />
+              </Col>
+            );
+          })}
+        </Row>
+      </Container>
     </>
   );
 };

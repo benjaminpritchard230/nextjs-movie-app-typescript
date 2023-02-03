@@ -15,20 +15,24 @@ interface Props {
 
 const MoviePopular = ({ data }: Props) => {
   return (
-    <Container fluid className="justify-content-center">
-      <Row>
-        <Header text={"Popular movies"} />
-      </Row>
-      <Row xs={1} md={2} lg={3} xl={5} className="g-4">
-        {data.results.map((movie: IMovie) => {
-          return (
-            <Col key={movie.id}>
-              <InfoCard movie={movie} />
-            </Col>
-          );
-        })}
-      </Row>
-    </Container>
+    <>
+      <Container fluid>
+        <Row>
+          <Header text={"Popular movies"} />
+        </Row>
+      </Container>
+      <Container fluid className="d-flex justify-content-center">
+        <Row xs={1} md={2} lg={3} xl={5} className="g-4 my-3">
+          {data.results.map((movie: IMovie) => {
+            return (
+              <Col className={"d-flex justify-content-center"} key={movie.id}>
+                <InfoCard movie={movie} />
+              </Col>
+            );
+          })}
+        </Row>
+      </Container>
+    </>
   );
 };
 
