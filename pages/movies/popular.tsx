@@ -6,6 +6,7 @@ import { GetStaticProps } from "next";
 import React from "react";
 import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
@@ -16,22 +17,16 @@ interface Props {
 const MoviePopular = ({ data }: Props) => {
   return (
     <>
-      <Container fluid>
-        <Row>
-          <Header text={"Popular movies"} />
-        </Row>
-      </Container>
-      <Container fluid className="d-flex justify-content-center">
-        <Row xs={1} md={2} lg={3} xl={5} className="g-4 my-3">
-          {data.results.map((movie: IMovie) => {
-            return (
-              <Col className={"d-flex justify-content-center"} key={movie.id}>
-                <InfoCard movie={movie} />
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
+      <Header text="Popular movies" />
+      <CardGroup>
+        {data.results.map((movie: IMovie) => {
+          return (
+            <Col className={"d-flex justify-content-center"} key={movie.id}>
+              <InfoCard movie={movie} />
+            </Col>
+          );
+        })}
+      </CardGroup>
     </>
   );
 };

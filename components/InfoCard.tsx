@@ -3,6 +3,7 @@ import { profile } from "console";
 import Image, { ImageLoader } from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Card } from "react-bootstrap";
 import profilePic from "../public/pib.jpg";
 import styles from "../styles/InfoCard.module.css";
 
@@ -26,7 +27,7 @@ const InfoCard = ({ movie }: Props) => {
       <Image
         loader={myLoader}
         src="me.png"
-        alt="Picture of the author"
+        alt={movie.title}
         width={400}
         height={600}
         className={"img-fluid"}
@@ -39,15 +40,16 @@ const InfoCard = ({ movie }: Props) => {
       style={{ color: "inherit", textDecoration: "inherit" }}
       className={styles.card}
     >
-      <div className={styles.card}>
+      <Card>
         <MyImage />
-        <div className={styles.container}>
-          <h4 className={styles.title}>
-            <b>{movie.title}</b>
-          </h4>
-          <p>{movie.popularity}</p>
-        </div>
-      </div>
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
+        </Card.Body>
+      </Card>
     </Link>
   );
 };
