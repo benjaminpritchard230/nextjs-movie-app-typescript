@@ -3,6 +3,7 @@ export interface IResponse {
   results: IMovie[];
   total_pages: number;
   total_results: number;
+  dates: Dates;
 }
 export interface IMovie {
   adult: boolean;
@@ -70,4 +71,9 @@ export interface ISpokenLanguage {
   english_name: string;
   iso_639_1: string;
   name: string;
+}
+
+export interface Dates {
+  maximum: string;
+  minimum: string;
 }
