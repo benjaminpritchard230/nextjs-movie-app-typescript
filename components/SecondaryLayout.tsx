@@ -8,7 +8,7 @@ export default function SecondaryLayout({ children }: any) {
   return (
     <>
       <Head>
-        <title>Next Movie Website</title>
+        <title>Next Movie Website secondary layout</title>
         <meta name="SecondaryLayout" content="Next Movie Website" />
       </Head>
       <NavBar />

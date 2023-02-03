@@ -1,6 +1,6 @@
 // pages/_app.tsx
 
-import SecondaryLayout from "@/components/SecondaryLayout";
+import Layout from "@/components/Layout";
 import { Montserrat } from "@next/font/google";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
@@ -22,9 +22,7 @@ const montserrat = Montserrat({
 
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
-  const getLayout =
-    Component.getLayout ??
-    ((page) => <SecondaryLayout>{page}</SecondaryLayout>);
+  const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>);
   return (
     <SSRProvider>
       <main className={montserrat.className}>
