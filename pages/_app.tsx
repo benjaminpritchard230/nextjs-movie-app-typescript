@@ -6,6 +6,8 @@ import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import type { ReactElement, ReactNode } from "react";
 import { SSRProvider } from "react-bootstrap";
+import styles from "../styles/InfoCard.module.css";
+
 import "../styles/style.css";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {

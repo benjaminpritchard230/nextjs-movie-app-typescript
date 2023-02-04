@@ -4,8 +4,9 @@ import Image, { ImageLoader } from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Card } from "react-bootstrap";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 import profilePic from "../public/pib.jpg";
-import styles from "../styles/InfoCard.module.css";
 
 type Props = {
   movie: IMovie;
@@ -19,7 +20,7 @@ interface IImage {
 
 const InfoCard = ({ movie }: Props) => {
   const myLoader = ({ src, width, quality }: any) => {
-    return `https://www.themoviedb.org/t/p/w1280/${movie.poster_path}`;
+    return `https://www.themoviedb.org/t/p/w500/${movie.poster_path}`;
   };
 
   const MyImage = () => {
@@ -34,17 +35,24 @@ const InfoCard = ({ movie }: Props) => {
       />
     );
   };
+
+  const percentage = Math.floor((movie.vote_average / 10) * 100);
   return (
     <Link
       href={`/movies/${movie.id}/`}
       style={{ color: "inherit", textDecoration: "inherit" }}
       className={styles.card}
     >
-      <Card>
+      <Card style={{ height: "100%" }}>
         <MyImage />
-        <Card.Body>
-          <h2>{movie.title}</h2>
-        </Card.Body>
+        <Card.Title className="d-flex justify-content-center align-items-center">
+          {movie.title}
+        </Card.Title>
+        <CircularProgressbar
+          value={percentage}
+          text={`${percentage}%`}
+          className={styles.progressbar}
+        />
       </Card>
     </Link>
   );
