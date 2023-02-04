@@ -1,3 +1,4 @@
+import styles from "@/styles/InfoCard.module.css";
 import type { IMovie } from "@/types/movies/types";
 import { profile } from "console";
 import Image, { ImageLoader } from "next/image";
