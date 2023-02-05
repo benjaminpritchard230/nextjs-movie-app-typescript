@@ -55,9 +55,10 @@ const MovieDetail = ({ data }: Props) => {
 export default MovieDetail;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const key = process.env.DB_KEY;
   const movieId = context.query.movieId;
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?api_key=9fb5564d1a088cb776b062fc755ea04e&language=en-US`
+    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${key}&language=en-US`
   );
   const data: IMovieDetails = await res.json();
   console.log(data);

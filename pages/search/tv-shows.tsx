@@ -35,9 +35,10 @@ const TvShowSearch = ({ data }: Props) => {
 export default TvShowSearch;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const key = process.env.DB_KEY;
   const searchText = context.query.searchText;
   const res = await fetch(
-    `https://api.themoviedb.org/3/search/tv?api_key=9fb5564d1a088cb776b062fc755ea04e&language=en-US&page=1&query=${searchText}&include_adult=false`
+    `https://api.themoviedb.org/3/search/tv?api_key=${key}&language=en-US&page=1&query=${searchText}&include_adult=false`
   );
   const data: IResponse = await res.json();
   console.log(data);

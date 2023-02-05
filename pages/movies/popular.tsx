@@ -34,8 +34,10 @@ const MoviePopular = ({ data }: Props) => {
 export default MoviePopular;
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  const key = process.env.DB_KEY;
+
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?api_key=9fb5564d1a088cb776b062fc755ea04e&language=en-US&page=1"
+    `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`
   );
   const data: IResponse = await res.json();
 

@@ -34,8 +34,10 @@ const MovieNowPlaying = ({ data }: Props) => {
 export default MovieNowPlaying;
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  const key = process.env.DB_KEY;
+
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/now_playing?api_key=9fb5564d1a088cb776b062fc755ea04e&language=en-US&page=1&region=gb"
+    `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1&region=gb`
   );
   const data: IResponse = await res.json();
 

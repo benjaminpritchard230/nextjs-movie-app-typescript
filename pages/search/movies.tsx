@@ -41,9 +41,10 @@ const MovieSearch = ({ data }: Props) => {
 export default MovieSearch;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const key = process.env.DB_KEY;
   const searchText = context.query.searchText;
   const res = await fetch(
-    `https://api.themoviedb.org/3/search/movie?api_key=9fb5564d1a088cb776b062fc755ea04e&language=en-US&query=${searchText}&page=1&include_adult=false`
+    `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${searchText}&page=1&include_adult=false`
   );
   const data: IResponse = await res.json();
   console.log(data);
