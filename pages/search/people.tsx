@@ -1,7 +1,7 @@
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
 import { IPeople, IResponse } from "@/types/people/types";
-import { GetServerSideProps, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
@@ -22,7 +22,7 @@ const PeopleSearch = ({ data }: Props) => {
       <Row xs={1} md={2} lg={3} xl={4} className="g-4">
         {data.results.map((person: IPeople) => {
           return (
-            <Col>
+            <Col key={person.id}>
               <h1>{person.name}</h1>
             </Col>
           );

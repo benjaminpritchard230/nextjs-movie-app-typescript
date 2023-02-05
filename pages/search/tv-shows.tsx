@@ -1,9 +1,7 @@
 import Hero from "@/components/Hero";
-import InfoCard from "@/components/InfoCard";
 import { IResponse, ITvShow } from "@/types/tv-shows/types";
-import { GetServerSideProps, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
@@ -22,7 +20,7 @@ const TvShowSearch = ({ data }: Props) => {
       <Row xs={1} md={2} lg={3} xl={4} className="g-4">
         {data.results.map((show: ITvShow) => {
           return (
-            <Col>
+            <Col key={show.id}>
               <h1>{show.name}</h1>
             </Col>
           );

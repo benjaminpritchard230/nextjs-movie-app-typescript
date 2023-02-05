@@ -2,14 +2,17 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
 import type { IMovie, IMovieDetails, IResponse } from "@/types/movies/types";
-import { GetServerSideProps, GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { ParsedUrlQuery } from "querystring";
 import React from "react";
 import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import { CLIENT_RENEG_LIMIT } from "tls";
+
 type Props = {
   data: IMovieDetails;
 };
@@ -20,6 +23,7 @@ const MovieDetail = ({ data }: Props) => {
   const myLoader = ({ src, width, quality }: any) => {
     return `https://www.themoviedb.org/t/p/w1280/${data.poster_path}`;
   };
+  console.log(data);
 
   const MyImage = () => {
     return (
@@ -54,17 +58,40 @@ const MovieDetail = ({ data }: Props) => {
 
 export default MovieDetail;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const key = process.env.DB_KEY;
-  const movieId = context.query.movieId;
-  const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${key}&language=en-US`
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`
   );
-  const data: IMovieDetails = await res.json();
-  console.log(data);
+  const data: IResponse = await response.json();
+  const paths = data.results.map((movie: IMovie) => ({
+    params: { movieId: `${movie.id}` },
+  }));
   return {
-    props: {
-      data,
-    },
+    paths,
+    fallback: false,
   };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const key = process.env.DB_KEY;
+
+  {
+    const { params } = context;
+    console.log(params);
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${
+        params!.movieId
+      }?api_key=${key}&language=en-US/`
+    );
+    const data = await response.json();
+
+    console.log(`Generating page for /posts/${params!.movieId}`);
+
+    return {
+      props: {
+        data: data,
+      },
+    };
+  }
 };
