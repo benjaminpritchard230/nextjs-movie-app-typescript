@@ -41,7 +41,7 @@ const InfoCardPeople = ({ person }: Props) => {
   const percentage = Math.floor((person.popularity / 10) * 100);
   return (
     <Link
-      href={`/movies/${person.id}/`}
+      href={`/people/${person.id}/`}
       style={{ color: "inherit", textDecoration: "inherit" }}
       className={styles.card}
     >

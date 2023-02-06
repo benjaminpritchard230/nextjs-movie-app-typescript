@@ -40,7 +40,7 @@ const InfoCard = ({ show }: Props) => {
   const percentage = Math.floor((show.vote_average / 10) * 100);
   return (
     <Link
-      href={`/movies/${show.id}/`}
+      href={`/tv-shows/${show.id}/`}
       style={{ color: "inherit", textDecoration: "inherit" }}
       className={styles.card}
     >
