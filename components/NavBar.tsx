@@ -47,13 +47,13 @@ const NavBar = (props: Props) => {
               <NavDropdown.Item as={Link} href="/tv-shows/popular/">
                 Popular
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} href="/movies/airing-today/">
+              <NavDropdown.Item as={Link} href="/tv-shows/airing-today/">
                 Airing Today
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} href="/movies/top-rated/">
+              <NavDropdown.Item as={Link} href="/tv-shows/top-rated/">
                 Top Rated
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} href="/movies/on-tv/">
+              <NavDropdown.Item as={Link} href="/tv-shows/on-tv/">
                 On TV
               </NavDropdown.Item>
             </NavDropdown>
