@@ -1,4 +1,5 @@
 import styles from "@/styles/InfoCard.module.css";
+
 import type { IMovie } from "@/types/movies/types";
 import { profile } from "console";
 import Image, { ImageLoader } from "next/image";
@@ -32,7 +33,7 @@ const InfoCard = ({ movie }: Props) => {
         alt={movie.title}
         width={400}
         height={600}
-        className={"img-fluid"}
+        className={styles.img}
       />
     );
   };
@@ -44,17 +45,10 @@ const InfoCard = ({ movie }: Props) => {
       style={{ color: "inherit", textDecoration: "inherit" }}
       className={styles.card}
     >
-      <Card style={{ height: "100%" }}>
+      <div className={styles.item}>
         <MyImage />
-        <Card.Title className="d-flex justify-content-center align-items-center">
-          {movie.title}
-        </Card.Title>
-        <CircularProgressbar
-          value={percentage}
-          text={`${percentage}%`}
-          className={styles.progressbar}
-        />
-      </Card>
+        <p>{movie.title}</p>
+      </div>
     </Link>
   );
 };

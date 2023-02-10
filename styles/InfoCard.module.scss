@@ -1,43 +1,19 @@
-@use "../styles/colors";
-
-.responsive{
-  max-width: 100%;
-  max-height: auto;
-
-}
-
-.card {
-  /* Add shadows to create the "card" effect */
-  width: 20em;
-  height: 40em;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  transition: 1s;
-  border-radius: 10px;
-}
-
-.title{
-  min-height: 100%;
-}
-
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-  transform: scale(1.005);
-  transition-duration: 0.1;
-}
-
-/* Add some padding inside the card container */
-.container {
-  padding: 3px 16px;
-}
-
-.progressbar{
-  height: 7em;
-  position: absolute;
-  bottom: 12.5em;
-  left:11em;
-  width:auto
-}
-
-
-
-
+.img{
+  width:100%;  
+  height: auto;
+ }
+ 
+ .item{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background: steelblue;
+     color: #fff;
+     font-size: 20px;
+     padding: 1em;
+     border: skyblue 1px solid;
+     flex-direction: column;
+     height: 100%;
+ }
+ 
+ 

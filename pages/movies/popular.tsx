@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
+import TestCard from "@/components/TestCard";
+import styles from "@/styles/Popular.module.css";
 import type { IMovie, IResponse } from "@/types/movies/types";
 import { GetStaticProps } from "next";
 import React from "react";
@@ -18,15 +20,11 @@ const MoviePopular = ({ data }: Props) => {
   return (
     <>
       <Header text="Popular movies" />
-      <CardGroup>
+      <div className={styles.container}>
         {data.results.map((movie: IMovie) => {
-          return (
-            <Col className={"d-flex justify-content-center"} key={movie.id}>
-              <InfoCard movie={movie} />
-            </Col>
-          );
+          return <InfoCard movie={movie} />;
         })}
-      </CardGroup>
+      </div>
     </>
   );
 };
