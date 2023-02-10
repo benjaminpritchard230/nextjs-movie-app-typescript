@@ -5,4 +5,7 @@
   color: #f6f6ff;
   height: 10em;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=Header.module.css.map */

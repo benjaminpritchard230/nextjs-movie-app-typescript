@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
-import InfoCardShow from "@/components/InfoCardShow";
+import styles from "@/styles/Popular.module.css";
 import type { IResponse, ITvShow } from "@/types/tv-shows/types";
 import { GetStaticProps } from "next";
 import React from "react";
@@ -19,15 +19,17 @@ const ShowPopular = ({ data }: Props) => {
   return (
     <>
       <Header text="Popular TV Shows" />
-      <CardGroup>
+      <div className={styles.container}>
         {data.results.map((show: ITvShow) => {
           return (
-            <Col className={"d-flex justify-content-center"} key={show.id}>
-              <InfoCardShow show={show} />
-            </Col>
+            <InfoCard
+              title={show.name}
+              image={`https://www.themoviedb.org/t/p/w500/${show.poster_path}`}
+              link={`/tv-shows/${show.id}/`}
+            />
           );
         })}
-      </CardGroup>
+      </div>
     </>
   );
 };

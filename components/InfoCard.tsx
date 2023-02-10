@@ -11,18 +11,14 @@ import "react-circular-progressbar/dist/styles.css";
 import profilePic from "../public/pib.jpg";
 
 type Props = {
-  movie: IMovie;
+  title: string;
+  image: string;
+  link: string;
 };
 
-interface IImage {
-  src: string;
-  width: string;
-  quality: string;
-}
-
-const InfoCard = ({ movie }: Props) => {
+const InfoCard = ({ title, image, link }: Props) => {
   const myLoader = ({ src, width, quality }: any) => {
-    return `https://www.themoviedb.org/t/p/w500/${movie.poster_path}`;
+    return `https://www.themoviedb.org/t/p/w500/${image}`;
   };
 
   const MyImage = () => {
@@ -30,7 +26,7 @@ const InfoCard = ({ movie }: Props) => {
       <Image
         loader={myLoader}
         src="me.png"
-        alt={movie.title}
+        alt={title}
         width={400}
         height={600}
         className={styles.img}
@@ -38,16 +34,16 @@ const InfoCard = ({ movie }: Props) => {
     );
   };
 
-  const percentage = Math.floor((movie.vote_average / 10) * 100);
+  // const percentage = Math.floor((movie.vote_average / 10) * 100);
   return (
     <Link
-      href={`/movies/${movie.id}/`}
+      href={link}
       style={{ color: "inherit", textDecoration: "inherit" }}
       className={styles.card}
     >
       <div className={styles.item}>
         <MyImage />
-        <p>{movie.title}</p>
+        <p>{title}</p>
       </div>
     </Link>
   );

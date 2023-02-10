@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
 import InfoCardPeople from "@/components/InfoCardPeople";
+import styles from "@/styles/Popular.module.css";
 import { IPeople, IResponse } from "@/types/people/types";
 import { GetStaticProps } from "next";
 import React from "react";
@@ -19,15 +20,17 @@ const PeoplePopular = ({ data }: Props) => {
   return (
     <>
       <Header text="Popular people" />
-      <CardGroup>
+      <div className={styles.container}>
         {data.results.map((person: IPeople) => {
           return (
-            <Col className={"d-flex justify-content-center"} key={person.id}>
-              <InfoCardPeople person={person} />
-            </Col>
+            <InfoCard
+              title={person.name}
+              image={`https://www.themoviedb.org/t/p/w500/${person.profile_path}`}
+              link={`/people/${person.id}/`}
+            />
           );
         })}
-      </CardGroup>
+      </div>
     </>
   );
 };
