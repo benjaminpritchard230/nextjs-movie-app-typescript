@@ -107,23 +107,27 @@ const PeopleDetail = ({ data }: Props) => {
         <div className={styles.item}>
           <p>
             {shorten(data.biography, 600)}
-            <button
-              className={styles.btn}
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
-              Read more
-            </button>
+            {data.biography.length >= 600 ? (
+              <button
+                className={styles.btn}
+                onClick={() => {
+                  setOpen(!open);
+                }}
+              >
+                Read more
+              </button>
+            ) : null}
           </p>
         </div>
         <div className={styles.item}>
           <h5>Popularity rating: {data.popularity}</h5>
         </div>
       </div>
-      <Modal isOpen={open} setOpen={setOpen}>
-        {data.biography}
-      </Modal>
+      {data.biography.length >= 300 ? (
+        <Modal isOpen={open} setOpen={setOpen}>
+          {data.biography}
+        </Modal>
+      ) : null}
     </>
   );
 };
