@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
+import styles from "@/styles/Popular.module.css";
 import { IPeople, IPeopleDetails, IResponse } from "@/types/people/types";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
@@ -37,22 +38,15 @@ const PeopleDetail = ({ data }: Props) => {
     );
   };
   return (
-    <Container fluid>
-      <Row className="mb-3">
-        <Col>
-          <Header text={data.name} />
-        </Col>
-      </Row>
-      <Row xs={1} md={2} className="g-4">
-        <Col>
+    <>
+      <Header text="Popular people" />
+      <div className={styles.container}>
+        <div className={styles.item}>{data.name}</div>
+        <div className={styles.item}>
           <MyImage />
-        </Col>
-        <Col>
-          <h3>{data.place_of_birth}</h3>
-          <h3>{data.gender}</h3>
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
+    </>
   );
 };
 

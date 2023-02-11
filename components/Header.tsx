@@ -5,9 +5,9 @@ type Props = { text: string };
 
 const Header = ({ text }: Props) => {
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <h1>{text}</h1>
-    </div>
+    </header>
   );
 };
 
