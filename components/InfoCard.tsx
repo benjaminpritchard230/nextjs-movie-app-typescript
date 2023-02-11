@@ -6,7 +6,6 @@ import Image, { ImageLoader } from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Card } from "react-bootstrap";
-import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import profilePic from "../public/pib.jpg";
 

@@ -1,0 +1,47 @@
+.modal-overlay {
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background-color: steelblue;
+  color: #fff;
+  height: 100%;
+  position: relative;
+  margin: 0 auto;
+  padding: 3em;
+  overflow-y: auto;
+
+  @media (min-width: 60em) {
+    height: 75%;
+    margin: 5% auto;
+    max-height: 57em;
+    max-width: 66em;
+    width: 85%;
+  }
+}
+
+// @media (max-width: 768px) {
+//   .modal-box {
+//     width: 100%;
+//   }
+//   .modal-overlay {
+//   }
+// }
+
+// @media (min-width: 768px) {
+//   .modal-box {
+//     width: 100%;
+//   }
+// }
+// @media (min-width: 1280px) {
+// }
+// @media (min-width: 1920px) {
+// }

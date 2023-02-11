@@ -33,6 +33,20 @@
   color: #fff;
 }
 
+.btn {
+  color: steelblue;
+  border-radius: 10px;
+  border: skyblue 1px solid;
+  background-color: #fff;
+  padding: 0.5em;
+  margin: 0.25em 0.25em 0 0;
+  display: block;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
 @media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;

@@ -1,13 +1,14 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
+import Modal from "@/components/Modal";
 import styles from "@/styles/InfoPage.module.css";
 import { IPeople, IPeopleDetails, IResponse } from "@/types/people/types";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
@@ -28,6 +29,8 @@ const PeopleDetail = ({ data }: Props) => {
   console.log(data);
 
   const percentage = Math.floor(data.popularity);
+
+  const [open, setOpen] = useState(false);
 
   const MyImage = () => {
     return (
@@ -102,12 +105,25 @@ const PeopleDetail = ({ data }: Props) => {
           </ul>
         </div>
         <div className={styles.item}>
-          <p>{shorten(data.biography, 600)}</p>
+          <p>
+            {shorten(data.biography, 600)}
+            <button
+              className={styles.btn}
+              onClick={() => {
+                setOpen(!open);
+              }}
+            >
+              Read more
+            </button>
+          </p>
         </div>
         <div className={styles.item}>
           <h5>Popularity rating: {data.popularity}</h5>
         </div>
       </div>
+      <Modal isOpen={open} setOpen={setOpen}>
+        {data.biography}
+      </Modal>
     </>
   );
 };
