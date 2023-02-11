@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
-import styles from "@/styles/Popular.module.css";
+import styles from "@/styles/InfoPage.module.css";
 import { IPeople, IPeopleDetails, IResponse } from "@/types/people/types";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
@@ -37,14 +37,45 @@ const PeopleDetail = ({ data }: Props) => {
       />
     );
   };
+
+  const shorten = (
+    str: string,
+    maxLen: number,
+    separator: string = " "
+  ): string => {
+    if (str.length <= maxLen) return str;
+    return str.substr(0, str.lastIndexOf(separator, maxLen));
+  };
+
   return (
     <>
-      <Header text="Popular people" />
+      <Header text={data.name} secondaryText={data.known_for_department} />
       <div className={styles.container}>
-        <div className={styles.item}>{data.name}</div>
         <div className={styles.item}>
           <MyImage />
         </div>
+        <div className={styles.item}>
+          <ul>
+            <li>
+              <p>Date of birth: {data.birthday}</p>
+              {data.deathday ? (
+                <p>{`Date of death: ${data.deathday}`}</p>
+              ) : null}
+              <p>Birthplace: {data.place_of_birth}</p>
+              <p>Gender: {data.gender === 1 ? "female" : "male"}</p>
+              <p>Also known as: {data.also_known_as.join(", ")}</p>
+              <p>
+                <a href={`https://www.imdb.com/name/${data.imdb_id}/`}>
+                  Link to IMDb profile
+                </a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div className={styles.item}>
+          <p>{shorten(data.biography, 600)}</p>
+        </div>
+        <div className={styles.item}></div>
       </div>
     </>
   );

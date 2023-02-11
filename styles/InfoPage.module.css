@@ -9,6 +9,30 @@
   align-items: stretch;
 }
 
+.img {
+  width: 100%;
+  height: auto;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: steelblue;
+  color: #fff;
+  font-size: 20px;
+  padding: 1em;
+  border: skyblue 1px solid;
+  flex-direction: column;
+  height: 100%;
+}
+.item li {
+  list-style-type: none;
+}
+.item a {
+  color: #fff;
+}
+
 @media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;
@@ -32,4 +56,4 @@
     grid-template-columns: repeat(4, 1fr);
     max-width: 70vw;
   }
-}/*# sourceMappingURL=Popular.module.css.map */
+}/*# sourceMappingURL=InfoPage.module.css.map */
