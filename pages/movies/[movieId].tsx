@@ -49,8 +49,8 @@ const MovieDetail = ({ data }: Props) => {
           <ul>
             <li>
               <h5>Release date: {data.release_date}</h5>
-              <h5>Budget: ${data.budget}</h5>
-              <h5>Revenue: ${data.revenue}</h5>
+              {data.budget ? <h5>Budget: ${data.budget}</h5> : null}
+              {data.revenue ? <h5>Revenue: ${data.revenue}</h5> : null}
               <h5>Runtime: {data.runtime}</h5>
               <br />
               <h5>Production companies:</h5>
