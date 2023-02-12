@@ -1,7 +1,9 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
+import styles from "@/styles/InfoPage.module.css";
 import type { IMovie, IMovieDetails, IResponse } from "@/types/movies/types";
+import { light } from "@mui/material/styles/createPalette";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -37,22 +39,44 @@ const MovieDetail = ({ data }: Props) => {
     );
   };
   return (
-    <Container fluid>
-      <Row className="mb-3">
-        <Col>
-          <Header text={data.title} />
-        </Col>
-      </Row>
-      <Row xs={1} md={2} className="g-4">
-        <Col>
+    <>
+      <Header text={data.title} secondaryText={data.tagline} />
+      <div className={styles.container}>
+        <div className={styles.item}>
           <MyImage />
-        </Col>
-        <Col>
-          <h3>{data.overview}</h3>
-          <h3>{data.release_date}</h3>
-        </Col>
-      </Row>
-    </Container>
+        </div>
+        <div className={styles.item}>
+          <ul>
+            <li>
+              <h5>Release date: {data.release_date}</h5>
+              <h5>Budget: ${data.budget}</h5>
+              <h5>Revenue: ${data.revenue}</h5>
+              <h5>Runtime: {data.runtime}</h5>
+              <br />
+              <h5>Production companies:</h5>
+              <ul>
+                {data.production_companies.map((company) => {
+                  return <li>{company.name}</li>;
+                })}
+              </ul>
+              <br />
+              <h5>Genres: </h5>
+              <ul>
+                {data.genres.map((genre) => {
+                  return <li>{genre.name}</li>;
+                })}
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div className={styles.item}>
+          <p>{data.overview}</p>
+        </div>
+        <div className={styles.item}>
+          <h5>Popularity rating: {data.popularity}</h5>
+        </div>
+      </div>
+    </>
   );
 };
 

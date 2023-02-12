@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
+import styles from "@/styles/InfoPage.module.css";
 import { IResponse, ITvShow, ITvShowDetails } from "@/types/tv-shows/types";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
@@ -25,6 +26,10 @@ const TvShowDetail = ({ data }: Props) => {
   };
   console.log(data);
 
+  const languageNames = new Intl.DisplayNames(["en"], {
+    type: "language",
+  });
+
   const MyImage = () => {
     return (
       <Image
@@ -37,22 +42,45 @@ const TvShowDetail = ({ data }: Props) => {
     );
   };
   return (
-    <Container fluid>
-      <Row className="mb-3">
-        <Col>
-          <Header text={data.name} />
-        </Col>
-      </Row>
-      <Row xs={1} md={2} className="g-4">
-        <Col>
+    <>
+      <Header text={data.name} secondaryText={`"${data.tagline}"`} />
+      <div className={styles.container}>
+        <div className={styles.item}>
           <MyImage />
-        </Col>
-        <Col>
-          {/* <h3>{data.created_by}</h3>
-          <h3>{data.networks}</h3> */}
-        </Col>
-      </Row>
-    </Container>
+        </div>
+        <div className={styles.item}>
+          <ul>
+            <h5>First aired: {data.first_air_date}</h5>
+            <h5>Languages: </h5>
+            <ul>
+              {data.languages.map((language) => {
+                return <li>{languageNames.of(language)}</li>;
+              })}
+            </ul>
+            <br />
+            <h5>Genres: </h5>
+            <ul>
+              {data.genres.map((genre) => {
+                return <li>{genre.name}</li>;
+              })}
+            </ul>
+            <br />
+            <h5>Networks: </h5>
+            <ul>
+              {data.networks.map((network) => {
+                return <li>{network.name}</li>;
+              })}
+            </ul>
+          </ul>
+        </div>
+        <div className={styles.item}>
+          <p>{data.overview}</p>
+        </div>
+        <div className={styles.item}>
+          <h5>Popularity rating: {data.popularity}</h5>
+        </div>
+      </div>
+    </>
   );
 };
 

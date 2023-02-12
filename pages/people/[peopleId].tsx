@@ -40,6 +40,7 @@ const PeopleDetail = ({ data }: Props) => {
         alt={`${data.name}`}
         width={400}
         height={600}
+        className={styles.img}
       />
     );
   };
@@ -105,29 +106,12 @@ const PeopleDetail = ({ data }: Props) => {
           </ul>
         </div>
         <div className={styles.item}>
-          <p>
-            {shorten(data.biography, 600)}
-            {data.biography.length >= 600 ? (
-              <button
-                className={styles.btn}
-                onClick={() => {
-                  setOpen(!open);
-                }}
-              >
-                Read more
-              </button>
-            ) : null}
-          </p>
+          <p>{data.biography}</p>
         </div>
         <div className={styles.item}>
           <h5>Popularity rating: {data.popularity}</h5>
         </div>
       </div>
-      {data.biography.length >= 300 ? (
-        <Modal isOpen={open} setOpen={setOpen}>
-          {data.biography}
-        </Modal>
-      ) : null}
     </>
   );
 };
