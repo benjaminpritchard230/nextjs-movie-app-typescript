@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
+import styles from "@/styles/Popular.module.css";
 import type { IMovie, IResponse } from "@/types/movies/types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
@@ -18,22 +19,18 @@ const MovieSearch = ({ data }: Props) => {
   const searchText = router.query.searchText as string;
   return (
     <>
-      <Container fluid>
-        <Row>
-          <Header text={`Showing movies matching "${searchText}"`} />
-        </Row>
-      </Container>
-      <Container fluid className="d-flex justify-content-center">
-        <Row xs={1} md={2} lg={3} xl={5} className="g-4 my-3">
-          {data.results.map((movie: IMovie) => {
-            return (
-              <Col className={"d-flex justify-content-center"} key={movie.id}>
-                <InfoCard movie={movie} />
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
+      <Header text={`Showing movies matching "${searchText}":`} />
+      <div className={styles.container}>
+        {data.results.map((movie: IMovie) => {
+          return (
+            <InfoCard
+              title={movie.title}
+              image={`https://www.themoviedb.org/t/p/w500/${movie.poster_path}`}
+              link={`/movies/${movie.id}/`}
+            />
+          );
+        })}
+      </div>
     </>
   );
 };

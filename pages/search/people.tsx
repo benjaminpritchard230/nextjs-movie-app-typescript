@@ -1,5 +1,7 @@
+import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
+import styles from "@/styles/Popular.module.css";
 import { IPeople, IResponse } from "@/types/people/types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
@@ -16,18 +18,18 @@ const PeopleSearch = ({ data }: Props) => {
   const searchText = router.query.searchText as string;
   return (
     <>
-      <Row>
-        <Hero text={`Show people matching "${searchText}"`} />
-      </Row>
-      <Row xs={1} md={2} lg={3} xl={4} className="g-4">
+      <Header text={`Showing people matching "${searchText}":`} />
+      <div className={styles.container}>
         {data.results.map((person: IPeople) => {
           return (
-            <Col key={person.id}>
-              <h1>{person.name}</h1>
-            </Col>
+            <InfoCard
+              title={person.name}
+              image={`https://www.themoviedb.org/t/p/w500/${person.profile_path}`}
+              link={`/people/${person.id}/`}
+            />
           );
         })}
-      </Row>
+      </div>
     </>
   );
 };
@@ -39,7 +41,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const searchText = context.query.searchText;
   const res = await fetch(
-    `https://api.themoviedb.org/3/search/person?api_key=${key}&language=en-US&query=harry&page=1&include_adult=false`
+    `https://api.themoviedb.org/3/search/person?api_key=${key}&language=en-US&query=${searchText}&page=1&include_adult=false`
   );
   const data: IResponse = await res.json();
   console.log(data);

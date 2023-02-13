@@ -1,4 +1,7 @@
+import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import InfoCard from "@/components/InfoCard";
+import styles from "@/styles/Popular.module.css";
 import { IResponse, ITvShow } from "@/types/tv-shows/types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
@@ -14,18 +17,18 @@ const TvShowSearch = ({ data }: Props) => {
   const searchText = router.query.searchText as string;
   return (
     <>
-      <Row>
-        <Hero text={`Showing TV shows matching "${searchText}"`} />
-      </Row>
-      <Row xs={1} md={2} lg={3} xl={4} className="g-4">
+      <Header text={`Showing TV shows matching "${searchText}"`} />
+      <div className={styles.container}>
         {data.results.map((show: ITvShow) => {
           return (
-            <Col key={show.id}>
-              <h1>{show.name}</h1>
-            </Col>
+            <InfoCard
+              title={show.name}
+              image={`https://www.themoviedb.org/t/p/w500/${show.poster_path}`}
+              link={`/tv-shows/${show.id}/`}
+            />
           );
         })}
-      </Row>
+      </div>
     </>
   );
 };
