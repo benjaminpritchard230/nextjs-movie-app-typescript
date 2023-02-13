@@ -1,19 +1,22 @@
-.img{
-  width:100%;  
+.img {
+  width: 100%;
   height: auto;
- }
- 
- .item{
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     background: steelblue;
-     color: #fff;
-     font-size: 20px;
-     padding: 1em;
-     border: skyblue 1px solid;
-     flex-direction: column;
-     height: 100%;
- }
- 
- 
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: steelblue;
+  color: #fff;
+  font-size: 20px;
+  padding: 1em;
+  border: skyblue 1px solid;
+  flex-direction: column;
+  height: 100%;
+}
+
+.item:hover {
+  background-color: #598fbc;
+  color: #e6e6e6;
+}

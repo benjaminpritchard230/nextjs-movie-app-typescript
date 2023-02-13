@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
-import InfoCardPeople from "@/components/InfoCardPeople";
 import styles from "@/styles/Popular.module.css";
 import { IPeople, IResponse } from "@/types/people/types";
 import { GetStaticProps } from "next";

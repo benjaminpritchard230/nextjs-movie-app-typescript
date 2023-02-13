@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
+import SearchSelector from "@/components/SearchSelector";
 import styles from "@/styles/Popular.module.css";
 import type { IMovie, IResponse } from "@/types/movies/types";
 import { GetServerSideProps } from "next";
@@ -9,6 +10,7 @@ import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Search from ".";
 
 interface Props {
   data: IResponse;
@@ -20,6 +22,7 @@ const MovieSearch = ({ data }: Props) => {
   return (
     <>
       <Header text={`Showing movies matching "${searchText}":`} />
+      <SearchSelector />
       <div className={styles.container}>
         {data.results.map((movie: IMovie) => {
           return (
