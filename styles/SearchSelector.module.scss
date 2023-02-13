@@ -45,8 +45,16 @@
   color: #fff;
   background-color: steelblue;
   border: skyblue;
+  &:hover {
+    background-color: #598fbc;
+    color: #fff;
+  }
+  &:active {
+    transform: scale(0.995);
+  }
 }
-.btn:hover {
-  background-color: #598fbc;
-  color: #e6e6e6;
+
+.btn-selected {
+  @extend .btn;
+  background-color: #2a4e6c;
 }

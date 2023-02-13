@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
+import SearchSelector from "@/components/SearchSelector";
 import styles from "@/styles/Popular.module.css";
 import { IResponse, ITvShow } from "@/types/tv-shows/types";
 import { GetServerSideProps } from "next";
@@ -18,6 +19,7 @@ const TvShowSearch = ({ data }: Props) => {
   return (
     <>
       <Header text={`Showing TV shows matching "${searchText}"`} />
+      <SearchSelector selected="TV Shows" />
       <div className={styles.container}>
         {data.results.map((show: ITvShow) => {
           return (

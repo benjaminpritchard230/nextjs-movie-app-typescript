@@ -22,7 +22,7 @@ const MovieSearch = ({ data }: Props) => {
   return (
     <>
       <Header text={`Showing movies matching "${searchText}":`} />
-      <SearchSelector />
+      <SearchSelector selected="Movies" />
       <div className={styles.container}>
         {data.results.map((movie: IMovie) => {
           return (

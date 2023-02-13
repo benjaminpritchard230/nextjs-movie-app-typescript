@@ -15,8 +15,10 @@
   flex-direction: column;
   height: 100%;
 }
-
 .item:hover {
   background-color: #598fbc;
   color: #e6e6e6;
+}
+.item:active {
+  transform: scale(0.995);
 }/*# sourceMappingURL=InfoCard.module.css.map */

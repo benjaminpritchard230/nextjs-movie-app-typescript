@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
+import SearchSelector from "@/components/SearchSelector";
 import styles from "@/styles/Popular.module.css";
 import { IPeople, IResponse } from "@/types/people/types";
 import { GetServerSideProps } from "next";
@@ -19,6 +20,7 @@ const PeopleSearch = ({ data }: Props) => {
   return (
     <>
       <Header text={`Showing people matching "${searchText}":`} />
+      <SearchSelector selected="People" />
       <div className={styles.container}>
         {data.results.map((person: IPeople) => {
           return (
