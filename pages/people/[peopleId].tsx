@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
 import Modal from "@/components/Modal";
+import placeholder from "@/public/placeholder.png";
 import styles from "@/styles/InfoPage.module.css";
 import { IPeople, IPeopleDetails, IResponse } from "@/types/people/types";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
@@ -21,25 +22,28 @@ type Props = {
 };
 
 const PeopleDetail = ({ data }: Props) => {
-  const router = useRouter();
-  const peopleId = router.query.peopleId;
-
-  const percentage = Math.floor(data.popularity);
-
-  const [open, setOpen] = useState(false);
-
-  const myLoader = ({ src, width, quality }: any) => {
-    return `https://www.themoviedb.org/t/p/w1280/${data.profile_path}`;
+  const myLoader = ({ src }: any) => {
+    return src;
   };
+
+  const [error, setError] = useState(false);
+
   const MyImage = () => {
     return (
       <Image
         loader={myLoader}
-        src={`https://www.themoviedb.org/t/p/w1280/${data.profile_path}`}
+        src={
+          !error
+            ? `https://www.themoviedb.org/t/p/w1280/${data.profile_path}`
+            : placeholder
+        }
         alt={`${data.name}`}
         width={400}
         height={600}
         className={styles.img}
+        onError={() => {
+          setError(true);
+        }}
       />
     );
   };
