@@ -1,4 +1,4 @@
-.header {
+.header, .header--tvshow {
   padding: 60px;
   text-align: center;
   background: #126da6;
@@ -9,4 +9,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 10px;
+}
+.header--tvshow {
+  background: #316948;
 }/*# sourceMappingURL=Header.module.css.map */

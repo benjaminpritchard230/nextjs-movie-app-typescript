@@ -13,9 +13,10 @@ type Props = {
   title: string;
   image: string;
   link: string;
+  style?: string;
 };
 
-const InfoCard = ({ title, image, link }: Props) => {
+const InfoCard = ({ title, image, link, style = "item" }: Props) => {
   const myLoader = ({ src, width, quality }: any) => {
     return `https://www.themoviedb.org/t/p/w500/${image}`;
   };
@@ -40,7 +41,7 @@ const InfoCard = ({ title, image, link }: Props) => {
       style={{ color: "inherit", textDecoration: "inherit" }}
       className={styles.card}
     >
-      <div className={styles.item}>
+      <div className={styles[style]}>
         <MyImage />
         <p>{title}</p>
       </div>

@@ -35,6 +35,7 @@ const MovieDetail = ({ data }: Props) => {
         alt={`${data.title}`}
         width={400}
         height={600}
+        className={styles.img}
       />
     );
   };

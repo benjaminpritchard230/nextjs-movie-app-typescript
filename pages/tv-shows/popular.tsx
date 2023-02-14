@@ -18,7 +18,7 @@ interface Props {
 const ShowPopular = ({ data }: Props) => {
   return (
     <>
-      <Header text="Popular TV Shows" />
+      <Header text="Popular TV Shows" style="header--tvshow" />
       <div className={styles.container}>
         {data.results.map((show: ITvShow) => {
           return (
@@ -26,6 +26,7 @@ const ShowPopular = ({ data }: Props) => {
               title={show.name}
               image={`https://www.themoviedb.org/t/p/w500/${show.poster_path}`}
               link={`/tv-shows/${show.id}/`}
+              style="item--tvshow"
             />
           );
         })}

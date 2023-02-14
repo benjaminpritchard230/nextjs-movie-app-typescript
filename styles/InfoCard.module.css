@@ -3,22 +3,26 @@
   height: auto;
 }
 
-.item {
+.item, .item--tvshow {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: steelblue;
-  color: #fff;
+  background: #126da6;
+  color: #f6f6ff;
   font-size: 20px;
   padding: 1em;
-  border: skyblue 1px solid;
   flex-direction: column;
   height: 100%;
 }
-.item:hover {
-  background-color: #598fbc;
-  color: #e6e6e6;
+.item:hover, .item--tvshow:hover {
+  background-color: #418ab8;
 }
-.item:active {
+.item:active, .item--tvshow:active {
   transform: scale(0.995);
+}
+.item--tvshow {
+  background: #316948;
+}
+.item--tvshow:hover {
+  background: #5a876d;
 }/*# sourceMappingURL=InfoCard.module.css.map */

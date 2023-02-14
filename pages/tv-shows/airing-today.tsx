@@ -13,7 +13,7 @@ interface Props {
 const TvAiringToday = ({ data }: Props) => {
   return (
     <>
-      <Header text="TV Shows airing today" />
+      <Header text="TV Shows airing today" style="header--tvshow" />
       <div className={styles.container}>
         {data.results.map((show: ITvShow) => {
           return (
@@ -21,6 +21,7 @@ const TvAiringToday = ({ data }: Props) => {
               title={show.name}
               image={`https://www.themoviedb.org/t/p/w500/${show.poster_path}`}
               link={`/tv-shows/${show.id}/`}
+              style="item--tvshow"
             />
           );
         })}

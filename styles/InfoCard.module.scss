@@ -1,3 +1,5 @@
+@use "../styles/colors";
+
 .img {
   width: 100%;
   height: auto;
@@ -7,18 +9,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: steelblue;
-  color: #fff;
+  background: colors.$blue;
+  color: colors.$white;
   font-size: 20px;
   padding: 1em;
-  border: skyblue 1px solid;
   flex-direction: column;
   height: 100%;
   &:hover {
-    background-color: #598fbc;
-    color: #e6e6e6;
+    background-color: colors.$lightblue;
   }
   &:active {
     transform: scale(0.995);
+  }
+  &--tvshow {
+    @extend .item;
+    background: colors.$green;
+    &:hover {
+      background: colors.$lightgreen;
+    }
   }
 }

@@ -43,12 +43,16 @@ const TvShowDetail = ({ data }: Props) => {
   };
   return (
     <>
-      <Header text={data.name} secondaryText={`"${data.tagline}"`} />
+      <Header
+        text={data.name}
+        secondaryText={`"${data.tagline}"`}
+        style="header--tvshow"
+      />
       <div className={styles.container}>
-        <div className={styles.item}>
+        <div className={styles["item--tvshow"]}>
           <MyImage />
         </div>
-        <div className={styles.item}>
+        <div className={styles["item--tvshow"]}>
           <ul>
             <h5>First aired: {data.first_air_date}</h5>
             <h5>Languages: </h5>
@@ -73,10 +77,10 @@ const TvShowDetail = ({ data }: Props) => {
             </ul>
           </ul>
         </div>
-        <div className={styles.item}>
+        <div className={styles["item--tvshow"]}>
           <p>{data.overview}</p>
         </div>
-        <div className={styles.item}>
+        <div className={styles["item--tvshow"]}>
           <h5>Popularity rating: {data.popularity}</h5>
         </div>
       </div>

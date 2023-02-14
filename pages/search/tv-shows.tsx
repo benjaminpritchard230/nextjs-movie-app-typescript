@@ -18,7 +18,10 @@ const TvShowSearch = ({ data }: Props) => {
   const searchText = router.query.searchText as string;
   return (
     <>
-      <Header text={`Showing TV shows matching "${searchText}"`} />
+      <Header
+        text={`Showing TV shows matching "${searchText}"`}
+        style="header--tvshow"
+      />
       <SearchSelector selected="TV Shows" />
       <div className={styles.container}>
         {data.results.map((show: ITvShow) => {
@@ -27,6 +30,7 @@ const TvShowSearch = ({ data }: Props) => {
               title={show.name}
               image={`https://www.themoviedb.org/t/p/w500/${show.poster_path}`}
               link={`/tv-shows/${show.id}/`}
+              style="item--tvshow"
             />
           );
         })}
