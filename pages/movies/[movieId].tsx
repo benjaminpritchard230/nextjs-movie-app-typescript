@@ -22,6 +22,13 @@ type Props = {
 const MovieDetail = ({ data }: Props) => {
   const router = useRouter();
   const movieId = router.query.movieId;
+
+  const getRunTime = (totalMinutes: number) => {
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    return `${hours}h ${minutes}m`;
+  };
+
   const myLoader = ({ src, width, quality }: any) => {
     return `https://www.themoviedb.org/t/p/w1280/${data.poster_path}`;
   };
@@ -41,7 +48,7 @@ const MovieDetail = ({ data }: Props) => {
   };
   return (
     <>
-      <Header text={data.title} secondaryText={data.tagline} />
+      <Header text={data.title} />
       <div className={styles.container}>
         <div className={styles.item}>
           <MyImage />
@@ -52,7 +59,7 @@ const MovieDetail = ({ data }: Props) => {
               <h5>Release date: {data.release_date}</h5>
               {data.budget ? <h5>Budget: ${data.budget}</h5> : null}
               {data.revenue ? <h5>Revenue: ${data.revenue}</h5> : null}
-              <h5>Runtime: {data.runtime}</h5>
+              <h5>Runtime: {getRunTime(data.runtime)}</h5>
               <br />
               <h5>Production companies:</h5>
               <ul>

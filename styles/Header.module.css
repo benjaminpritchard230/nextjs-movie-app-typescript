@@ -1,4 +1,4 @@
-.header, .header--tvshow {
+.header, .header--people, .header--tvshow {
   padding: 60px;
   text-align: center;
   background: #126da6;
@@ -13,4 +13,7 @@
 }
 .header--tvshow {
   background: #316948;
+}
+.header--people {
+  background: #9d2400;
 }/*# sourceMappingURL=Header.module.css.map */

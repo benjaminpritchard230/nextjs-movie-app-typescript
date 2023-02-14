@@ -19,7 +19,7 @@ const TvShowSearch = ({ data }: Props) => {
   return (
     <>
       <Header
-        text={`Showing TV shows matching "${searchText}"`}
+        text={`Showing TV shows matching "${searchText}:"`}
         style="header--tvshow"
       />
       <SearchSelector selected="TV Shows" />

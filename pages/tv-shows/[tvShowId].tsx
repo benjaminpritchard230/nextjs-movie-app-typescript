@@ -43,11 +43,7 @@ const TvShowDetail = ({ data }: Props) => {
   };
   return (
     <>
-      <Header
-        text={data.name}
-        secondaryText={`"${data.tagline}"`}
-        style="header--tvshow"
-      />
+      <Header text={data.name} style="header--tvshow" />
       <div className={styles.container}>
         <div className={styles["item--tvshow"]}>
           <MyImage />
@@ -55,6 +51,7 @@ const TvShowDetail = ({ data }: Props) => {
         <div className={styles["item--tvshow"]}>
           <ul>
             <h5>First aired: {data.first_air_date}</h5>
+            <br />
             <h5>Languages: </h5>
             <ul>
               {data.languages.map((language) => {

@@ -16,4 +16,8 @@
     @extend .header;
     background: colors.$green;
   }
+  &--people {
+    @extend .header;
+    background: colors.$red;
+  }
 }

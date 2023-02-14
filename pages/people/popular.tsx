@@ -18,7 +18,7 @@ interface Props {
 const PeoplePopular = ({ data }: Props) => {
   return (
     <>
-      <Header text="Popular people" />
+      <Header text="Popular people" style="header--people" />
       <div className={styles.container}>
         {data.results.map((person: IPeople) => {
           return (
@@ -26,6 +26,7 @@ const PeoplePopular = ({ data }: Props) => {
               title={person.name}
               image={`https://www.themoviedb.org/t/p/w500/${person.profile_path}`}
               link={`/people/${person.id}/`}
+              style="item--people"
             />
           );
         })}

@@ -19,7 +19,10 @@ const PeopleSearch = ({ data }: Props) => {
   const searchText = router.query.searchText as string;
   return (
     <>
-      <Header text={`Showing people matching "${searchText}":`} />
+      <Header
+        text={`Showing people matching "${searchText}":`}
+        style="header--people"
+      />
       <SearchSelector selected="People" />
       <div className={styles.container}>
         {data.results.map((person: IPeople) => {
@@ -28,6 +31,7 @@ const PeopleSearch = ({ data }: Props) => {
               title={person.name}
               image={`https://www.themoviedb.org/t/p/w500/${person.profile_path}`}
               link={`/people/${person.id}/`}
+              style="item--people"
             />
           );
         })}

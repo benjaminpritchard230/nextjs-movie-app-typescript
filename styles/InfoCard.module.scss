@@ -28,4 +28,11 @@
       background: colors.$lightgreen;
     }
   }
+  &--people {
+    @extend .item;
+    background: colors.$red;
+    &:hover {
+      background: colors.$lightred;
+    }
+  }
 }

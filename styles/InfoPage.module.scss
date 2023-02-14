@@ -21,7 +21,7 @@
   justify-content: center;
   align-items: center;
   background: colors.$blue;
-  color: #fff;
+  color: colors.$white;
   font-size: 20px;
   padding: 1.5em;
   flex-direction: column;
@@ -56,6 +56,13 @@
     background: colors.$green;
     &:hover {
       background: colors.$lightgreen;
+    }
+  }
+  &--people {
+    @extend .item;
+    background: colors.$red;
+    &:hover {
+      background: colors.$lightred;
     }
   }
 }

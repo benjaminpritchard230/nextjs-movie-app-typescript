@@ -23,35 +23,25 @@ type Props = {
 const PeopleDetail = ({ data }: Props) => {
   const router = useRouter();
   const peopleId = router.query.peopleId;
-  const myLoader = ({ src, width, quality }: any) => {
-    return `https://www.themoviedb.org/t/p/w1280/${data.profile_path}`;
-  };
-  console.log(data);
 
   const percentage = Math.floor(data.popularity);
 
   const [open, setOpen] = useState(false);
 
+  const myLoader = ({ src, width, quality }: any) => {
+    return `https://www.themoviedb.org/t/p/w1280/${data.profile_path}`;
+  };
   const MyImage = () => {
     return (
       <Image
         loader={myLoader}
-        src="me.png"
+        src={`https://www.themoviedb.org/t/p/w1280/${data.profile_path}`}
         alt={`${data.name}`}
         width={400}
         height={600}
         className={styles.img}
       />
     );
-  };
-
-  const shorten = (
-    str: string,
-    maxLen: number,
-    separator: string = " "
-  ): string => {
-    if (str.length <= maxLen) return str;
-    return str.substring(0, str.lastIndexOf(separator, maxLen));
   };
 
   const getAge = (birthday: string) => {
@@ -75,12 +65,12 @@ const PeopleDetail = ({ data }: Props) => {
 
   return (
     <>
-      <Header text={data.name} secondaryText={data.known_for_department} />
+      <Header text={data.name} style="header--people" />
       <div className={styles.container}>
-        <div className={styles.item}>
+        <div className={styles["item--people"]}>
           <MyImage />
         </div>
-        <div className={styles.item}>
+        <div className={styles["item--people"]}>
           <ul>
             <li>
               <h5>Date of birth: {data.birthday}</h5>
@@ -105,10 +95,10 @@ const PeopleDetail = ({ data }: Props) => {
             </li>
           </ul>
         </div>
-        <div className={styles.item}>
+        <div className={styles["item--people"]}>
           <p>{data.biography}</p>
         </div>
-        <div className={styles.item}>
+        <div className={styles["item--people"]}>
           <h5>Popularity rating: {data.popularity}</h5>
         </div>
       </div>

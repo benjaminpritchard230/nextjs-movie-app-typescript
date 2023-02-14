@@ -14,12 +14,12 @@
   height: auto;
 }
 
-.item, .item--tvshow {
+.item, .item--people, .item--tvshow {
   display: flex;
   justify-content: center;
   align-items: center;
   background: #126da6;
-  color: #fff;
+  color: #f6f6ff;
   font-size: 20px;
   padding: 1.5em;
   flex-direction: column;
@@ -27,20 +27,20 @@
   overflow-y: auto;
   max-height: 800px;
 }
-.item:hover, .item--tvshow:hover {
+.item:hover, .item--people:hover, .item--tvshow:hover {
   background-color: #418ab8;
 }
-.item li, .item--tvshow li {
+.item li, .item--people li, .item--tvshow li {
   list-style-type: none;
 }
-.item ul, .item--tvshow ul {
+.item ul, .item--people ul, .item--tvshow ul {
   list-style: none;
   padding-left: 0;
 }
-.item a, .item--tvshow a {
+.item a, .item--people a, .item--tvshow a {
   color: #f6f6ff;
 }
-.item p, .item--tvshow p {
+.item p, .item--people p, .item--tvshow p {
   display: flex;
   justify-content: center;
   min-height: 0;
@@ -51,6 +51,12 @@
 }
 .item--tvshow:hover {
   background: #5a876d;
+}
+.item--people {
+  background: #9d2400;
+}
+.item--people:hover {
+  background: #b15033;
 }
 
 @media (max-width: 768px) {

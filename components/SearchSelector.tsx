@@ -39,7 +39,9 @@ const SearchSelector = ({ selected }: Props) => {
       <div className={styles.item}>
         <button
           className={
-            selected === "People" ? styles["btn-selected"] : styles.btn
+            selected === "People"
+              ? styles["btn-selected--people"]
+              : styles["btn--people"]
           }
           onClick={() => {
             router.push(`/search/people?searchText=${"harry"}`);

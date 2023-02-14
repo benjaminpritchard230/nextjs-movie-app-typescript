@@ -3,7 +3,7 @@
   height: auto;
 }
 
-.item, .item--tvshow {
+.item, .item--people, .item--tvshow {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,10 +14,10 @@
   flex-direction: column;
   height: 100%;
 }
-.item:hover, .item--tvshow:hover {
+.item:hover, .item--people:hover, .item--tvshow:hover {
   background-color: #418ab8;
 }
-.item:active, .item--tvshow:active {
+.item:active, .item--people:active, .item--tvshow:active {
   transform: scale(0.995);
 }
 .item--tvshow {
@@ -25,4 +25,10 @@
 }
 .item--tvshow:hover {
   background: #5a876d;
+}
+.item--people {
+  background: #9d2400;
+}
+.item--people:hover {
+  background: #b15033;
 }/*# sourceMappingURL=InfoCard.module.css.map */
