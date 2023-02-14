@@ -23,6 +23,7 @@ const MovieNowPlaying = ({ data }: Props) => {
         {data.results.map((movie: IMovie) => {
           return (
             <InfoCard
+              key={movie.id}
               title={movie.title}
               image={`https://www.themoviedb.org/t/p/w500/${movie.poster_path}`}
               link={`/movies/${movie.id}/`}

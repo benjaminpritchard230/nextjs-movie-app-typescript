@@ -1,10 +1,11 @@
 import styles from "@/styles/InfoCard.module.css";
 
+import placeholder from "@/public/placeholder.png";
 import type { IMovie } from "@/types/movies/types";
 import { profile } from "console";
 import Image, { ImageLoader } from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 import "react-circular-progressbar/dist/styles.css";
 import profilePic from "../public/pib.jpg";
@@ -17,19 +18,28 @@ type Props = {
 };
 
 const InfoCard = ({ title, image, link, style = "item" }: Props) => {
-  const myLoader = ({ src, width, quality }: any) => {
-    return `https://www.themoviedb.org/t/p/w500/${image}`;
+  const myLoader = ({ src }: any) => {
+    return src;
   };
+
+  const [error, setError] = useState(false);
 
   const MyImage = () => {
     return (
       <Image
         loader={myLoader}
-        src="me.png"
+        src={
+          !error ? `https://www.themoviedb.org/t/p/w500/${image}` : placeholder
+        }
         alt={title}
         width={400}
         height={600}
         className={styles.img}
+        onError={() => {
+          setError(true);
+        }}
+        unoptimized
+        priority
       />
     );
   };

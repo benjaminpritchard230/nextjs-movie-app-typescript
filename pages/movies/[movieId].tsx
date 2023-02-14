@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
+import placeholder from "@/public/placeholder.png";
 import styles from "@/styles/InfoPage.module.css";
 import type { IMovie, IMovieDetails, IResponse } from "@/types/movies/types";
 import { light } from "@mui/material/styles/createPalette";
@@ -8,7 +9,7 @@ import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
@@ -29,20 +30,30 @@ const MovieDetail = ({ data }: Props) => {
     return `${hours}h ${minutes}m`;
   };
 
-  const myLoader = ({ src, width, quality }: any) => {
+  const myLoader = ({ src }: any) => {
     return `https://www.themoviedb.org/t/p/w1280/${data.poster_path}`;
   };
-  console.log(data);
+
+  const [error, setError] = useState(false);
 
   const MyImage = () => {
     return (
       <Image
         loader={myLoader}
-        src="me.png"
+        src={
+          !error
+            ? `https://www.themoviedb.org/t/p/w1280/${data.poster_path}`
+            : placeholder
+        }
         alt={`${data.title}`}
         width={400}
         height={600}
         className={styles.img}
+        onError={() => {
+          setError(true);
+        }}
+        unoptimized
+        priority
       />
     );
   };

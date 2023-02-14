@@ -44,6 +44,8 @@ const PeopleDetail = ({ data }: Props) => {
         onError={() => {
           setError(true);
         }}
+        unoptimized
+        priority
       />
     );
   };

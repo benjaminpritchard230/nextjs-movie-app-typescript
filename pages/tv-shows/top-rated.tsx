@@ -18,6 +18,7 @@ const TvTopRated = ({ data }: Props) => {
         {data.results.map((show: ITvShow) => {
           return (
             <InfoCard
+              key={show.id}
               title={show.name}
               image={`https://www.themoviedb.org/t/p/w500/${show.poster_path}`}
               link={`/tv-shows/${show.id}/`}

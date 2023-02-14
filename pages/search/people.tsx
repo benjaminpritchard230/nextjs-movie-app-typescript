@@ -28,6 +28,7 @@ const PeopleSearch = ({ data }: Props) => {
         {data.results.map((person: IPeople) => {
           return (
             <InfoCard
+              key={person.id}
               title={person.name}
               image={`https://www.themoviedb.org/t/p/w500/${person.profile_path}`}
               link={`/people/${person.id}/`}
