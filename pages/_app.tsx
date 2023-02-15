@@ -1,6 +1,7 @@
 // pages/_app.tsx
 
 import Layout from "@/components/Layout";
+import { SearchTextProvider } from "@/context/SearchTextContext";
 import { Montserrat } from "@next/font/google";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
@@ -27,9 +28,11 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>);
   return (
     <SSRProvider>
-      <main className={montserrat.className}>
-        {getLayout(<Component {...pageProps} />)}
-      </main>
+      <SearchTextProvider>
+        <main className={montserrat.className}>
+          {getLayout(<Component {...pageProps} />)}
+        </main>
+      </SearchTextProvider>
     </SSRProvider>
   );
 }

@@ -1,3 +1,4 @@
+import { useSearchText } from "@/context/SearchTextContext";
 import { useRouter } from "next/router";
 import React from "react";
 import styles from "../styles/SearchSelector.module.css";
@@ -8,6 +9,8 @@ type Props = {
 
 const SearchSelector = ({ selected }: Props) => {
   const router = useRouter();
+  const { searchText, newSearch } = useSearchText();
+
   return (
     <div className={styles.container}>
       <div className={styles.item}>
@@ -16,7 +19,7 @@ const SearchSelector = ({ selected }: Props) => {
             selected === "Movies" ? styles["btn-selected"] : styles.btn
           }
           onClick={() => {
-            router.push(`/search/movies?searchText=${"harry"}`);
+            router.push(`/search/movies?searchText=${searchText}`);
           }}
         >
           Movies
@@ -30,7 +33,7 @@ const SearchSelector = ({ selected }: Props) => {
               : styles["btn--tvshow"]
           }
           onClick={() => {
-            router.push(`/search/tv-shows?searchText=${"harry"}`);
+            router.push(`/search/tv-shows?searchText=${searchText}`);
           }}
         >
           TV Shows
@@ -44,7 +47,7 @@ const SearchSelector = ({ selected }: Props) => {
               : styles["btn--people"]
           }
           onClick={() => {
-            router.push(`/search/people?searchText=${"harry"}`);
+            router.push(`/search/people?searchText=${searchText}`);
           }}
         >
           People

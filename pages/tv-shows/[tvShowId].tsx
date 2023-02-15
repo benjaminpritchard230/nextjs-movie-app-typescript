@@ -68,21 +68,21 @@ const TvShowDetail = ({ data }: Props) => {
             <h5>Languages: </h5>
             <ul>
               {data.languages.map((language) => {
-                return <li>{languageNames.of(language)}</li>;
+                return <li key={language}>{languageNames.of(language)}</li>;
               })}
             </ul>
             <br />
             <h5>Genres: </h5>
             <ul>
               {data.genres.map((genre) => {
-                return <li>{genre.name}</li>;
+                return <li key={genre.name}>{genre.name}</li>;
               })}
             </ul>
             <br />
             <h5>Networks: </h5>
             <ul>
               {data.networks.map((network) => {
-                return <li>{network.name}</li>;
+                return <li key={network.name}>{network.name}</li>;
               })}
             </ul>
           </ul>

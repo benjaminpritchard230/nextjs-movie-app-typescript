@@ -1,3 +1,4 @@
+import { useSearchText } from "@/context/SearchTextContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -11,7 +12,8 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 type Props = {};
 
 const NavBar = (props: Props) => {
-  const [searchText, setSearchText] = useState("");
+  const { searchText, newSearch } = useSearchText();
+
   const router = useRouter();
   const handleSearch = () => {
     router.push(`/search/movies?searchText=${searchText}`);
@@ -71,7 +73,7 @@ const NavBar = (props: Props) => {
               aria-label="Search"
               value={searchText}
               onChange={(e) => {
-                setSearchText(e.target.value);
+                newSearch(e.target.value);
               }}
             />
             <Button onClick={handleSearch} variant="outline-success">
