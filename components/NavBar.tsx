@@ -19,6 +19,11 @@ const NavBar = (props: Props) => {
     router.push(`/search/movies?searchText=${searchText}`);
   };
 
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    handleSearch();
+  };
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -65,7 +70,12 @@ const NavBar = (props: Props) => {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Form className="d-flex">
+          <Form
+            className="d-flex"
+            onSubmit={(e) => {
+              handleSubmit(e);
+            }}
+          >
             <Form.Control
               type="search"
               placeholder="Search"
@@ -76,7 +86,7 @@ const NavBar = (props: Props) => {
                 newSearch(e.target.value);
               }}
             />
-            <Button onClick={handleSearch} variant="outline-success">
+            <Button type="submit" variant="outline-success">
               Search
             </Button>
           </Form>
