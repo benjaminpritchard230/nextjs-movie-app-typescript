@@ -1,3 +1,4 @@
+import CastDisplay from "@/components/CastDisplay";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
@@ -31,7 +32,7 @@ const MovieDetail = ({ data }: Props) => {
   };
 
   const myLoader = ({ src }: any) => {
-    return `https://www.themoviedb.org/t/p/w1280/${data.poster_path}`;
+    return src;
   };
 
   const [error, setError] = useState(false);
