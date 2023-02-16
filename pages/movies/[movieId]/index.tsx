@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
 import placeholder from "@/public/placeholder.png";
 import styles from "@/styles/InfoPage.module.css";
+import { ICast, ICreditsResponse } from "@/types/credits/types";
 import type { IMovie, IMovieDetails, IResponse } from "@/types/movies/types";
 import { light } from "@mui/material/styles/createPalette";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
@@ -18,10 +19,12 @@ import Row from "react-bootstrap/Row";
 import { CLIENT_RENEG_LIMIT } from "tls";
 
 type Props = {
-  data: IMovieDetails;
+  movieData: IMovieDetails;
+  castData: ICreditsResponse;
 };
 
-const MovieDetail = ({ data }: Props) => {
+const MovieDetail = ({ movieData, castData }: Props) => {
+  console.log(castData);
   const router = useRouter();
   const movieId = router.query.movieId;
 
@@ -43,10 +46,10 @@ const MovieDetail = ({ data }: Props) => {
         loader={myLoader}
         src={
           !error
-            ? `https://www.themoviedb.org/t/p/w1280/${data.poster_path}`
+            ? `https://www.themoviedb.org/t/p/w1280/${movieData.poster_path}`
             : placeholder
         }
-        alt={`${data.title}`}
+        alt={`${movieData.title}`}
         width={400}
         height={600}
         className={styles.img}
@@ -60,7 +63,7 @@ const MovieDetail = ({ data }: Props) => {
   };
   return (
     <>
-      <Header text={data.title} />
+      <Header text={movieData.title} />
       <div className={styles.container}>
         <div className={styles.item}>
           <MyImage />
@@ -68,32 +71,49 @@ const MovieDetail = ({ data }: Props) => {
         <div className={styles.item}>
           <ul>
             <li>
-              <h5>Release date: {data.release_date}</h5>
-              {data.budget ? <h5>Budget: ${data.budget}</h5> : null}
-              {data.revenue ? <h5>Revenue: ${data.revenue}</h5> : null}
-              <h5>Runtime: {getRunTime(data.runtime)}</h5>
+              <h5>Release date: {movieData.release_date}</h5>
+              {movieData.budget ? <h5>Budget: ${movieData.budget}</h5> : null}
+              {movieData.revenue ? (
+                <h5>Revenue: ${movieData.revenue}</h5>
+              ) : null}
+              <h5>Runtime: {getRunTime(movieData.runtime)}</h5>
               <br />
               <h5>Production companies:</h5>
               <ul>
-                {data.production_companies.map((company) => {
-                  return <li>{company.name}</li>;
+                {movieData.production_companies.map((company) => {
+                  return <li key={company.id}>{company.name}</li>;
                 })}
               </ul>
               <br />
               <h5>Genres: </h5>
               <ul>
-                {data.genres.map((genre) => {
-                  return <li>{genre.name}</li>;
+                {movieData.genres.map((genre) => {
+                  return <li key={genre.id}>{genre.name}</li>;
                 })}
               </ul>
             </li>
           </ul>
         </div>
         <div className={styles.item}>
-          <p>{data.overview}</p>
+          <p>{movieData.overview}</p>
         </div>
         <div className={styles.item}>
-          <h5>Popularity rating: {data.popularity}</h5>
+          <h5>Popularity rating: {movieData.popularity}</h5>
+        </div>
+      </div>
+      <div className={styles.container}>
+        {castData.cast.slice(0, 3).map((cast) => {
+          return (
+            <InfoCard
+              key={cast.cast_id}
+              title={cast.name}
+              image={cast.profile_path as string}
+              link={""}
+            />
+          );
+        })}
+        <div className={styles.item}>
+          <h5>See all cast and crew</h5>
         </div>
       </div>
     </>
@@ -122,19 +142,26 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   {
     const { params } = context;
-    console.log(params);
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${
-        params!.movieId
-      }?api_key=${key}&language=en-US/`
-    );
-    const data = await response.json();
 
-    console.log(`Generating page for /posts/${params!.movieId}`);
+    const [movieResponse, castResponse] = await Promise.all([
+      fetch(
+        `https://api.themoviedb.org/3/movie/${
+          params!.movieId
+        }?api_key=${key}&language=en-US/`
+      ),
+      fetch(
+        `https://api.themoviedb.org/3/movie/${
+          params!.movieId
+        }/credits?api_key=${key}&language=en-US`
+      ),
+    ]);
+    const movieData = await movieResponse.json();
+    const castData = await castResponse.json();
 
     return {
       props: {
-        data: data,
+        movieData,
+        castData,
       },
     };
   }

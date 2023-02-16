@@ -1,4 +1,4 @@
-export interface IResponse {
+export interface ICreditsResponse {
   id: number;
   cast: ICast[];
   crew: ICrew[];

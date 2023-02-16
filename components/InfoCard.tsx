@@ -12,7 +12,7 @@ import profilePic from "../public/pib.jpg";
 
 type Props = {
   title: string;
-  image: string;
+  image?: string;
   link: string;
   style?: string;
 };
