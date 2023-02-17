@@ -4,9 +4,12 @@ import InfoCard from "@/components/InfoCard";
 import Modal from "@/components/Modal";
 import placeholder from "@/public/placeholder.png";
 import styles from "@/styles/InfoPage.module.css";
+import { ICreditsResponse } from "@/types/movieCredits/types";
 import { IPeople, IPeopleDetails, IResponse } from "@/types/people/types";
+import { IPeopleCredits } from "@/types/peopleCredits/types";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 import React, { useState } from "react";
@@ -18,10 +21,12 @@ import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import { CLIENT_RENEG_LIMIT } from "tls";
 
 type Props = {
-  data: IPeopleDetails;
+  personData: IPeopleDetails;
+  creditsData: IPeopleCredits;
 };
 
-const PeopleDetail = ({ data }: Props) => {
+const PeopleDetail = ({ personData, creditsData }: Props) => {
+  console.log(creditsData);
   const myLoader = ({ src }: any) => {
     return src;
   };
@@ -34,10 +39,10 @@ const PeopleDetail = ({ data }: Props) => {
         loader={myLoader}
         src={
           !error
-            ? `https://www.themoviedb.org/t/p/w1280/${data.profile_path}`
+            ? `https://www.themoviedb.org/t/p/w1280/${personData.profile_path}`
             : placeholder
         }
-        alt={`${data.name}`}
+        alt={`${personData.name}`}
         width={400}
         height={600}
         className={styles.img}
@@ -71,7 +76,7 @@ const PeopleDetail = ({ data }: Props) => {
 
   return (
     <>
-      <Header text={data.name} style="header--people" />
+      <Header text={personData.name} style="header--people" />
       <div className={styles.container}>
         <div className={styles["item--people"]}>
           <MyImage />
@@ -79,22 +84,23 @@ const PeopleDetail = ({ data }: Props) => {
         <div className={styles["item--people"]}>
           <ul>
             <li>
-              <h5>Date of birth: {data.birthday}</h5>
-              {data.deathday ? (
-                <h5>{`Date of death: ${data.deathday}`}</h5>
+              <h5>Date of birth: {personData.birthday}</h5>
+              {personData.deathday ? (
+                <h5>{`Date of death: ${personData.deathday}`}</h5>
               ) : null}
-              {data.deathday ? (
+              {personData.deathday ? (
                 <h5>
-                  Age at death: {getAgeAtDeath(data.birthday, data.deathday)}
+                  Age at death:{" "}
+                  {getAgeAtDeath(personData.birthday, personData.deathday)}
                 </h5>
               ) : (
-                <h5>Age: {getAge(data.birthday)}</h5>
+                <h5>Age: {getAge(personData.birthday)}</h5>
               )}
-              <h5>Birthplace: {data.place_of_birth}</h5>
-              <h5>Gender: {data.gender === 1 ? "female" : "male"}</h5>
-              <h5>Also known as: {data.also_known_as.join(", ")}</h5>
+              <h5>Birthplace: {personData.place_of_birth}</h5>
+              <h5>Gender: {personData.gender === 1 ? "female" : "male"}</h5>
+              <h5>Also known as: {personData.also_known_as.join(", ")}</h5>
               <h5>
-                <a href={`https://www.imdb.com/name/${data.imdb_id}/`}>
+                <a href={`https://www.imdb.com/name/${personData.imdb_id}/`}>
                   Link to IMDb profile
                 </a>
               </h5>
@@ -102,11 +108,33 @@ const PeopleDetail = ({ data }: Props) => {
           </ul>
         </div>
         <div className={styles["item--people"]}>
-          <p>{data.biography}</p>
+          <p>{personData.biography}</p>
         </div>
         <div className={styles["item--people"]}>
-          <h5>Popularity rating: {data.popularity}</h5>
+          <h5>Popularity rating: {personData.popularity}</h5>
         </div>
+      </div>
+      <div className={styles.container}>
+        {creditsData.cast.slice(0, 3).map((credit) => {
+          return (
+            <InfoCard
+              key={credit.id}
+              title={credit.title}
+              image={credit.poster_path}
+              link={`/movies/${credit.id}?name=${personData.name}`}
+              style="item--people"
+            />
+          );
+        })}
+        <Link
+          href={`/people/${personData.id}/credits?name=${personData.name}`}
+          style={{ color: "inherit", textDecoration: "inherit" }}
+          className={styles.card}
+        >
+          <div className={styles["item--people"]}>
+            <h5>See all acting credits</h5>
+          </div>
+        </Link>
       </div>
     </>
   );
@@ -129,24 +157,51 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
+// export const getStaticProps: GetStaticProps = async (context) => {
+//   const key = process.env.DB_KEY;
+
+//   {
+//     const { params } = context;
+//     const response = await fetch(
+//       `https://api.themoviedb.org/3/person/${
+//         params!.peopleId
+//       }?api_key=${key}&language=en-US`
+//     );
+//     const data = await response.json();
+
+//     return {
+//       props: {
+//         data: data,
+//       },
+//     };
+//   }
+// };
+
 export const getStaticProps: GetStaticProps = async (context) => {
   const key = process.env.DB_KEY;
 
   {
     const { params } = context;
-    console.log(params);
-    const response = await fetch(
-      `https://api.themoviedb.org/3/person/${
-        params!.peopleId
-      }?api_key=${key}&language=en-US`
-    );
-    const data = await response.json();
 
-    console.log(`Generating page for /posts/${params!.peopleId}`);
+    const [personResponse, creditsResponse] = await Promise.all([
+      fetch(
+        `https://api.themoviedb.org/3/person/${
+          params!.peopleId
+        }?api_key=${key}&language=en-US`
+      ),
+      fetch(
+        `https://api.themoviedb.org/3/person/${
+          params!.peopleId
+        }/movie_credits?api_key=${key}&language=en-US`
+      ),
+    ]);
+    const personData: IPeopleDetails = await personResponse.json();
+    const creditsData: IPeopleCredits = await creditsResponse.json();
 
     return {
       props: {
-        data: data,
+        personData,
+        creditsData,
       },
     };
   }

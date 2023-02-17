@@ -4,11 +4,12 @@ import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
 import placeholder from "@/public/placeholder.png";
 import styles from "@/styles/InfoPage.module.css";
-import { ICast, ICreditsResponse } from "@/types/credits/types";
+import { ICast, ICreditsResponse } from "@/types/movieCredits/types";
 import type { IMovie, IMovieDetails, IResponse } from "@/types/movies/types";
 import { light } from "@mui/material/styles/createPalette";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 import React, { useState } from "react";
@@ -108,13 +109,19 @@ const MovieDetail = ({ movieData, castData }: Props) => {
               key={cast.cast_id}
               title={cast.name}
               image={cast.profile_path as string}
-              link={""}
+              link={`/people/${cast.id}/`}
             />
           );
         })}
-        <div className={styles.item}>
-          <h5>See all cast and crew</h5>
-        </div>
+        <Link
+          href={`/movies/${movieData.id}/cast?title=${movieData.title}`}
+          style={{ color: "inherit", textDecoration: "inherit" }}
+          className={styles.card}
+        >
+          <div className={styles.item}>
+            <h5>See all cast and crew</h5>
+          </div>
+        </Link>
       </div>
     </>
   );

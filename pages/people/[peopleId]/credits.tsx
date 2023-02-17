@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
 import styles from "@/styles/Popular.module.css";
-import type { ICast, ICreditsResponse } from "@/types/movieCredits/types";
+import { ICast, IPeopleCredits } from "@/types/peopleCredits/types";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import React from "react";
@@ -13,22 +13,22 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
 interface Props {
-  data: ICreditsResponse;
+  data: IPeopleCredits;
 }
 
 const CreditsDisplay = ({ data }: Props) => {
   const router = useRouter();
   return (
     <>
-      <Header text={`Credits for "${router.query.title}"`} />
+      <Header text={`Acting credits for "${router.query.name}"`} />
       <div className={styles.container}>
-        {data.cast.map((cast: ICast) => {
+        {data.cast.map((credit: ICast) => {
           return (
             <InfoCard
-              key={cast.id}
-              title={cast.name}
-              image={`https://www.themoviedb.org/t/p/w500/${cast.profile_path}`}
-              link={`/people/${cast.id}/`}
+              key={credit.id}
+              title={credit.title}
+              image={`https://www.themoviedb.org/t/p/w500/${credit.poster_path}`}
+              link={`/movies/${credit.id}/`}
             />
           );
         })}
@@ -41,12 +41,12 @@ export default CreditsDisplay;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const key = process.env.DB_KEY;
-  const movieId = context.params!.movieId;
+  const peopleId = context.params!.peopleId;
 
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${key}&language=en-US`
+    `https://api.themoviedb.org/3/person/${peopleId}/movie_credits?api_key=${key}&language=en-US`
   );
-  const data: ICreditsResponse = await res.json();
+  const data: IPeopleCredits = await res.json();
 
   return {
     props: {

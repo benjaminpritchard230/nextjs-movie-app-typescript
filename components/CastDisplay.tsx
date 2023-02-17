@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
 import styles from "@/styles/Popular.module.css";
-import type { ICast, IResponse } from "@/types/credits/types";
+import type { ICast, IResponse } from "@/types/movieCredits/types";
 import { GetStaticProps } from "next";
 import React from "react";
 import { Container } from "react-bootstrap";
