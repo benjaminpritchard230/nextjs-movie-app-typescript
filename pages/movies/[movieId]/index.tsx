@@ -118,7 +118,7 @@ const MovieDetail = ({ movieData, castData }: Props) => {
           style={{ color: "inherit", textDecoration: "inherit" }}
           className={styles.card}
         >
-          <div className={styles.item}>
+          <div className={styles["item--clickable"]}>
             <h5>See all cast and crew</h5>
           </div>
         </Link>

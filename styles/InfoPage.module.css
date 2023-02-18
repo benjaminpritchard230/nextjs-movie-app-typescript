@@ -14,7 +14,7 @@
   height: auto;
 }
 
-.item, .item--people, .item--tvshow {
+.item, .item--clickable, .item--people, .item--tvshow {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,20 +27,20 @@
   overflow-y: auto;
   max-height: 800px;
 }
-.item:hover, .item--people:hover, .item--tvshow:hover {
+.item:hover, .item--clickable:hover, .item--people:hover, .item--tvshow:hover {
   background-color: #418ab8;
 }
-.item li, .item--people li, .item--tvshow li {
+.item li, .item--clickable li, .item--people li, .item--tvshow li {
   list-style-type: none;
 }
-.item ul, .item--people ul, .item--tvshow ul {
+.item ul, .item--clickable ul, .item--people ul, .item--tvshow ul {
   list-style: none;
   padding-left: 0;
 }
-.item a, .item--people a, .item--tvshow a {
+.item a, .item--clickable a, .item--people a, .item--tvshow a {
   color: #f6f6ff;
 }
-.item p, .item--people p, .item--tvshow p {
+.item p, .item--clickable p, .item--people p, .item--tvshow p {
   display: flex;
   justify-content: center;
   min-height: 0;
@@ -57,6 +57,9 @@
 }
 .item--people:hover {
   background: #b15033;
+}
+.item--clickable:active {
+  transform: scale(0.995);
 }
 
 @media (max-width: 768px) {
