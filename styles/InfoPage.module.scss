@@ -58,6 +58,12 @@
     &:hover {
       background: colors.$lightgreen;
     }
+    &--clickable {
+      @extend .item--tvshow;
+      &:active {
+        transform: scale(0.995);
+      }
+    }
   }
   &--people {
     @extend .item;
