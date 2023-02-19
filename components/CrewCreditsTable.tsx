@@ -1,33 +1,31 @@
 import styles from "@/styles/CreditsTable.module.css";
-import { IPeopleCredits } from "@/types/peopleCredits/types";
+import { ICrew, IPeopleCredits } from "@/types/peopleCredits/types";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
-type Props = { data: IPeopleCredits };
+type Props = { data: ICrew[] };
 
-const CreditsTable = ({ data }: Props) => {
+const CrewCreditsTable = ({ data }: Props) => {
   const router = useRouter();
   return (
     <div className={styles["container"]}>
-      <h5>Film credits</h5>
       <table className={styles["content-table"]}>
         <thead>
           <tr>
             <th>Title</th>
-            <th>Credit</th>
+            <th>Role</th>
             <th>Year</th>
           </tr>
         </thead>
 
         <tbody>
-          {data.cast.map((cast) => {
+          {data.map((movie) => {
             return (
-              <tr onClick={() => router.push(`/movies/${cast.id}`)}>
-                <td>{cast.title}</td>
-
-                <td>{cast.character}</td>
-                <td>{new Date(cast.release_date).getFullYear()}</td>
+              <tr onClick={() => router.push(`/movies/${movie.id}`)}>
+                <td>{movie.title}</td>
+                <td>{movie.job}</td>
+                <td>{new Date(movie.release_date).getFullYear()}</td>
               </tr>
             );
           })}
@@ -37,4 +35,4 @@ const CreditsTable = ({ data }: Props) => {
   );
 };
 
-export default CreditsTable;
+export default CrewCreditsTable;

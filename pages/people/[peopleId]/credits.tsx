@@ -1,4 +1,5 @@
-import CreditsTable from "@/components/CreditsTable";
+import ActingCreditsTable from "@/components/ActingCreditsTable";
+import CrewCreditsTable from "@/components/CrewCreditsTable";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
@@ -21,8 +22,9 @@ const CreditsDisplay = ({ data }: Props) => {
   const router = useRouter();
   return (
     <>
-      <Header text={`Acting credits for "${router.query.name}"`} />
-      <CreditsTable data={data} />
+      <Header text={`Credits for "${router.query.name}"`} />
+      <ActingCreditsTable data={data.cast} />
+      <CrewCreditsTable data={data.crew} />
     </>
   );
 };

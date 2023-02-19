@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
+import MovieActingCreditsTable from "@/components/MovieActingCreditsTable";
+import MovieCrewCreditsTable from "@/components/MovieCrewCreditsTable";
 import styles from "@/styles/Popular.module.css";
 import type { ICast, ICreditsResponse } from "@/types/movieCredits/types";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
@@ -21,18 +23,8 @@ const CreditsDisplay = ({ data }: Props) => {
   return (
     <>
       <Header text={`Credits for "${router.query.title}"`} />
-      <div className={styles.container}>
-        {data.cast.map((cast: ICast) => {
-          return (
-            <InfoCard
-              key={cast.id}
-              title={cast.name}
-              image={`https://www.themoviedb.org/t/p/w500/${cast.profile_path}`}
-              link={`/people/${cast.id}/`}
-            />
-          );
-        })}
-      </div>
+      <MovieActingCreditsTable data={data.cast} />
+      <MovieCrewCreditsTable data={data.crew} />
     </>
   );
 };
