@@ -1,0 +1,61 @@
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80vw;
+}
+@media (max-width: 768px) {
+  .container {
+    max-width: 100vw;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 100vw;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: 85vw;
+  }
+}
+@media (min-width: 1920px) {
+  .container {
+    max-width: 70vw;
+  }
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.content-table thead tr {
+  background-color: #126da6;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+.content-table th {
+  padding: 12px 15px;
+}
+.content-table td {
+  padding: 12px 15px;
+}
+.content-table tbody tr {
+  border-bottom: 1px solid #f6f6ff;
+}
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #e7f0f6;
+}
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #126da6;
+}
+.content-table tbody tr:hover {
+  color: #f6f6ff;
+  background-color: #418ab8;
+  cursor: pointer;
+}/*# sourceMappingURL=CreditsTable.module.css.map */

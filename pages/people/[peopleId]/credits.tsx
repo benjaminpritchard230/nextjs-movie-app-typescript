@@ -1,3 +1,4 @@
+import CreditsTable from "@/components/CreditsTable";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
@@ -21,18 +22,7 @@ const CreditsDisplay = ({ data }: Props) => {
   return (
     <>
       <Header text={`Acting credits for "${router.query.name}"`} />
-      <div className={styles.container}>
-        {data.cast.map((credit: ICast) => {
-          return (
-            <InfoCard
-              key={credit.id}
-              title={credit.title}
-              image={`https://www.themoviedb.org/t/p/w500/${credit.poster_path}`}
-              link={`/movies/${credit.id}/`}
-            />
-          );
-        })}
-      </div>
+      <CreditsTable data={data} />
     </>
   );
 };
