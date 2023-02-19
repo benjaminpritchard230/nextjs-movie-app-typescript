@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
 import MovieActingCreditsTable from "@/components/MovieActingCreditsTable";
 import MovieCrewCreditsTable from "@/components/MovieCrewCreditsTable";
+import Table from "@/components/sortable-table/Table";
 import styles from "@/styles/Popular.module.css";
 import type { ICast, ICreditsResponse } from "@/types/movieCredits/types";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
@@ -20,11 +21,22 @@ interface Props {
 
 const CreditsDisplay = ({ data }: Props) => {
   const router = useRouter();
+  const columns = [
+    {
+      label: "Name",
+      accessor: "name",
+      sortable: true,
+    },
+    {
+      label: "Character",
+      accessor: "character",
+      sortable: true,
+    },
+  ];
   return (
     <>
       <Header text={`Credits for "${router.query.title}"`} />
-      <MovieActingCreditsTable data={data.cast} />
-      <MovieCrewCreditsTable data={data.crew} />
+      <Table data={data.cast} columns={columns} />
     </>
   );
 };
