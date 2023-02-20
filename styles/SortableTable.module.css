@@ -23,6 +23,9 @@
     max-width: 70vw;
   }
 }
+.table-container h4 {
+  color: #151722;
+}
 
 .table {
   border-collapse: collapse;

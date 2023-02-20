@@ -21,7 +21,7 @@ interface Props {
 
 const CreditsDisplay = ({ data }: Props) => {
   const router = useRouter();
-  const columns = [
+  const castColumns = [
     {
       label: "Name",
       accessor: "name",
@@ -33,10 +33,34 @@ const CreditsDisplay = ({ data }: Props) => {
       sortable: true,
     },
   ];
+
+  const crewColumns = [
+    {
+      label: "Name",
+      accessor: "name",
+      sortable: true,
+    },
+    { label: "Credit", accessor: "job", sortable: true },
+  ];
+
   return (
     <>
       <Header text={`Credits for "${router.query.title}"`} />
-      <Table data={data.cast} columns={columns} />
+
+      {data.cast.length > 0 ? (
+        <Table
+          data={data.cast}
+          columns={castColumns}
+          caption={"Acting credits"}
+        />
+      ) : null}
+      {data.crew.length > 0 ? (
+        <Table
+          data={data.crew}
+          columns={crewColumns}
+          caption={"Crew credits"}
+        />
+      ) : null}
     </>
   );
 };

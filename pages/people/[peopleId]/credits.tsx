@@ -3,6 +3,7 @@ import CrewCreditsTable from "@/components/CrewCreditsTable";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
+import Table from "@/components/sortable-table/Table";
 import styles from "@/styles/Popular.module.css";
 import { ICast, IPeopleCredits } from "@/types/peopleCredits/types";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
@@ -20,11 +21,34 @@ interface Props {
 
 const CreditsDisplay = ({ data }: Props) => {
   const router = useRouter();
+  const castColumns = [
+    { label: "Title", accessor: "title", sortable: true },
+    { label: "Character", accessor: "character", sortable: true },
+    { label: "Date", accessor: "release_date", sortable: true },
+  ];
+  const crewColumns = [
+    { label: "Title", accessor: "title", sortable: true },
+    { label: "Character", accessor: "character", sortable: true },
+    { label: "Date", accessor: "release_date", sortable: true },
+  ];
+
   return (
     <>
       <Header text={`Credits for "${router.query.name}"`} />
-      <ActingCreditsTable data={data.cast} />
-      <CrewCreditsTable data={data.crew} />
+      {data.cast.length > 0 ? (
+        <Table
+          data={data.cast}
+          columns={castColumns}
+          caption={"Credits as an actor"}
+        />
+      ) : null}
+      {data.crew.length > 0 ? (
+        <Table
+          data={data.crew}
+          columns={crewColumns}
+          caption={"Credits as crew"}
+        />
+      ) : null}
     </>
   );
 };

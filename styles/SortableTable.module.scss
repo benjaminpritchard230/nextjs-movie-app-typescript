@@ -16,6 +16,9 @@
   @media (min-width: 1920px) {
     max-width: 70vw;
   }
+  h4 {
+    color: colors.$black;
+  }
 }
 .table {
   border-collapse: collapse;
