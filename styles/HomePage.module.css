@@ -1,0 +1,127 @@
+.parent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  height: 1000px;
+  margin: auto;
+}
+@media (max-width: 768px) {
+  .parent {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    max-width: 100vw;
+  }
+}
+@media (min-width: 768px) {
+  .parent {
+    max-width: 100vw;
+  }
+}
+@media (min-width: 1280px) {
+  .parent {
+    max-width: 85vw;
+  }
+}
+@media (min-width: 1920px) {
+  .parent {
+    max-width: 80vw;
+  }
+}
+
+.item, .item4, .item3, .item2, .item1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #126da6;
+  color: #f6f6ff;
+  font-size: 20px;
+  padding: 1.5em;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+.item:hover, .item4:hover, .item3:hover, .item2:hover, .item1:hover {
+  background-color: #418ab8;
+}
+.item:active, .item4:active, .item3:active, .item2:active, .item1:active {
+  transform: scale(0.995);
+}
+.item1 {
+  grid-area: 1/1/2/4;
+}
+.item1 h2 {
+  margin-bottom: 1em;
+}
+.item1:hover {
+  background-color: #126da6;
+}
+.item1:active {
+  transform: scale(1);
+}
+@media (max-width: 768px) {
+  .item1 {
+    grid-area: 1/1/2/2;
+  }
+}
+.item2 {
+  grid-area: 2/1/3/3;
+}
+@media (max-width: 768px) {
+  .item2 {
+    grid-area: 2/1/3/2;
+  }
+}
+.item3 {
+  grid-area: 3/1/4/3;
+}
+@media (max-width: 768px) {
+  .item3 {
+    grid-area: 3/1/4/2;
+  }
+}
+.item4 {
+  grid-area: 2/3/4/4;
+}
+@media (max-width: 768px) {
+  .item4 {
+    grid-area: 4/1/5/2;
+  }
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 20px;
+  border-radius: 0;
+}
+.input-container input {
+  border: 3px solid transparent;
+  width: 100%;
+  max-width: 900px;
+  height: 47px;
+  color: #126da6;
+}
+.input-container input:focus {
+  outline: none;
+  border: 3px solid #e0c093;
+}
+.input-container button {
+  background-color: #418ab8;
+  color: #f6f6ff;
+  border: 2px solid transparent;
+  height: 47px;
+  width: 100px;
+  margin-left: 2px;
+}
+.input-container button:hover {
+  border: 3px solid #e0c093;
+}
+.input-container button:active {
+  transform: scale(0.98);
+}/*# sourceMappingURL=HomePage.module.css.map */
