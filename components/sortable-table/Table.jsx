@@ -8,8 +8,11 @@ const Table = ({ data, columns, caption }) => {
 
   return (
     <>
-      <div className={styles["table-container"]}>
+      <div className={styles["caption-container"]}>
         <h4>{caption}</h4>
+      </div>
+
+      <div className={styles["table-container"]}>
         <table className={styles["table"]}>
           <TableHead {...{ columns, handleSorting }} />
           <TableBody {...{ columns, tableData }} />
