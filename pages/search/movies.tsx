@@ -1,16 +1,10 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
 import SearchSelector from "@/components/SearchSelector";
 import styles from "@/styles/Popular.module.css";
 import type { IMovie, IResponse } from "@/types/movies/types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import { Container } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Search from ".";
 
 interface Props {
   data: IResponse;

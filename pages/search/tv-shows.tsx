@@ -1,13 +1,10 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
 import SearchSelector from "@/components/SearchSelector";
 import styles from "@/styles/Popular.module.css";
 import { IResponse, ITvShow } from "@/types/tv-shows/types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 
 interface Props {
   data: IResponse;

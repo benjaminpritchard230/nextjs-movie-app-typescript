@@ -1,24 +1,13 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
-import Modal from "@/components/Modal";
 import placeholder from "@/public/placeholder.png";
 import styles from "@/styles/InfoPage.module.css";
-import { ICreditsResponse } from "@/types/movieCredits/types";
 import { IPeople, IPeopleDetails, IResponse } from "@/types/people/types";
 import { IPeopleCredits } from "@/types/peopleCredits/types";
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { ParsedUrlQuery } from "querystring";
-import React, { useState } from "react";
-import { Container } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
-import { CLIENT_RENEG_LIMIT } from "tls";
+import { useState } from "react";
 
 type Props = {
   personData: IPeopleDetails;

@@ -3,8 +3,6 @@ import InfoCard from "@/components/InfoCard";
 import styles from "@/styles/Popular.module.css";
 import type { IResponse, ITvShow } from "@/types/tv-shows/types";
 import { GetStaticProps } from "next";
-import CardGroup from "react-bootstrap/CardGroup";
-import Col from "react-bootstrap/Col";
 
 interface Props {
   data: IResponse;

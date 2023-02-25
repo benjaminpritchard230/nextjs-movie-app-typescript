@@ -1,11 +1,7 @@
-import Layout from "@/components/Layout";
 import { useSearchText } from "@/context/SearchTextContext";
 import styles from "@/styles/HomePage.module.css";
-import { dividerClasses } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import type { ReactElement } from "react";
-import type { NextPageWithLayout } from "./_app";
 
 const HomePage = () => {
   const { searchText, newSearch } = useSearchText();

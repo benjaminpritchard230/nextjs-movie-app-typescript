@@ -1,15 +1,8 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
 import styles from "@/styles/Popular.module.css";
 import type { IResponse, ITvShow } from "@/types/tv-shows/types";
 import { GetStaticProps } from "next";
-import React from "react";
-import { Container } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
-import CardGroup from "react-bootstrap/CardGroup";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 
 interface Props {
   data: IResponse;

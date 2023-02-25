@@ -20,7 +20,7 @@ export const useSearchText = () => {
 
 type Props = {
   children: ReactNode;
-  newSearch: (text: string) => {};
+  newSearch?: (text: string) => {};
 };
 
 export const SearchTextProvider = ({ children }: Props) => {
