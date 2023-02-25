@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import InfoCard from "@/components/InfoCard";
+import Table from "@/components/sortable-table/Table";
 import styles from "@/styles/Popular.module.css";
 import { ITvShowCredits } from "@/types/tvShowCredits/types";
 import { GetServerSideProps } from "next";
@@ -11,22 +12,43 @@ interface Props {
 
 const CreditsDisplay = ({ data }: Props) => {
   const router = useRouter();
+  const castColumns = [
+    {
+      label: "Name",
+      accessor: "name",
+      sortable: true,
+    },
+    {
+      label: "Character",
+      accessor: "character",
+      sortable: true,
+    },
+  ];
+  const crewColumns = [
+    {
+      label: "Name",
+      accessor: "name",
+      sortable: true,
+    },
+    { label: "Credit", accessor: "job", sortable: true },
+  ];
   return (
     <>
       <Header text={`Credits for "${router.query.title}"`} />
-      <div className={styles.container}>
-        {data.cast.map((cast) => {
-          return (
-            <InfoCard
-              key={cast.id}
-              title={cast.name}
-              image={cast.profile_path}
-              link={`/people/${cast.id}`}
-              style={"item--tvshow"}
-            />
-          );
-        })}
-      </div>
+      {data.cast.length > 0 ? (
+        <Table
+          data={data.cast}
+          columns={castColumns}
+          caption={"Acting credits"}
+        />
+      ) : null}
+      {data.crew.length > 0 ? (
+        <Table
+          data={data.crew}
+          columns={crewColumns}
+          caption={"Crew credits"}
+        />
+      ) : null}
     </>
   );
 };

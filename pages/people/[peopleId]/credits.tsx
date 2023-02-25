@@ -17,7 +17,7 @@ const CreditsDisplay = ({ data }: Props) => {
   ];
   const crewColumns = [
     { label: "Title", accessor: "title", sortable: true },
-    { label: "Character", accessor: "character", sortable: true },
+    { label: "Role", accessor: "job", sortable: true },
     { label: "Date", accessor: "release_date", sortable: true },
   ];
 
