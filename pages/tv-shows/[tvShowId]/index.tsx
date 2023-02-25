@@ -52,12 +52,12 @@ const TvShowDetail = ({ tvShowData, castData }: Props) => {
   };
   return (
     <>
-      <Header text={tvShowData.name} style="header--tvshow" />
+      <Header text={tvShowData.name} />
       <div className={styles.container}>
-        <div className={styles["item--tvshow"]}>
+        <div className={styles["item"]}>
           <MyImage />
         </div>
-        <div className={styles["item--tvshow"]}>
+        <div className={styles["item"]}>
           <ul>
             <h5>First aired: {tvShowData.first_air_date}</h5>
             <br />
@@ -83,10 +83,10 @@ const TvShowDetail = ({ tvShowData, castData }: Props) => {
             </ul>
           </ul>
         </div>
-        <div className={styles["item--tvshow"]}>
+        <div className={styles["item"]}>
           <p>{tvShowData.overview}</p>
         </div>
-        <div className={styles["item--tvshow"]}>
+        <div className={styles["item"]}>
           <h5>Popularity rating: {tvShowData.popularity}</h5>
         </div>
       </div>
@@ -98,7 +98,6 @@ const TvShowDetail = ({ tvShowData, castData }: Props) => {
               title={cast.name}
               image={cast.profile_path}
               link={`/people/${cast.id}`}
-              style={"item--tvshow"}
             />
           );
         })}
@@ -107,7 +106,7 @@ const TvShowDetail = ({ tvShowData, castData }: Props) => {
           style={{ color: "inherit", textDecoration: "inherit" }}
           className={styles.card}
         >
-          <div className={styles["item--tvshow--clickable"]}>
+          <div className={styles["item"]}>
             <h5>See all cast and crew</h5>
           </div>
         </Link>

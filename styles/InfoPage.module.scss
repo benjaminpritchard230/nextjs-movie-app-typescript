@@ -33,6 +33,10 @@
     background-color: colors.$lightblue;
   }
 
+  &:active {
+    transform: scale(0.995);
+  }
+
   li {
     list-style-type: none;
   }
@@ -51,32 +55,6 @@
     justify-content: center;
     min-height: 0;
     min-width: 0;
-  }
-  &--tvshow {
-    @extend .item;
-    background: colors.$green;
-    &:hover {
-      background: colors.$lightgreen;
-    }
-    &--clickable {
-      @extend .item--tvshow;
-      &:active {
-        transform: scale(0.995);
-      }
-    }
-  }
-  &--people {
-    @extend .item;
-    background: colors.$red;
-    &:hover {
-      background: colors.$lightred;
-    }
-  }
-  &--clickable {
-    @extend .item;
-    &:active {
-      transform: scale(0.995);
-    }
   }
 }
 

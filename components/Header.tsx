@@ -3,9 +3,9 @@ import styles from "../styles/Header.module.css";
 
 type Props = { text: string; style?: string };
 
-const Header = ({ text, style = "header" }: Props) => {
+const Header = ({ text }: Props) => {
   return (
-    <header className={styles[style]}>
+    <header className={styles["header"]}>
       <h1>{text}</h1>
     </header>
   );

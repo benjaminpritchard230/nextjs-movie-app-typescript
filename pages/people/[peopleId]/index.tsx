@@ -65,12 +65,12 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
 
   return (
     <>
-      <Header text={personData.name} style="header--people" />
+      <Header text={personData.name} />
       <div className={styles.container}>
-        <div className={styles["item--people"]}>
+        <div className={styles["item"]}>
           <MyImage />
         </div>
-        <div className={styles["item--people"]}>
+        <div className={styles["item"]}>
           <ul>
             <li>
               <h5>Date of birth: {personData.birthday}</h5>
@@ -96,10 +96,10 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
             </li>
           </ul>
         </div>
-        <div className={styles["item--people"]}>
+        <div className={styles["item"]}>
           <p>{personData.biography}</p>
         </div>
-        <div className={styles["item--people"]}>
+        <div className={styles["item"]}>
           <h5>Popularity rating: {personData.popularity}</h5>
         </div>
       </div>
@@ -111,7 +111,6 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
               title={credit.title}
               image={credit.poster_path}
               link={`/movies/${credit.id}?name=${personData.name}`}
-              style="item--people"
             />
           );
         })}
@@ -120,8 +119,8 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
           style={{ color: "inherit", textDecoration: "inherit" }}
           className={styles.card}
         >
-          <div className={styles["item--people"]}>
-            <h5>See all acting credits</h5>
+          <div className={styles["item"]}>
+            <h5>See all credits</h5>
           </div>
         </Link>
       </div>

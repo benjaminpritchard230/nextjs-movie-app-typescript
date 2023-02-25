@@ -14,10 +14,9 @@ type Props = {
   title: string;
   image?: string;
   link: string;
-  style?: string;
 };
 
-const InfoCard = ({ title, image, link, style = "item" }: Props) => {
+const InfoCard = ({ title, image, link }: Props) => {
   const myLoader = ({ src }: any) => {
     return src;
   };
@@ -51,7 +50,7 @@ const InfoCard = ({ title, image, link, style = "item" }: Props) => {
       style={{ color: "inherit", textDecoration: "inherit" }}
       className={styles.card}
     >
-      <div className={styles[style]}>
+      <div className={styles["item"]}>
         <MyImage />
         <p>{title}</p>
       </div>

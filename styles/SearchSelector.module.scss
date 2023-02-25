@@ -52,20 +52,6 @@
   &:active {
     transform: scale(0.995);
   }
-  &--tvshow {
-    @extend .btn;
-    background: colors.$green;
-    &:hover {
-      background: colors.$lightgreen;
-    }
-  }
-  &--people {
-    @extend .btn;
-    background: colors.$red;
-    &:hover {
-      background: colors.$lightred;
-    }
-  }
 }
 
 .btn-selected {
@@ -73,18 +59,4 @@
   background-color: colors.$darkblue;
   text-transform: uppercase;
   border: 5px solid colors.$gold;
-  &--tvshow {
-    @extend .btn-selected;
-    background: colors.$darkgreen;
-    &:hover {
-      background: colors.$lightgreen;
-    }
-  }
-  &--people {
-    @extend .btn-selected;
-    background: colors.$red;
-    &:hover {
-      background: colors.$lightred;
-    }
-  }
 }

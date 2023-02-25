@@ -21,18 +21,4 @@
   &:active {
     transform: scale(0.995);
   }
-  &--tvshow {
-    @extend .item;
-    background: colors.$green;
-    &:hover {
-      background: colors.$lightgreen;
-    }
-  }
-  &--people {
-    @extend .item;
-    background: colors.$red;
-    &:hover {
-      background: colors.$lightred;
-    }
-  }
 }

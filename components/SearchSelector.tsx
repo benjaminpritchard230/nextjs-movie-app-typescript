@@ -28,9 +28,7 @@ const SearchSelector = ({ selected }: Props) => {
       <div className={styles.item}>
         <button
           className={
-            selected === "TV Shows"
-              ? styles["btn-selected--tvshow"]
-              : styles["btn--tvshow"]
+            selected === "TV Shows" ? styles["btn-selected"] : styles["btn"]
           }
           onClick={() => {
             router.push(`/search/tv-shows?searchText=${searchText}`);
@@ -42,9 +40,7 @@ const SearchSelector = ({ selected }: Props) => {
       <div className={styles.item}>
         <button
           className={
-            selected === "People"
-              ? styles["btn-selected--people"]
-              : styles["btn--people"]
+            selected === "People" ? styles["btn-selected"] : styles["btn"]
           }
           onClick={() => {
             router.push(`/search/people?searchText=${searchText}`);

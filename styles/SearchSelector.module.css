@@ -43,47 +43,23 @@
   font-size: 1.5rem;
 }
 
-.btn, .btn-selected, .btn-selected--people, .btn-selected--tvshow, .btn--people, .btn--tvshow {
+.btn, .btn-selected {
   width: 100%;
   height: 100%;
   color: #f6f6ff;
   background-color: #126da6;
   border: none;
 }
-.btn:hover, .btn-selected:hover, .btn-selected--people:hover, .btn-selected--tvshow:hover, .btn--people:hover, .btn--tvshow:hover {
+.btn:hover, .btn-selected:hover {
   background-color: #418ab8;
   color: #f6f6ff;
 }
-.btn:active, .btn-selected:active, .btn-selected--people:active, .btn-selected--tvshow:active, .btn--people:active, .btn--tvshow:active {
+.btn:active, .btn-selected:active {
   transform: scale(0.995);
 }
-.btn--tvshow {
-  background: #316948;
-}
-.btn--tvshow:hover {
-  background: #5a876d;
-}
-.btn--people {
-  background: #9d2400;
-}
-.btn--people:hover {
-  background: #b15033;
-}
 
-.btn-selected, .btn-selected--people, .btn-selected--tvshow {
+.btn-selected {
   background-color: #0e5785;
   text-transform: uppercase;
   border: 5px solid #e0c093;
-}
-.btn-selected--tvshow {
-  background: #27543a;
-}
-.btn-selected--tvshow:hover {
-  background: #5a876d;
-}
-.btn-selected--people {
-  background: #9d2400;
-}
-.btn-selected--people:hover {
-  background: #b15033;
 }/*# sourceMappingURL=SearchSelector.module.css.map */
