@@ -1,23 +1,14 @@
-import CastDisplay from "@/components/CastDisplay";
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
 import InfoCard from "@/components/InfoCard";
 import placeholder from "@/public/placeholder.png";
 import styles from "@/styles/InfoPage.module.css";
-import { ICast, ICreditsResponse } from "@/types/movieCredits/types";
+import { ICreditsResponse } from "@/types/movieCredits/types";
 import type { IMovie, IMovieDetails, IResponse } from "@/types/movies/types";
-import { light } from "@mui/material/styles/createPalette";
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ParsedUrlQuery } from "querystring";
-import React, { useState } from "react";
-import { Container } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import { CLIENT_RENEG_LIMIT } from "tls";
+import { useState } from "react";
 
 type Props = {
   movieData: IMovieDetails;

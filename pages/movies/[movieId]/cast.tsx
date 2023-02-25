@@ -1,19 +1,8 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import InfoCard from "@/components/InfoCard";
-import MovieActingCreditsTable from "@/components/MovieActingCreditsTable";
-import MovieCrewCreditsTable from "@/components/MovieCrewCreditsTable";
 import Table from "@/components/sortable-table/Table";
-import styles from "@/styles/Popular.module.css";
-import type { ICast, ICreditsResponse } from "@/types/movieCredits/types";
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import type { ICreditsResponse } from "@/types/movieCredits/types";
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import React from "react";
-import { Container } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
-import CardGroup from "react-bootstrap/CardGroup";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 
 interface Props {
   data: ICreditsResponse;

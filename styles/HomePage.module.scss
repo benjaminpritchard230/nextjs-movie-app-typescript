@@ -6,7 +6,7 @@
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  height: 1000px;
+  height: 90vh;
   margin: auto;
 
   @media (max-width: 768px) {
@@ -38,8 +38,10 @@
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   background-position: top;
   background-repeat: no-repeat;
+  text-decoration: none;
   &:hover {
     background-color: colors.$lightblue;
+    color: colors.$white;
   }
   &:active {
     transform: scale(0.995);
