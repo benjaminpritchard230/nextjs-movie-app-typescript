@@ -36,6 +36,7 @@
   max-height: 70vh;
   overflow-y: auto;
   overflow-x: auto;
+  border-bottom: 2px solid #126da6;
 }
 @media (max-width: 768px) {
   .table-container {
@@ -97,9 +98,6 @@
 }
 .table tbody tr:nth-of-type(even) {
   background-color: #e7f0f6;
-}
-.table tbody tr:last-of-type {
-  border-bottom: 2px solid #126da6;
 }
 .table tbody tr:hover {
   color: #f6f6ff;
