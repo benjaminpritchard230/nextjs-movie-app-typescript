@@ -77,8 +77,8 @@
     padding: 12px 15px;
   }
   tbody {
-    z-index: -1;
-    position: relative;
+    // z-index: -1;
+    // position: relative;
     tr {
       border-bottom: 1px solid colors.$white;
 
@@ -86,11 +86,11 @@
         background-color: colors.$verylightblue;
       }
 
-      &:hover {
-        color: colors.$white;
-        background-color: colors.$lightblue;
-        cursor: pointer;
-      }
+      // &:hover {
+      //   color: colors.$white;
+      //   background-color: colors.$lightblue;
+      //   cursor: pointer;
+      // }
     }
   }
 }

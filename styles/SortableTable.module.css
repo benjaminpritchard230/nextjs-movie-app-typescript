@@ -89,20 +89,11 @@
 .table td {
   padding: 12px 15px;
 }
-.table tbody {
-  z-index: -1;
-  position: relative;
-}
 .table tbody tr {
   border-bottom: 1px solid #f6f6ff;
 }
 .table tbody tr:nth-of-type(even) {
   background-color: #e7f0f6;
-}
-.table tbody tr:hover {
-  color: #f6f6ff;
-  background-color: #418ab8;
-  cursor: pointer;
 }
 
 th.up {
