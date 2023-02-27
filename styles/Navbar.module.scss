@@ -46,6 +46,9 @@
   .icon {
     position: relative;
     top: 6px;
+    @media screen and (max-width: 960px) {
+      display: none;
+    }
   }
 }
 .fa-bars {
@@ -128,6 +131,9 @@
     top: 0;
     left: 0;
     transform: translate(25%, 50%);
+    @media screen and (max-width: 960px) {
+      transform: translate(0%, 30%);
+    }
   }
   .menu-icon {
     display: block;
