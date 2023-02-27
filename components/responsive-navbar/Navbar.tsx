@@ -76,11 +76,11 @@ const Navbar = (props: Props) => {
     },
     {
       title: "Airing today",
-      path: "/tv-shows/now-playing/",
+      path: "/tv-shows/airing-today/",
     },
     {
       title: "On TV",
-      path: "/tv-shows/upcoming/",
+      path: "/tv-shows/on-tv/",
     },
     {
       title: "Top rated",
@@ -103,11 +103,6 @@ const Navbar = (props: Props) => {
           )}
         </div>
         <ul className={click ? styles["nav-menu-active"] : styles["nav-menu"]}>
-          <li className={styles["nav-item"]}>
-            <Link href="/" className={styles["nav-links"]}>
-              <span onClick={closeMobileMenu}>Home</span>
-            </Link>
-          </li>
           <li
             className={styles["nav-item"]}
             onMouseEnter={onMouseEnterMovie}
@@ -128,7 +123,7 @@ const Navbar = (props: Props) => {
             onMouseLeave={onMouseLeaveTv}
           >
             <a
-              href="/movies"
+              href="/tv-shows/"
               className={styles["nav-links"]}
               onClick={closeMobileMenu}
             >
@@ -139,6 +134,11 @@ const Navbar = (props: Props) => {
           <li className={styles["nav-item"]}>
             <Link href="/people" className={styles["nav-links"]}>
               <span onClick={closeMobileMenu}>People</span>
+            </Link>
+          </li>
+          <li className={styles["nav-item"]}>
+            <Link href="/about/" className={styles["nav-links"]}>
+              <span onClick={closeMobileMenu}>About</span>
             </Link>
           </li>
         </ul>

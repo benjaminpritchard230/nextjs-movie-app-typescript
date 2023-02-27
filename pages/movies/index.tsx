@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import { useSearchText } from "@/context/SearchTextContext";
 import React from "react";
 
@@ -7,15 +8,7 @@ const MovieHome = (props: Props) => {
   const { searchText, newSearch } = useSearchText();
   return (
     <>
-      <h1>movie home</h1>
-      <h2>{searchText}</h2>
-      <button
-        onClick={() => {
-          newSearch("benjaminalfredpriotcahrd");
-        }}
-      >
-        click
-      </button>
+      <Header text="Movies home" />
     </>
   );
 };
