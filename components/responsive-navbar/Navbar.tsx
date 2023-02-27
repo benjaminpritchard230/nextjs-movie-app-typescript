@@ -10,24 +10,40 @@ type Props = {};
 
 const Navbar = (props: Props) => {
   const [click, setClick] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
+  const [movieDropdown, setMovieDropdown] = useState(false);
+  const [tvDropdown, setTvDropdown] = useState(false);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-  const onMouseEnter = () => {
+  const onMouseEnterMovie = () => {
     if (window.innerWidth < 960) {
-      setDropdown(false);
+      setMovieDropdown(false);
     } else {
-      setDropdown(true);
+      setMovieDropdown(true);
     }
   };
 
-  const onMouseLeave = () => {
+  const onMouseLeaveMovie = () => {
     if (window.innerWidth < 960) {
-      setDropdown(false);
+      setMovieDropdown(false);
     } else {
-      setDropdown(false);
+      setMovieDropdown(false);
+    }
+  };
+  const onMouseEnterTv = () => {
+    if (window.innerWidth < 960) {
+      setTvDropdown(false);
+    } else {
+      setTvDropdown(true);
+    }
+  };
+
+  const onMouseLeaveTv = () => {
+    if (window.innerWidth < 960) {
+      setTvDropdown(false);
+    } else {
+      setTvDropdown(false);
     }
   };
 
@@ -94,8 +110,8 @@ const Navbar = (props: Props) => {
           </li>
           <li
             className={styles["nav-item"]}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
+            onMouseEnter={onMouseEnterMovie}
+            onMouseLeave={onMouseLeaveMovie}
           >
             <a
               href="/movies"
@@ -104,12 +120,12 @@ const Navbar = (props: Props) => {
             >
               Movies <BsCaretDown className={styles["icon"]} />
             </a>
-            {dropdown && <Dropdown menuItems={movieMenuItems} />}
+            {movieDropdown && <Dropdown menuItems={movieMenuItems} />}
           </li>
           <li
             className={styles["nav-item"]}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
+            onMouseEnter={onMouseEnterTv}
+            onMouseLeave={onMouseLeaveTv}
           >
             <a
               href="/movies"
@@ -118,22 +134,12 @@ const Navbar = (props: Props) => {
             >
               TV Shows <BsCaretDown className={styles["icon"]} />
             </a>
-            {dropdown && <Dropdown menuItems={tvMenuItems} />}
+            {tvDropdown && <Dropdown menuItems={tvMenuItems} />}
           </li>
           <li className={styles["nav-item"]}>
             <Link href="/people" className={styles["nav-links"]}>
               <span onClick={closeMobileMenu}>People</span>
             </Link>
-          </li>
-
-          <li>
-            <a
-              href="/sign-up"
-              className={styles["nav-links-mobile"]}
-              onClick={closeMobileMenu}
-            >
-              Sign Up
-            </a>
           </li>
         </ul>
       </nav>
