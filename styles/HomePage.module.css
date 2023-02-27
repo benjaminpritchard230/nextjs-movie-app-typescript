@@ -4,7 +4,6 @@
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  height: 90vh;
   margin: auto;
 }
 @media (max-width: 768px) {
@@ -19,14 +18,9 @@
     max-width: 100vw;
   }
 }
-@media (min-width: 1280px) {
-  .parent {
-    max-width: 85vw;
-  }
-}
 @media (min-width: 1920px) {
   .parent {
-    max-width: 80vw;
+    height: 95vh;
   }
 }
 
