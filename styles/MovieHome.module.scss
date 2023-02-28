@@ -6,12 +6,12 @@
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  height: 1000px;
+  min-height: 1000px;
   margin: auto;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     max-width: 100vw;
   }
   @media (min-width: 768px) {
@@ -55,7 +55,7 @@
       transform: scale(1);
     }
     @media (max-width: 768px) {
-      display: none;
+      grid-area: 1 / 1 / 2 / 2;
     }
   }
   // Bullet points
@@ -76,30 +76,38 @@
     @extend .item;
     grid-area: 2/2/4/3;
     @media (max-width: 768px) {
-      grid-area: 1/1/2/2;
+      grid-area: 2/1/3/2;
     }
   }
   &3 {
     @extend .item;
     grid-area: 2/3/4/4;
     @media (max-width: 768px) {
-      grid-area: 2/1/3/2;
+      grid-area: 3/1/4/2;
     }
   }
   &4 {
     @extend .item;
     grid-area: 4/2/6/3;
     @media (max-width: 768px) {
-      grid-area: 3/1/4/2;
+      grid-area: 4/1/5/2;
     }
   }
   &5 {
     @extend .item;
     grid-area: 4/3/6/4;
     @media (max-width: 768px) {
-      grid-area: 4/1/5/2;
+      grid-area: 5/1/6/2;
     }
   }
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }
 
 .input-container {
@@ -113,8 +121,9 @@
   input {
     border: 3px solid transparent;
     width: 100%;
-    max-width: 560px;
-    height: 40px;
+    max-width: 900px;
+    min-width: 25vw;
+    height: 47px;
     color: colors.$blue;
     &:focus {
       outline: none;

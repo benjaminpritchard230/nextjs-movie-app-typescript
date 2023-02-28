@@ -4,13 +4,13 @@
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  height: 1000px;
+  min-height: 1000px;
   margin: auto;
 }
 @media (max-width: 768px) {
   .parent {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     max-width: 100vw;
   }
 }
@@ -61,7 +61,7 @@
 }
 @media (max-width: 768px) {
   .item0 {
-    display: none;
+    grid-area: 1/1/2/2;
   }
 }
 .item1 {
@@ -83,7 +83,7 @@
 }
 @media (max-width: 768px) {
   .item2 {
-    grid-area: 1/1/2/2;
+    grid-area: 2/1/3/2;
   }
 }
 .item3 {
@@ -91,7 +91,7 @@
 }
 @media (max-width: 768px) {
   .item3 {
-    grid-area: 2/1/3/2;
+    grid-area: 3/1/4/2;
   }
 }
 .item4 {
@@ -99,7 +99,7 @@
 }
 @media (max-width: 768px) {
   .item4 {
-    grid-area: 3/1/4/2;
+    grid-area: 4/1/5/2;
   }
 }
 .item5 {
@@ -107,8 +107,16 @@
 }
 @media (max-width: 768px) {
   .item5 {
-    grid-area: 4/1/5/2;
+    grid-area: 5/1/6/2;
   }
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }
 
 .input-container {
@@ -122,8 +130,9 @@
 .input-container input {
   border: 3px solid transparent;
   width: 100%;
-  max-width: 560px;
-  height: 40px;
+  max-width: 900px;
+  min-width: 25vw;
+  height: 47px;
   color: #126da6;
 }
 .input-container input:focus {

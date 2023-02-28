@@ -98,6 +98,7 @@
     border: 3px solid transparent;
     width: 100%;
     max-width: 900px;
+    min-width: 25vw;
     height: 47px;
     color: colors.$blue;
     &:focus {
