@@ -1,12 +1,15 @@
 import Header from "@/components/Header";
 import { useSearchText } from "@/context/SearchTextContext";
 import styles from "@/styles/MovieHome.module.css";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 
 type Props = {};
 
 const MovieHome = (props: Props) => {
   const { searchText, newSearch } = useSearchText();
+  const router = useRouter();
   return (
     <>
       <Header text="Movies home" />
@@ -36,18 +39,18 @@ const MovieHome = (props: Props) => {
         <div className={styles["item1"]}>
           <h2>Bullet points</h2>
         </div>
-        <div className={styles["item2"]}>
+        <Link href="/movies/popular/" className={styles["item2"]}>
           <h2>Popular movies</h2>
-        </div>
-        <div className={styles["item3"]}>
+        </Link>
+        <Link href="/movies/now-playing/" className={styles["item3"]}>
           <h2>Movies now playing</h2>
-        </div>
-        <div className={styles["item4"]}>
+        </Link>
+        <Link href="/movies/upcoming/" className={styles["item4"]}>
           <h2>Upcoming movies</h2>
-        </div>
-        <div className={styles["item5"]}>
+        </Link>
+        <Link href="/movies/top-rated" className={styles["item5"]}>
           <h2>Top rated movies</h2>
-        </div>
+        </Link>
       </div>
     </>
   );

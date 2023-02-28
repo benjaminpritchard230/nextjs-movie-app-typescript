@@ -38,6 +38,7 @@
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   background-position: top;
   background-repeat: no-repeat;
+  text-decoration: none;
   &:hover {
     background-color: colors.$lightblue;
   }
@@ -48,6 +49,7 @@
   &0 {
     @extend .item;
     grid-area: 1/1/2/4;
+    height: 200px;
     &:hover {
       background-color: colors.$blue;
     }
@@ -56,6 +58,12 @@
     }
     @media (max-width: 768px) {
       grid-area: 1 / 1 / 2 / 2;
+      &:hover {
+        background-color: colors.$lightblue;
+      }
+      &:active {
+        transform: scale(0.995);
+      }
     }
   }
   // Bullet points
@@ -116,7 +124,6 @@
   align-items: center;
   width: 100%;
   font-size: 20px;
-  border-radius: 0;
 
   input {
     border: 3px solid transparent;

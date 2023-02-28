@@ -43,6 +43,7 @@
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   background-position: top;
   background-repeat: no-repeat;
+  text-decoration: none;
 }
 .item:hover, .item5:hover, .item4:hover, .item3:hover, .item2:hover, .item1:hover, .item0:hover {
   background-color: #418ab8;
@@ -52,6 +53,7 @@
 }
 .item0 {
   grid-area: 1/1/2/4;
+  height: 200px;
 }
 .item0:hover {
   background-color: #126da6;
@@ -62,6 +64,12 @@
 @media (max-width: 768px) {
   .item0 {
     grid-area: 1/1/2/2;
+  }
+  .item0:hover {
+    background-color: #418ab8;
+  }
+  .item0:active {
+    transform: scale(0.995);
   }
 }
 .item1 {
@@ -125,7 +133,6 @@
   align-items: center;
   width: 100%;
   font-size: 20px;
-  border-radius: 0;
 }
 .input-container input {
   border: 3px solid transparent;
