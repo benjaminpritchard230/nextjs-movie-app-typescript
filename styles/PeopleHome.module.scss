@@ -1,0 +1,133 @@
+@use "./colors";
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  min-height: 1000px;
+  margin: auto;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    max-width: 100vw;
+  }
+  @media (min-width: 768px) {
+    max-width: 100vw;
+  }
+  @media (min-width: 1280px) {
+    max-width: 85vw;
+  }
+  @media (min-width: 1920px) {
+    max-width: 80vw;
+  }
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: colors.$blue;
+  color: colors.$white;
+  font-size: 20px;
+  padding: 1.5em;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  background-position: top;
+  background-repeat: no-repeat;
+  text-decoration: none;
+  &:hover {
+    background-color: colors.$lightblue;
+  }
+  &:active {
+    transform: scale(0.995);
+  }
+  // Search
+  &0 {
+    @extend .item;
+    grid-area: 1/1/3/2;
+    height: 100%;
+    &:hover {
+      background-color: colors.$blue;
+    }
+    &:active {
+      transform: scale(1);
+    }
+    @media (max-width: 768px) {
+      display: none;
+      &:hover {
+        background-color: colors.$lightblue;
+      }
+      &:active {
+        transform: scale(0.995);
+      }
+    }
+  }
+  // Bullet points
+  &1 {
+    @extend .item;
+    grid-area: 1/2/2/3;
+    &:hover {
+      background-color: colors.$blue;
+    }
+    &:active {
+      transform: scale(1);
+    }
+    @media (max-width: 768px) {
+      grid-area: 1/1/2/2;
+    }
+  }
+  &2 {
+    @extend .item;
+    grid-area: 2/2/3/3;
+    @media (max-width: 768px) {
+      grid-area: 2/1/3/2;
+    }
+  }
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 20px;
+
+  input {
+    border: 3px solid transparent;
+    width: 100%;
+    max-width: 900px;
+    min-width: 25vw;
+    height: 47px;
+    color: colors.$blue;
+    &:focus {
+      outline: none;
+      border: 3px solid colors.$gold;
+    }
+  }
+  button {
+    background-color: colors.$lightblue;
+    color: colors.$white;
+    border: 2px solid transparent;
+    height: 47px;
+    width: 100px;
+    margin-left: 2px;
+    &:hover {
+      border: 3px solid colors.$gold;
+    }
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}

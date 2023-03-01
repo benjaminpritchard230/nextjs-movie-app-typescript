@@ -20,7 +20,6 @@ const ShowPopular = ({ data }: Props) => {
               title={show.name}
               image={`https://www.themoviedb.org/t/p/w500/${show.poster_path}`}
               link={`/tv-shows/${show.id}/`}
-              style="item--tvshow"
             />
           );
         })}

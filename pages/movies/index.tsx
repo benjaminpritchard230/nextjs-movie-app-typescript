@@ -1,15 +1,20 @@
 import Header from "@/components/Header";
 import { useSearchText } from "@/context/SearchTextContext";
 import styles from "@/styles/MovieHome.module.css";
+import { IMovie, IResponse } from "@/types/movies/types";
+import { GetStaticProps } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
-type Props = {};
+interface Props {
+  data: IResponse;
+}
 
-const MovieHome = (props: Props) => {
+const MovieHome = ({ data }: Props) => {
   const { searchText, newSearch } = useSearchText();
   const router = useRouter();
+
   return (
     <>
       <Header text="Movies home" />
@@ -37,13 +42,15 @@ const MovieHome = (props: Props) => {
           </div>
         </div>
         <div className={styles["item1"]}>
-          <h2>Bullet points</h2>
+          {data.results.map((movie: IMovie) => {
+            return <h2 key={movie.id}>{movie.title}</h2>;
+          })}
         </div>
         <Link href="/movies/popular/" className={styles["item2"]}>
           <h2>Popular movies</h2>
         </Link>
         <Link href="/movies/now-playing/" className={styles["item3"]}>
-          <h2>Movies now playing</h2>
+          <h2>Movies now plying</h2>
         </Link>
         <Link href="/movies/upcoming/" className={styles["item4"]}>
           <h2>Upcoming movies</h2>
@@ -57,3 +64,18 @@ const MovieHome = (props: Props) => {
 };
 
 export default MovieHome;
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const key = process.env.DB_KEY;
+
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`
+  );
+  const data: IResponse = await res.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
+};
