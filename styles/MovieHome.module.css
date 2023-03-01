@@ -47,13 +47,13 @@
 }
 .item:hover, .item5:hover, .item4:hover, .item3:hover, .item2:hover, .item1:hover, .item0:hover {
   background-color: #418ab8;
+  color: #f6f6ff;
 }
 .item:active, .item5:active, .item4:active, .item3:active, .item2:active, .item1:active, .item0:active {
   transform: scale(0.995);
 }
 .item0 {
   grid-area: 1/1/2/4;
-  height: 200px;
 }
 .item0:hover {
   background-color: #126da6;

@@ -41,6 +41,7 @@
   text-decoration: none;
   &:hover {
     background-color: colors.$lightblue;
+    color: colors.$white;
   }
   &:active {
     transform: scale(0.995);
@@ -49,7 +50,8 @@
   &0 {
     @extend .item;
     grid-area: 1/1/2/4;
-    height: 200px;
+
+    // height: 200px;
     &:hover {
       background-color: colors.$blue;
     }
@@ -70,6 +72,7 @@
   &1 {
     @extend .item;
     grid-area: 2/1/6/2;
+
     &:hover {
       background-color: colors.$blue;
     }
