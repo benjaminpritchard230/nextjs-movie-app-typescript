@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import ImageCard from "@/components/ImageCard";
 import { useSearchText } from "@/context/SearchTextContext";
 import styles from "@/styles/MovieHome.module.css";
 import { IMovie, IResponse } from "@/types/movies/types";
@@ -42,8 +43,15 @@ const MovieHome = ({ data }: Props) => {
           </div>
         </div>
         <div className={styles["item1"]}>
-          {data.results.map((movie: IMovie) => {
-            return <h2 key={movie.id}>{movie.title}</h2>;
+          {data.results.slice(0, 1).map((movie: IMovie) => {
+            return (
+              <ImageCard
+                key={movie.id}
+                title={movie.title}
+                image={`https://www.themoviedb.org/t/p/w500/${movie.poster_path}`}
+                link={`/movies/${movie.id}/`}
+              />
+            );
           })}
         </div>
         <Link href="/movies/popular/" className={styles["item2"]}>
