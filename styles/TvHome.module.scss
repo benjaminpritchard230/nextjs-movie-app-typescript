@@ -49,7 +49,6 @@
   &0 {
     @extend .item;
     grid-area: 1/1/2/4;
-    height: 200px;
     &:hover {
       background-color: colors.$blue;
     }
@@ -70,6 +69,7 @@
   &1 {
     @extend .item;
     grid-area: 2/3/6/4;
+    padding: 100px;
     &:hover {
       background-color: colors.$blue;
     }
