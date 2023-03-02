@@ -1,9 +1,10 @@
+import CoreCar from "@/components/CoreCar";
 import Header from "@/components/Header";
 import { useSearchText } from "@/context/SearchTextContext";
 import placeholder from "@/public/placeholder.png";
 import styles from "@/styles/MovieHome.module.css";
 import { IMovie, IResponse } from "@/types/movies/types";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { CCarousel, CCarouselItem, CImage } from "@coreui/react";
 import { GetStaticProps } from "next";
 import Image, { ImageLoader } from "next/image";
 import Link from "next/link";
@@ -50,32 +51,25 @@ const MovieHome = ({ data }: Props) => {
             </form>
           </div>
         </div>
-        <div className={styles["item1"]}>
-          <Carousel fade>
-            {data.results.map((movie: IMovie) => {
-              return (
-                <Carousel.Item key={movie.id}>
-                  <Image
-                    loader={myLoader}
-                    src={
-                      !error
-                        ? `https://www.themoviedb.org/t/p/w500/${movie.poster_path}`
-                        : placeholder
-                    }
-                    alt={"hello"}
-                    width={600}
-                    height={1034}
-                    className={"d-block w-100"}
-                    onError={() => {
-                      setError(true);
-                    }}
-                    unoptimized
-                    priority
-                  />
-                </Carousel.Item>
-              );
-            })}
-          </Carousel>
+        {/* <div className={styles["item1"]}>
+          <CoreCar />
+        </div> */}
+        <div className={styles["item1"]} style={{ padding: "100px" }}>
+          <div className="local-bootstrap">
+            <CCarousel controls>
+              {data.results.map((movie) => {
+                return (
+                  <CCarouselItem key={movie.id}>
+                    <CImage
+                      className="d-block w-100"
+                      src={`https://www.themoviedb.org/t/p/w500/${movie.poster_path}`}
+                      alt="slide 1"
+                    />
+                  </CCarouselItem>
+                );
+              })}
+            </CCarousel>
+          </div>
         </div>
         <Link href="/movies/popular/" className={styles["item2"]}>
           <h2>Popular movies</h2>
