@@ -54,6 +54,8 @@
 .item0 {
   grid-area: 1/1/3/2;
   height: 100%;
+  padding-left: 11vw;
+  padding-right: 11vw;
 }
 .item0:hover {
   background-color: #126da6;
