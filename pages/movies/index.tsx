@@ -54,7 +54,7 @@ const MovieHome = ({ data }: Props) => {
         {/* <div className={styles["item1"]}>
           <CoreCar />
         </div> */}
-        <div className={styles["item1"]} style={{ padding: "100px" }}>
+        <div className={styles["item1"]}>
           <div className="local-bootstrap">
             <CCarousel controls>
               {data.results.map((movie) => {
