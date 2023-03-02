@@ -3,11 +3,11 @@
 .container {
   max-width: 80vw;
   margin: auto;
-  padding: 10px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
   grid-auto-rows: 1fr;
+  column-gap: 10px;
+  margin-bottom: 10px;
   align-items: stretch;
 }
 
@@ -22,7 +22,7 @@
   align-items: center;
   background: colors.$blue;
   color: colors.$white;
-  font-size: 1emem;
+  font-size: 1.25em;
   padding: 1.5em;
   flex-direction: column;
   height: 100%;
@@ -51,8 +51,6 @@
   }
 
   p {
-    display: flex;
-    justify-content: center;
     min-height: 0;
     min-width: 0;
   }

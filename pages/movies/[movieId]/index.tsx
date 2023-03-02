@@ -63,21 +63,31 @@ const MovieDetail = ({ movieData, castData }: Props) => {
         <div className={styles.item}>
           <ul>
             <li>
-              <h5>Release date: {movieData.release_date}</h5>
-              {movieData.budget ? <h5>Budget: ${movieData.budget}</h5> : null}
-              {movieData.revenue ? (
-                <h5>Revenue: ${movieData.revenue}</h5>
-              ) : null}
-              <h5>Runtime: {getRunTime(movieData.runtime)}</h5>
+              <p>Release date: {movieData.release_date}</p>
               <br />
-              <h5>Production companies:</h5>
+              {movieData.budget ? (
+                <>
+                  <p>Budget: ${movieData.budget}</p> <br />
+                </>
+              ) : null}
+
+              {movieData.revenue ? (
+                <>
+                  {" "}
+                  <p>Revenue: ${movieData.revenue}</p>
+                  <br />
+                </>
+              ) : null}
+              <p>Runtime: {getRunTime(movieData.runtime)}</p>
+              <br />
+              <p>Production companies:</p>
               <ul>
                 {movieData.production_companies.map((company) => {
                   return <li key={company.id}>{company.name}</li>;
                 })}
               </ul>
               <br />
-              <h5>Genres: </h5>
+              <p>Genres: </p>
               <ul>
                 {movieData.genres.map((genre) => {
                   return <li key={genre.id}>{genre.name}</li>;
@@ -90,7 +100,7 @@ const MovieDetail = ({ movieData, castData }: Props) => {
           <p>{movieData.overview}</p>
         </div>
         <div className={styles.item}>
-          <h5>Popularity rating: {movieData.popularity}</h5>
+          <p>Popularity rating: {movieData.popularity}</p>
         </div>
       </div>
       <div className={styles.container}>
@@ -110,7 +120,7 @@ const MovieDetail = ({ movieData, castData }: Props) => {
           className={styles.card}
         >
           <div className={styles["item"]}>
-            <h5>See all cast and crew</h5>
+            <p>See all cast and crew</p>
           </div>
         </Link>
       </div>

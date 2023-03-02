@@ -59,23 +59,23 @@ const TvShowDetail = ({ tvShowData, castData }: Props) => {
         </div>
         <div className={styles["item"]}>
           <ul>
-            <h5>First aired: {tvShowData.first_air_date}</h5>
+            <p>First aired: {tvShowData.first_air_date}</p>
             <br />
-            <h5>Languages: </h5>
+            <p>Languages: </p>
             <ul>
               {tvShowData.languages.map((language) => {
                 return <li key={language}>{languageNames.of(language)}</li>;
               })}
             </ul>
             <br />
-            <h5>Genres: </h5>
+            <p>Genres: </p>
             <ul>
               {tvShowData.genres.map((genre) => {
                 return <li key={genre.name}>{genre.name}</li>;
               })}
             </ul>
             <br />
-            <h5>Networks: </h5>
+            <p>Networks: </p>
             <ul>
               {tvShowData.networks.map((network) => {
                 return <li key={network.name}>{network.name}</li>;
@@ -87,7 +87,7 @@ const TvShowDetail = ({ tvShowData, castData }: Props) => {
           <p>{tvShowData.overview}</p>
         </div>
         <div className={styles["item"]}>
-          <h5>Popularity rating: {tvShowData.popularity}</h5>
+          <p>Popularity rating: {tvShowData.popularity}</p>
         </div>
       </div>
       <div className={styles.container}>
@@ -107,7 +107,7 @@ const TvShowDetail = ({ tvShowData, castData }: Props) => {
           className={styles.card}
         >
           <div className={styles["item"]}>
-            <h5>See all cast and crew</h5>
+            <p>See all cast and crew</p>
           </div>
         </Link>
       </div>

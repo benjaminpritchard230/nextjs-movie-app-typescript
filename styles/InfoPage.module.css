@@ -1,11 +1,12 @@
 .container {
   max-width: 80vw;
   margin: auto;
-  padding: 10px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
   grid-auto-rows: 1fr;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  margin-bottom: 10px;
   align-items: stretch;
 }
 
@@ -20,7 +21,7 @@
   align-items: center;
   background: #126da6;
   color: #f6f6ff;
-  font-size: 1emem;
+  font-size: 1.25em;
   padding: 1.5em;
   flex-direction: column;
   height: 100%;
@@ -44,8 +45,6 @@
   color: #f6f6ff;
 }
 .item p {
-  display: flex;
-  justify-content: center;
   min-height: 0;
   min-width: 0;
 }

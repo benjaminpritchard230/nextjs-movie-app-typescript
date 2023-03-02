@@ -74,8 +74,13 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
           <ul>
             <li>
               <p>Date of birth: {personData.birthday}</p>
+              <br />
               {personData.deathday ? (
-                <p>{`Date of death: ${personData.deathday}`}</p>
+                <>
+                  {" "}
+                  <p>{`Date of death: ${personData.deathday}`}</p>
+                  <br />
+                </>
               ) : null}
               {personData.deathday ? (
                 <p>
@@ -85,9 +90,14 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
               ) : (
                 <p>Age: {getAge(personData.birthday)}</p>
               )}
+              <br />
               <p>Birthplace: {personData.place_of_birth}</p>
+              <br />
               <p>Gender: {personData.gender === 1 ? "female" : "male"}</p>
+              <br />
               <p>Also known as: {personData.also_known_as.join(", ")}</p>
+
+              <br />
               <p>
                 <a href={`https://www.imdb.com/name/${personData.imdb_id}/`}>
                   Link to IMDb profile

@@ -59,7 +59,7 @@ const PeopleHome = ({ data }: Props) => {
             </form>
           </div>
         </div>
-        <Link href="/movies/popular/" className={styles["item2"]}>
+        <Link href="/people/popular/" className={styles["item2"]}>
           <h2>Popular people</h2>
         </Link>
       </div>
