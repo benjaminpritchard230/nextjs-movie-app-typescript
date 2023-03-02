@@ -74,7 +74,7 @@
 }
 .item1 {
   grid-area: 2/1/6/2;
-  padding: 100px;
+  padding: 4.5vw;
 }
 .item1:hover {
   background-color: #126da6;

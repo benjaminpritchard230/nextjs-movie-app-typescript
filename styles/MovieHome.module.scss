@@ -73,7 +73,7 @@
   &1 {
     @extend .item;
     grid-area: 2/1/6/2;
-    padding: 100px;
+    padding: calc(4.5vw);
 
     &:hover {
       background-color: colors.$blue;
