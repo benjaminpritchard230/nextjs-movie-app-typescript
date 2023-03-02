@@ -7,6 +7,12 @@
   font-size: 1.2rem;
 }
 
+.title-logo {
+  color: #f6f6ff;
+  position: relative;
+  top: 6.5px;
+}
+
 .navbar-logo {
   color: #f6f6ff;
   justify-self: start;

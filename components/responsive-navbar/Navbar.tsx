@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { BsCaretDown } from "react-icons/bs";
+import { MdLocalMovies } from "react-icons/md";
 import { TiTimesOutline } from "react-icons/ti";
 import Dropdown from "./Dropdown";
 
@@ -12,6 +13,7 @@ const Navbar = (props: Props) => {
   const [click, setClick] = useState(false);
   const [movieDropdown, setMovieDropdown] = useState(false);
   const [tvDropdown, setTvDropdown] = useState(false);
+  const [peopleDropdown, setPeopleDropdown] = useState(false);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -44,6 +46,21 @@ const Navbar = (props: Props) => {
       setTvDropdown(false);
     } else {
       setTvDropdown(false);
+    }
+  };
+  const onMouseEnterPeople = () => {
+    if (window.innerWidth < 960) {
+      setPeopleDropdown(false);
+    } else {
+      setPeopleDropdown(true);
+    }
+  };
+
+  const onMouseLeavePeople = () => {
+    if (window.innerWidth < 960) {
+      setPeopleDropdown(false);
+    } else {
+      setPeopleDropdown(false);
     }
   };
 
@@ -88,13 +105,25 @@ const Navbar = (props: Props) => {
     },
   ];
 
+  const peopleMenuItems = [
+    {
+      title: "Popular",
+      path: "/people/popular/",
+    },
+  ];
+
   return (
     <>
       <nav className={styles["navbar"]}>
-        <a href="/" className={styles["navbar-logo"]} onClick={closeMobileMenu}>
+        <Link
+          href="/"
+          className={styles["navbar-logo"]}
+          onClick={closeMobileMenu}
+        >
+          <MdLocalMovies className={styles["title-logo"]} />
           Movie App
-          <i className="fab fa-firstdraft" />
-        </a>
+        </Link>
+
         <div className={styles["menu-icon"]} onClick={handleClick}>
           {click ? (
             <TiTimesOutline style={{ color: "white" }} />
@@ -108,13 +137,14 @@ const Navbar = (props: Props) => {
             onMouseEnter={onMouseEnterMovie}
             onMouseLeave={onMouseLeaveMovie}
           >
-            <a
+            <Link
               href="/movies"
               className={styles["nav-links"]}
               onClick={closeMobileMenu}
             >
               Movies <BsCaretDown className={styles["icon"]} />
-            </a>
+            </Link>
+
             {movieDropdown && <Dropdown menuItems={movieMenuItems} />}
           </li>
           <li
@@ -122,20 +152,32 @@ const Navbar = (props: Props) => {
             onMouseEnter={onMouseEnterTv}
             onMouseLeave={onMouseLeaveTv}
           >
-            <a
+            <Link
               href="/tv-shows/"
               className={styles["nav-links"]}
               onClick={closeMobileMenu}
             >
               TV Shows <BsCaretDown className={styles["icon"]} />
-            </a>
+            </Link>
+
             {tvDropdown && <Dropdown menuItems={tvMenuItems} />}
           </li>
-          <li className={styles["nav-item"]}>
-            <Link href="/people" className={styles["nav-links"]}>
-              <span onClick={closeMobileMenu}>People</span>
+          <li
+            className={styles["nav-item"]}
+            onMouseEnter={onMouseEnterPeople}
+            onMouseLeave={onMouseLeavePeople}
+          >
+            <Link
+              href="/people/"
+              className={styles["nav-links"]}
+              onClick={closeMobileMenu}
+            >
+              People <BsCaretDown className={styles["icon"]} />
             </Link>
+
+            {peopleDropdown && <Dropdown menuItems={peopleMenuItems} />}
           </li>
+
           <li className={styles["nav-item"]}>
             <Link href="/about/" className={styles["nav-links"]}>
               <span onClick={closeMobileMenu}>About</span>

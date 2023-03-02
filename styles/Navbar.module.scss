@@ -8,6 +8,17 @@
   align-items: center;
   font-size: 1.2rem;
 }
+
+.title-logo {
+  color: colors.$white;
+  // justify-self: start;
+  // margin-left: 20px;
+  // cursor: pointer;
+  // text-decoration: none;
+  // font-size: 2rem;
+  position: relative;
+  top: 6.5px;
+}
 .navbar-logo {
   color: colors.$white;
   justify-self: start;
