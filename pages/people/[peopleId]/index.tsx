@@ -73,26 +73,26 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
         <div className={styles["item"]}>
           <ul>
             <li>
-              <h5>Date of birth: {personData.birthday}</h5>
+              <p>Date of birth: {personData.birthday}</p>
               {personData.deathday ? (
-                <h5>{`Date of death: ${personData.deathday}`}</h5>
+                <p>{`Date of death: ${personData.deathday}`}</p>
               ) : null}
               {personData.deathday ? (
-                <h5>
+                <p>
                   Age at death:{" "}
                   {getAgeAtDeath(personData.birthday, personData.deathday)}
-                </h5>
+                </p>
               ) : (
-                <h5>Age: {getAge(personData.birthday)}</h5>
+                <p>Age: {getAge(personData.birthday)}</p>
               )}
-              <h5>Birthplace: {personData.place_of_birth}</h5>
-              <h5>Gender: {personData.gender === 1 ? "female" : "male"}</h5>
-              <h5>Also known as: {personData.also_known_as.join(", ")}</h5>
-              <h5>
+              <p>Birthplace: {personData.place_of_birth}</p>
+              <p>Gender: {personData.gender === 1 ? "female" : "male"}</p>
+              <p>Also known as: {personData.also_known_as.join(", ")}</p>
+              <p>
                 <a href={`https://www.imdb.com/name/${personData.imdb_id}/`}>
                   Link to IMDb profile
                 </a>
-              </h5>
+              </p>
             </li>
           </ul>
         </div>
@@ -100,7 +100,7 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
           <p>{personData.biography}</p>
         </div>
         <div className={styles["item"]}>
-          <h5>Popularity rating: {personData.popularity}</h5>
+          <p>Popularity rating: {personData.popularity}</p>
         </div>
       </div>
       <div className={styles.container}>
@@ -120,7 +120,7 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
           className={styles.card}
         >
           <div className={styles["item"]}>
-            <h5>See all credits</h5>
+            <p>See all credits</p>
           </div>
         </Link>
       </div>
