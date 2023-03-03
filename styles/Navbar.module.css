@@ -8,15 +8,14 @@
 }
 
 .title-logo {
-  color: #f6f6ff;
   position: relative;
-  top: 6.5px;
+  top: 5.5px;
 }
 
 .navbar-logo {
-  color: #f6f6ff;
+  color: #e0c093;
   justify-self: start;
-  margin-left: 20px;
+  margin-left: 23px;
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
