@@ -91,7 +91,7 @@ const TvShowDetail = ({ tvShowData, castData }: Props) => {
         </div>
       </div>
       <div className={styles.container}>
-        {castData.cast.map((cast) => {
+        {castData.cast.slice(0, 3).map((cast) => {
           return (
             <InfoCard
               key={cast.id}
@@ -106,7 +106,7 @@ const TvShowDetail = ({ tvShowData, castData }: Props) => {
           style={{ color: "inherit", textDecoration: "inherit" }}
           className={styles.card}
         >
-          <div className={styles["item"]}>
+          <div className={styles["item-clickable"]}>
             <p>See all cast and crew</p>
           </div>
         </Link>

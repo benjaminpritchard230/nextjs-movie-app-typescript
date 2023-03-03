@@ -63,6 +63,35 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
     return age;
   };
 
+  const getCredits = (
+    personData: IPeopleDetails,
+    creditsData: IPeopleCredits
+  ) => {
+    if (personData.known_for_department === "Acting") {
+      return creditsData.cast.slice(0, 3).map((credit) => {
+        return (
+          <InfoCard
+            key={credit.id}
+            title={credit.title}
+            image={credit.poster_path}
+            link={`/movies/${credit.id}?name=${personData.name}`}
+          />
+        );
+      });
+    } else {
+      return creditsData.crew.slice(0, 3).map((credit) => {
+        return (
+          <InfoCard
+            key={credit.id}
+            title={credit.title}
+            image={credit.poster_path}
+            link={`/movies/${credit.id}?name=${personData.name}`}
+          />
+        );
+      });
+    }
+  };
+
   return (
     <>
       <Header text={personData.name} />
@@ -98,11 +127,13 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
               <p>Also known as: {personData.also_known_as.join(", ")}</p>
 
               <br />
-              <p>
-                <a href={`https://www.imdb.com/name/${personData.imdb_id}/`}>
-                  Link to IMDb profile
-                </a>
-              </p>
+              {personData.imdb_id != null ? (
+                <p>
+                  <a href={`https://www.imdb.com/name/${personData.imdb_id}/`}>
+                    Link to IMDb profile
+                  </a>
+                </p>
+              ) : null}
             </li>
           </ul>
         </div>
@@ -113,26 +144,20 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
           <p>Popularity rating: {personData.popularity}</p>
         </div>
       </div>
+
       <div className={styles.container}>
-        {creditsData.cast.slice(0, 3).map((credit) => {
-          return (
-            <InfoCard
-              key={credit.id}
-              title={credit.title}
-              image={credit.poster_path}
-              link={`/movies/${credit.id}?name=${personData.name}`}
-            />
-          );
-        })}
-        <Link
-          href={`/people/${personData.id}/credits?name=${personData.name}`}
-          style={{ color: "inherit", textDecoration: "inherit" }}
-          className={styles.card}
-        >
-          <div className={styles["item"]}>
-            <p>See all credits</p>
-          </div>
-        </Link>
+        {getCredits(personData, creditsData)}
+        {creditsData.cast.length > 0 || creditsData.crew.length > 0 ? (
+          <Link
+            href={`/people/${personData.id}/credits?name=${personData.name}`}
+            style={{ color: "inherit", textDecoration: "inherit" }}
+            className={styles.card}
+          >
+            <div className={styles["item-clickable"]}>
+              <p>See all credits</p>
+            </div>
+          </Link>
+        ) : null}
       </div>
     </>
   );

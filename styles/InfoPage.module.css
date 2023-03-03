@@ -15,7 +15,7 @@
   height: auto;
 }
 
-.item {
+.item, .item-clickable {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,23 +28,23 @@
   overflow-y: auto;
   max-height: 800px;
 }
-.item:hover {
+.item-clickable:hover {
   background-color: #418ab8;
 }
-.item:active {
+.item-clickable:active {
   transform: scale(0.995);
 }
-.item li {
+.item li, .item-clickable li {
   list-style-type: none;
 }
-.item ul {
+.item ul, .item-clickable ul {
   list-style: none;
   padding-left: 0;
 }
-.item a {
+.item a, .item-clickable a {
   color: #f6f6ff;
 }
-.item p {
+.item p, .item-clickable p {
   min-height: 0;
   min-width: 0;
 }
