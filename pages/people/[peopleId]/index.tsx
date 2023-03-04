@@ -68,27 +68,41 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
     creditsData: IPeopleCredits
   ) => {
     if (personData.known_for_department === "Acting") {
-      return creditsData.cast.slice(0, 3).map((credit) => {
-        return (
-          <InfoCard
-            key={credit.id}
-            title={credit.title}
-            image={credit.poster_path}
-            link={`/movies/${credit.id}?name=${personData.name}`}
-          />
-        );
-      });
+      return creditsData.cast
+        .filter(
+          (value, index, self) =>
+            index === self.findIndex((t) => t.title === value.title)
+        )
+        .sort((a, b) => (a.vote_count < b.vote_count ? 1 : -1))
+        .slice(0, 3)
+        .map((credit) => {
+          return (
+            <InfoCard
+              key={credit.id}
+              title={credit.title}
+              image={credit.poster_path}
+              link={`/movies/${credit.id}?name=${personData.name}`}
+            />
+          );
+        });
     } else {
-      return creditsData.crew.slice(0, 3).map((credit) => {
-        return (
-          <InfoCard
-            key={credit.id}
-            title={credit.title}
-            image={credit.poster_path}
-            link={`/movies/${credit.id}?name=${personData.name}`}
-          />
-        );
-      });
+      return creditsData.crew
+        .filter(
+          (value, index, self) =>
+            index === self.findIndex((t) => t.title === value.title)
+        )
+        .sort((a, b) => (a.popularity < b.popularity ? 1 : -1))
+        .slice(0, 3)
+        .map((credit) => {
+          return (
+            <InfoCard
+              key={credit.id}
+              title={credit.title}
+              image={credit.poster_path}
+              link={`/movies/${credit.id}?name=${personData.name}`}
+            />
+          );
+        });
     }
   };
 

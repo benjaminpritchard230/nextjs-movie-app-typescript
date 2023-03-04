@@ -1,41 +1,71 @@
 import Header from "@/components/Header";
 import Table from "@/components/sortable-table/Table";
-import { IPeopleCredits } from "@/types/peopleCredits/types";
+import {
+  IMoviePeopleCredits,
+  ITvPeopleCredits,
+} from "@/types/peopleCredits/types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 
 interface Props {
-  data: IPeopleCredits;
+  movieData: IMoviePeopleCredits;
+  tvData: ITvPeopleCredits;
 }
 
-const CreditsDisplay = ({ data }: Props) => {
+const CreditsDisplay = ({ movieData, tvData }: Props) => {
   const router = useRouter();
-  const castColumns = [
+  const movieCastColumns = [
     { label: "Title", accessor: "title", sortable: true },
     { label: "Character", accessor: "character", sortable: true },
     { label: "Date", accessor: "release_date", sortable: true },
   ];
-  const crewColumns = [
+  const movieCrewColumns = [
     { label: "Title", accessor: "title", sortable: true },
     { label: "Role", accessor: "job", sortable: true },
     { label: "Date", accessor: "release_date", sortable: true },
   ];
+  const tvCastColumns = [
+    { label: "Title", accessor: "name", sortable: true },
+    { label: "Character", accessor: "character", sortable: true },
+    { label: "Date", accessor: "first_air_date", sortable: true },
+  ];
+  const tvCrewColumns = [
+    { label: "Title", accessor: "name", sortable: true },
+    { label: "Role", accessor: "job", sortable: true },
+    { label: "Date", accessor: "first_air_date", sortable: true },
+  ];
+
+  console.log(tvData);
 
   return (
     <>
       <Header text={`Credits for "${router.query.name}"`} />
-      {data.cast.length > 0 ? (
+      {movieData.cast.length > 0 ? (
         <Table
-          data={data.cast}
-          columns={castColumns}
-          caption={"Credits as an actor"}
+          data={movieData.cast}
+          columns={movieCastColumns}
+          caption={"Movie credits as an actor"}
         />
       ) : null}
-      {data.crew.length > 0 ? (
+      {tvData.cast.length > 0 ? (
         <Table
-          data={data.crew}
-          columns={crewColumns}
-          caption={"Credits as crew"}
+          data={tvData.cast}
+          columns={tvCastColumns}
+          caption={"TV credits as an actor"}
+        />
+      ) : null}
+      {movieData.crew.length > 0 ? (
+        <Table
+          data={movieData.crew}
+          columns={movieCrewColumns}
+          caption={"Movie credits as crew"}
+        />
+      ) : null}
+      {tvData.crew.length > 0 ? (
+        <Table
+          data={tvData.crew}
+          columns={tvCrewColumns}
+          caption={"TV credits as crew"}
         />
       ) : null}
     </>
@@ -48,14 +78,21 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const key = process.env.DB_KEY;
   const peopleId = context.params!.peopleId;
 
-  const res = await fetch(
-    `https://api.themoviedb.org/3/person/${peopleId}/movie_credits?api_key=${key}&language=en-US`
-  );
-  const data: IPeopleCredits = await res.json();
+  const [movieResponse, tvResponse] = await Promise.all([
+    fetch(
+      `https://api.themoviedb.org/3/person/${peopleId}/movie_credits?api_key=${key}&language=en-US`
+    ),
+    fetch(
+      `https://api.themoviedb.org/3/person/${peopleId}/tv_credits?api_key=${key}&language=en-US`
+    ),
+  ]);
+  const movieData: IMoviePeopleCredits = await movieResponse.json();
+  const tvData: ITvPeopleCredits = await tvResponse.json();
 
   return {
     props: {
-      data,
+      movieData,
+      tvData,
     },
   };
 };
