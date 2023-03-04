@@ -24,7 +24,7 @@ type Props = {
 };
 
 export const SearchTextProvider = ({ children }: Props) => {
-  const [searchText, setSearchText] = useState("benjamin");
+  const [searchText, setSearchText] = useState("");
 
   const newSearch = (text: string) => {
     setSearchText(text);

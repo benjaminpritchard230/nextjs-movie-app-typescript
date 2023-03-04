@@ -14,6 +14,16 @@ interface Props {
 
 const TvShowHome = ({ data }: Props) => {
   const { searchText, newSearch } = useSearchText();
+
+  const handleSearch = () => {
+    router.push(`/search/tv-shows?searchText=${searchText}`);
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    handleSearch();
+  };
+
   const router = useRouter();
 
   return (
@@ -24,13 +34,13 @@ const TvShowHome = ({ data }: Props) => {
           <div className={styles["search"]}>
             <form
               onSubmit={(e) => {
-                // handleSubmit(e);
+                handleSubmit(e);
               }}
             >
               <div className={styles["input-container"]}>
                 <input
                   type="search"
-                  placeholder="Search"
+                  placeholder="Search for TV shows"
                   aria-label="Search"
                   value={searchText}
                   onChange={(e) => {
@@ -49,9 +59,13 @@ const TvShowHome = ({ data }: Props) => {
                 return (
                   <CCarouselItem key={movie.id}>
                     <CImage
+                      style={{ cursor: "pointer" }}
                       className="d-block w-100"
                       src={`https://www.themoviedb.org/t/p/w500/${movie.poster_path}`}
                       alt="slide 1"
+                      onClick={() => {
+                        router.push(`/tv-shows/${movie.id}/`);
+                      }}
                     />
                   </CCarouselItem>
                 );

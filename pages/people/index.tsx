@@ -15,6 +15,15 @@ interface Props {
 const PeopleHome = ({ data }: Props) => {
   const { searchText, newSearch } = useSearchText();
   const router = useRouter();
+
+  const handleSearch = () => {
+    router.push(`/search/movies?searchText=${searchText}`);
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    handleSearch();
+  };
   return (
     <>
       <Header text="People home" />
@@ -22,13 +31,17 @@ const PeopleHome = ({ data }: Props) => {
         <div className={styles["item0"]}>
           <div className="local-bootstrap">
             <CCarousel controls>
-              {data.results.map((movie) => {
+              {data.results.map((people) => {
                 return (
-                  <CCarouselItem key={movie.id}>
+                  <CCarouselItem key={people.id}>
                     <CImage
+                      style={{ cursor: "pointer" }}
                       className="d-block w-100"
-                      src={`https://www.themoviedb.org/t/p/w500/${movie.profile_path}`}
+                      src={`https://www.themoviedb.org/t/p/w500/${people.profile_path}`}
                       alt="slide 1"
+                      onClick={() => {
+                        router.push(`/people/${people.id}`);
+                      }}
                     />
                   </CCarouselItem>
                 );
@@ -41,13 +54,13 @@ const PeopleHome = ({ data }: Props) => {
           <div className={styles["search"]}>
             <form
               onSubmit={(e) => {
-                // handleSubmit(e);
+                handleSubmit(e);
               }}
             >
               <div className={styles["input-container"]}>
                 <input
                   type="search"
-                  placeholder="Search"
+                  placeholder="Search for people"
                   aria-label="Search"
                   value={searchText}
                   onChange={(e) => {

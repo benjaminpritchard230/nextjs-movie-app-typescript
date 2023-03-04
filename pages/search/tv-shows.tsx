@@ -16,7 +16,7 @@ const TvShowSearch = ({ data }: Props) => {
   return (
     <>
       <Header
-        text={`Showing TV shows matching "${searchText}:"`}
+        text={`Showing TV shows matching "${searchText}":`}
         style="header--tvshow"
       />
       <SearchSelector selected="TV Shows" />
@@ -28,7 +28,6 @@ const TvShowSearch = ({ data }: Props) => {
               title={show.name}
               image={`https://www.themoviedb.org/t/p/w500/${show.poster_path}`}
               link={`/tv-shows/${show.id}/`}
-              style="item--tvshow"
             />
           );
         })}

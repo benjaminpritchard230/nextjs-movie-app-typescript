@@ -25,6 +25,14 @@ const MovieHome = ({ data }: Props) => {
 
   const [error, setError] = useState(false);
 
+  const handleSearch = () => {
+    router.push(`/search/movies?searchText=${searchText}`);
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    handleSearch();
+  };
   return (
     <>
       <Header text="Movies home" />
@@ -33,13 +41,13 @@ const MovieHome = ({ data }: Props) => {
           <div className={styles["search"]}>
             <form
               onSubmit={(e) => {
-                // handleSubmit(e);
+                handleSubmit(e);
               }}
             >
               <div className={styles["input-container"]}>
                 <input
                   type="search"
-                  placeholder="Search"
+                  placeholder="Search for movies"
                   aria-label="Search"
                   value={searchText}
                   onChange={(e) => {
@@ -61,9 +69,13 @@ const MovieHome = ({ data }: Props) => {
                 return (
                   <CCarouselItem key={movie.id}>
                     <CImage
+                      style={{ cursor: "pointer" }}
                       className="d-block w-100"
                       src={`https://www.themoviedb.org/t/p/w500/${movie.poster_path}`}
                       alt="slide 1"
+                      onClick={() => {
+                        router.push(`/movies/${movie.id}`);
+                      }}
                     />
                   </CCarouselItem>
                 );
