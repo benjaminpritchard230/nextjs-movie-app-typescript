@@ -118,18 +118,58 @@ export default TvShowDetail;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const key = process.env.DB_KEY;
-  const response = await fetch(
-    `https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`
-  );
-  const data: IResponse = await response.json();
-  const paths = data.results.map((show: ITvShow) => ({
-    params: { tvShowId: `${show.id}` },
-  }));
+  const responsesJSON = await Promise.all([
+    fetch(
+      `https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1&region=gb`
+    ),
+    fetch(
+      `https://api.themoviedb.org/3/tv/top_rated?api_key=${key}&language=en-US&page=1&region=gb`
+    ),
+    fetch(
+      `https://api.themoviedb.org/3/tv/airing_today?api_key=${key}&language=en-US&page=1&region=gb`
+    ),
+    fetch(
+      `https://api.themoviedb.org/3/tv/on_the_air?api_key=${key}&language=en-US&page=1&region=gb`
+    ),
+  ]);
+  const [popularData, topRatedData, airingTodayData, onAirData]: IResponse[] =
+    await Promise.all(responsesJSON.map((response) => response.json()));
+
+  const paths = popularData.results
+    .map((show: ITvShow) => ({
+      params: { tvShowId: `${show.id}` },
+    }))
+    .concat(
+      topRatedData.results.map((show: ITvShow) => ({
+        params: { tvShowId: `${show.id}` },
+      })),
+      airingTodayData.results.map((show: ITvShow) => ({
+        params: { tvShowId: `${show.id}` },
+      })),
+      onAirData.results.map((show: ITvShow) => ({
+        params: { tvShowId: `${show.id}` },
+      }))
+    );
   return {
     paths,
     fallback: "blocking",
   };
 };
+
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const key = process.env.DB_KEY;
+//   const response = await fetch(
+//     `https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`
+//   );
+//   const data: IResponse = await response.json();
+//   const paths = data.results.map((show: ITvShow) => ({
+//     params: { tvShowId: `${show.id}` },
+//   }));
+//   return {
+//     paths,
+//     fallback: "blocking",
+//   };
+// };
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const key = process.env.DB_KEY;
