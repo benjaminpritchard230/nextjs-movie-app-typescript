@@ -43,7 +43,7 @@ const MovieDetail = ({ movieData, castData }: Props) => {
         alt={`${movieData.title}`}
         width={400}
         height={600}
-        className={styles.img}
+        className={styles["img"]}
         onError={() => {
           setError(true);
         }}
@@ -55,11 +55,11 @@ const MovieDetail = ({ movieData, castData }: Props) => {
   return (
     <>
       <Header text={movieData.title} />
-      <div className={styles.container}>
-        <div className={styles.item}>
+      <div className={styles["parent"]}>
+        <div className={styles["item1"]}>
           <MyImage />
         </div>
-        <div className={styles.item}>
+        <div className={styles["item2"]}>
           <ul>
             <li>
               <p>Release date: {movieData.release_date}</p>
@@ -72,7 +72,6 @@ const MovieDetail = ({ movieData, castData }: Props) => {
 
               {movieData.revenue ? (
                 <>
-                  {" "}
                   <p>Revenue: ${movieData.revenue}</p>
                   <br />
                 </>
@@ -95,30 +94,41 @@ const MovieDetail = ({ movieData, castData }: Props) => {
             </li>
           </ul>
         </div>
-        <div className={styles.item}>
+        <div className={styles["item3"]}>
           <p>{movieData.overview}</p>
         </div>
-        <div className={styles.item}>
+        <div className={styles["item4"]}>
           <p>Popularity rating: {movieData.popularity}</p>
         </div>
-      </div>
-      <div className={styles.container}>
-        {castData.cast.slice(0, 3).map((cast) => {
+        {castData.cast.slice(0, 3).map((cast, index) => {
           return (
-            <InfoCard
-              key={cast.cast_id}
-              title={cast.name}
-              image={cast.profile_path as string}
-              link={`/people/${cast.id}/`}
-            />
+            <div key={cast.id} className={styles[`item${index + 5}`]}>
+              <Image
+                loader={myLoader}
+                src={
+                  !error
+                    ? `https://www.themoviedb.org/t/p/w1280/${cast.profile_path}`
+                    : placeholder
+                }
+                alt={`${movieData.title}`}
+                width={400}
+                height={600}
+                className={styles["img"]}
+                onError={() => {
+                  setError(true);
+                }}
+                unoptimized
+                priority
+              />
+            </div>
           );
         })}
         <Link
           href={`/movies/${movieData.id}/cast?title=${movieData.title}`}
           style={{ color: "inherit", textDecoration: "inherit" }}
-          className={styles.card}
+          className={styles["item8"]}
         >
-          <div className={styles["item-clickable"]}>
+          <div>
             <p>See all cast and crew</p>
           </div>
         </Link>
