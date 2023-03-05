@@ -20,7 +20,10 @@ const MovieCrewCreditsTable = ({ data }: Props) => {
         <tbody>
           {data.map((crew) => {
             return (
-              <tr onClick={() => router.push(`/people/${crew.id}`)}>
+              <tr
+                key={crew.id}
+                onClick={() => router.push(`/people/${crew.id}`)}
+              >
                 <td>{crew.name}</td>
                 <td>{crew.job}</td>
               </tr>

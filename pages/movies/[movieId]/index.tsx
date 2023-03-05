@@ -16,7 +16,6 @@ type Props = {
 };
 
 const MovieDetail = ({ movieData, castData }: Props) => {
-  console.log(castData);
   const router = useRouter();
   const movieId = router.query.movieId;
 
@@ -132,13 +131,38 @@ export default MovieDetail;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const key = process.env.DB_KEY;
-  const response = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`
-  );
-  const data: IResponse = await response.json();
-  const paths = data.results.map((movie: IMovie) => ({
-    params: { movieId: `${movie.id}` },
-  }));
+  const responsesJSON = await Promise.all([
+    fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1&region=gb`
+    ),
+    fetch(
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1&region=gb`
+    ),
+    fetch(
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1&region=gb`
+    ),
+    fetch(
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=1&region=gb`
+    ),
+  ]);
+  const [popularData, nowPlayingData, topRatedData, upcomingData]: IResponse[] =
+    await Promise.all(responsesJSON.map((response) => response.json()));
+
+  const paths = popularData.results
+    .map((movie: IMovie) => ({
+      params: { movieId: `${movie.id}` },
+    }))
+    .concat(
+      nowPlayingData.results.map((movie: IMovie) => ({
+        params: { movieId: `${movie.id}` },
+      })),
+      topRatedData.results.map((movie: IMovie) => ({
+        params: { movieId: `${movie.id}` },
+      })),
+      upcomingData.results.map((movie: IMovie) => ({
+        params: { movieId: `${movie.id}` },
+      }))
+    );
   return {
     paths,
     fallback: "blocking",

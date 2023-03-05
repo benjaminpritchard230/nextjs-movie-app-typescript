@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const key = process.env.DB_KEY;
 
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=1`
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=1&region=gb`
   );
   const data: IResponse = await res.json();
 

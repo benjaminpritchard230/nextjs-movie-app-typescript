@@ -15,6 +15,7 @@ const ImageWithFallback = ({ src, fallbackSrc, ...rest }: Props) => {
       onErrorCapture={() => {
         setImgSrc(fallbackSrc);
       }}
+      alt={""}
     />
   );
 };

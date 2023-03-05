@@ -20,7 +20,6 @@ const TvShowOnTv = ({ data }: Props) => {
               title={show.name}
               image={`https://www.themoviedb.org/t/p/w500/${show.poster_path}`}
               link={`/tv-shows/${show.id}/`}
-              style="item--tvshow"
             />
           );
         })}
@@ -35,7 +34,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const key = process.env.DB_KEY;
 
   const res = await fetch(
-    `https://api.themoviedb.org/3/tv/on_the_air?api_key=${key}&language=en-US&page=1`
+    `https://api.themoviedb.org/3/tv/on_the_air?api_key=${key}&language=en-US&page=1&region=gb`
   );
   const data: IResponse = await res.json();
 

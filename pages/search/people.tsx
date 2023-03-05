@@ -28,7 +28,6 @@ const PeopleSearch = ({ data }: Props) => {
               title={person.name}
               image={`https://www.themoviedb.org/t/p/w500/${person.profile_path}`}
               link={`/people/${person.id}/`}
-              style="item--people"
             />
           );
         })}
@@ -47,7 +46,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     `https://api.themoviedb.org/3/search/person?api_key=${key}&language=en-US&query=${searchText}&page=1&include_adult=false`
   );
   const data: IResponse = await res.json();
-  console.log(data);
   return {
     props: {
       data,

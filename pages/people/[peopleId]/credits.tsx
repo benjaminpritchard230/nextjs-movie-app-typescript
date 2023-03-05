@@ -35,8 +35,6 @@ const CreditsDisplay = ({ movieData, tvData }: Props) => {
     { label: "Date", accessor: "first_air_date", sortable: true },
   ];
 
-  console.log(tvData);
-
   return (
     <>
       <Header text={`Credits for "${router.query.name}"`} />

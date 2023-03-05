@@ -20,7 +20,10 @@ const MovieActingCreditsTable = ({ data }: Props) => {
         <tbody>
           {data.map((actor) => {
             return (
-              <tr onClick={() => router.push(`/people/${actor.id}`)}>
+              <tr
+                key={actor.id}
+                onClick={() => router.push(`/people/${actor.id}`)}
+              >
                 <td>{actor.name}</td>
                 <td>{actor.character}</td>
               </tr>

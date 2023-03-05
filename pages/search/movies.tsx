@@ -42,7 +42,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${searchText}&page=1&include_adult=false`
   );
   const data: IResponse = await res.json();
-  console.log(data);
   return {
     props: {
       data,

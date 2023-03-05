@@ -18,7 +18,6 @@ type Props = {
 const TvShowDetail = ({ tvShowData, castData }: Props) => {
   const router = useRouter();
   const tvShowId = router.query.tvShowId;
-  console.log(castData, "castdata");
 
   const languageNames = new Intl.DisplayNames(["en"], {
     type: "language",
@@ -137,7 +136,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   {
     const { params } = context;
-    console.log(params);
     const [tvShowResponse, creditsResponse] = await Promise.all([
       fetch(
         `https://api.themoviedb.org/3/tv/${

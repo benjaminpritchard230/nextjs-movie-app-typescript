@@ -3,7 +3,7 @@ import InfoCard from "@/components/InfoCard";
 import placeholder from "@/public/placeholder.png";
 import styles from "@/styles/InfoPage.module.css";
 import { IPeople, IPeopleDetails, IResponse } from "@/types/people/types";
-import { IPeopleCredits } from "@/types/peopleCredits/types";
+import { IMoviePeopleCredits } from "@/types/peopleCredits/types";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,11 +11,10 @@ import { useState } from "react";
 
 type Props = {
   personData: IPeopleDetails;
-  creditsData: IPeopleCredits;
+  creditsData: IMoviePeopleCredits;
 };
 
 const PeopleDetail = ({ personData, creditsData }: Props) => {
-  console.log(creditsData);
   const myLoader = ({ src }: any) => {
     return src;
   };
@@ -65,7 +64,7 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
 
   const getCredits = (
     personData: IPeopleDetails,
-    creditsData: IPeopleCredits
+    creditsData: IMoviePeopleCredits
   ) => {
     if (personData.known_for_department === "Acting") {
       return creditsData.cast
@@ -194,26 +193,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-// export const getStaticProps: GetStaticProps = async (context) => {
-//   const key = process.env.DB_KEY;
-
-//   {
-//     const { params } = context;
-//     const response = await fetch(
-//       `https://api.themoviedb.org/3/person/${
-//         params!.peopleId
-//       }?api_key=${key}&language=en-US`
-//     );
-//     const data = await response.json();
-
-//     return {
-//       props: {
-//         data: data,
-//       },
-//     };
-//   }
-// };
-
 export const getStaticProps: GetStaticProps = async (context) => {
   const key = process.env.DB_KEY;
 
@@ -233,7 +212,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       ),
     ]);
     const personData: IPeopleDetails = await personResponse.json();
-    const creditsData: IPeopleCredits = await creditsResponse.json();
+    const creditsData: IMoviePeopleCredits = await creditsResponse.json();
 
     return {
       props: {
