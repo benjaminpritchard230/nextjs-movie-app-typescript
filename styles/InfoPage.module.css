@@ -151,6 +151,10 @@
   text-decoration: none;
   list-style-type: none;
 }
+.item a, .item1 a, .item2 a, .item3 a, .item4 a, .item5 a, .item6 a, .item7 a, .item8 a {
+  text-decoration: none;
+  color: #f6f6ff;
+}
 
 .input-container {
   display: flex;

@@ -52,11 +52,11 @@ const TvShowDetail = ({ tvShowData, castData }: Props) => {
   return (
     <>
       <Header text={tvShowData.name} />
-      <div className={styles.container}>
-        <div className={styles["item"]}>
+      <div className={styles["parent"]}>
+        <div className={styles["item1"]}>
           <MyImage />
         </div>
-        <div className={styles["item"]}>
+        <div className={styles["item2"]}>
           <ul>
             <p>First aired: {tvShowData.first_air_date}</p>
             <br />
@@ -82,30 +82,48 @@ const TvShowDetail = ({ tvShowData, castData }: Props) => {
             </ul>
           </ul>
         </div>
-        <div className={styles["item"]}>
+        <div className={styles["item3"]}>
           <p>{tvShowData.overview}</p>
         </div>
-        <div className={styles["item"]}>
+        <div className={styles["item4"]}>
           <p>Popularity rating: {tvShowData.popularity}</p>
         </div>
-      </div>
-      <div className={styles.container}>
-        {castData.cast.slice(0, 3).map((cast) => {
+
+        {castData.cast.slice(0, 3).map((cast, index) => {
           return (
-            <InfoCard
-              key={cast.id}
-              title={cast.name}
-              image={cast.profile_path}
-              link={`/people/${cast.id}`}
-            />
+            <>
+              <Link href={`/people/${cast.id}`}>
+                {" "}
+                <div key={cast.id} className={styles[`item${index + 5}`]}>
+                  <Image
+                    loader={myLoader}
+                    src={
+                      !error
+                        ? `https://www.themoviedb.org/t/p/w1280/${cast.profile_path}`
+                        : placeholder
+                    }
+                    alt={`${cast.name}`}
+                    width={400}
+                    height={600}
+                    className={styles["img"]}
+                    onError={() => {
+                      setError(true);
+                    }}
+                    unoptimized
+                    priority
+                  />
+                  <p>{cast.name}</p>
+                </div>
+              </Link>
+            </>
           );
         })}
         <Link
           href={`/tv-shows/${tvShowData.id}/cast?title=${tvShowData.name}`}
           style={{ color: "inherit", textDecoration: "inherit" }}
-          className={styles.card}
+          className={styles["item8"]}
         >
-          <div className={styles["item-clickable"]}>
+          <div>
             <p>See all cast and crew</p>
           </div>
         </Link>

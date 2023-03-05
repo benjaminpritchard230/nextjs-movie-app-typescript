@@ -7,6 +7,7 @@ import { IMoviePeopleCredits } from "@/types/peopleCredits/types";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 type Props = {
@@ -15,6 +16,7 @@ type Props = {
 };
 
 const PeopleDetail = ({ personData, creditsData }: Props) => {
+  const router = useRouter();
   const myLoader = ({ src }: any) => {
     return src;
   };
@@ -74,14 +76,32 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
         )
         .sort((a, b) => (a.vote_count < b.vote_count ? 1 : -1))
         .slice(0, 3)
-        .map((credit) => {
+        .map((credit, index) => {
           return (
-            <InfoCard
-              key={credit.id}
-              title={credit.title}
-              image={credit.poster_path}
-              link={`/movies/${credit.id}?name=${personData.name}`}
-            />
+            <div key={credit.id} className={styles[`item${index + 5}`]}>
+              <Image
+                loader={myLoader}
+                src={
+                  !error
+                    ? `https://www.themoviedb.org/t/p/w1280/${credit.poster_path}`
+                    : placeholder
+                }
+                alt={`${credit.title}`}
+                width={400}
+                height={600}
+                className={styles["img"]}
+                onError={() => {
+                  setError(true);
+                }}
+                unoptimized
+                priority
+                onClick={() => {
+                  router.push(
+                    `/movies/${credit.id}/cast?title=${credit.title}`
+                  );
+                }}
+              />
+            </div>
           );
         });
     } else {
@@ -92,14 +112,35 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
         )
         .sort((a, b) => (a.popularity < b.popularity ? 1 : -1))
         .slice(0, 3)
-        .map((credit) => {
+        .map((credit, index) => {
           return (
-            <InfoCard
-              key={credit.id}
-              title={credit.title}
-              image={credit.poster_path}
-              link={`/movies/${credit.id}?name=${personData.name}`}
-            />
+            <>
+              <Link href={`/movies/${credit.id}/`}>
+                <div key={credit.id} className={styles[`item${index + 5}`]}>
+                  <Image
+                    loader={myLoader}
+                    src={
+                      !error
+                        ? `https://www.themoviedb.org/t/p/w1280/${credit.poster_path}`
+                        : placeholder
+                    }
+                    alt={`${credit.title}`}
+                    width={400}
+                    height={600}
+                    className={styles["img"]}
+                    onError={() => {
+                      setError(true);
+                    }}
+                    unoptimized
+                    priority
+                    onClick={() => {
+                      router.push(`/movies/${credit.id}/`);
+                    }}
+                  />
+                  <p>{credit.title}</p>
+                </div>
+              </Link>
+            </>
           );
         });
     }
@@ -108,7 +149,7 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
   return (
     <>
       <Header text={personData.name} />
-      <div className={styles.container}>
+      <div className={styles["parent"]}>
         <div className={styles["item"]}>
           <MyImage />
         </div>
@@ -156,15 +197,13 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
         <div className={styles["item"]}>
           <p>Popularity rating: {personData.popularity}</p>
         </div>
-      </div>
 
-      <div className={styles.container}>
         {getCredits(personData, creditsData)}
         {creditsData.cast.length > 0 || creditsData.crew.length > 0 ? (
           <Link
             href={`/people/${personData.id}/credits?name=${personData.name}`}
             style={{ color: "inherit", textDecoration: "inherit" }}
-            className={styles.card}
+            className={styles["item8"]}
           >
             <div className={styles["item-clickable"]}>
               <p>See all credits</p>
