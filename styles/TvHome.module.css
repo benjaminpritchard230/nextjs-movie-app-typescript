@@ -6,6 +6,7 @@
   grid-row-gap: 10px;
   min-height: 1000px;
   margin: auto;
+  margin-bottom: 10px;
 }
 @media (max-width: 768px) {
   .parent {
