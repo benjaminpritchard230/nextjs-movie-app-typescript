@@ -123,7 +123,7 @@ const TvShowDetail = ({ tvShowData, castData }: Props) => {
           style={{ color: "inherit", textDecoration: "inherit" }}
           className={styles["item8"]}
         >
-          <p>See all cast and crew</p>
+          <h2>See all cast and crew</h2>
         </Link>
       </div>
     </>

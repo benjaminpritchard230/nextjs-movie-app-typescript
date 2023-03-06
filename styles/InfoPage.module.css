@@ -156,6 +156,9 @@
   min-height: 0;
   min-width: 0;
 }
+.item h2, .item1 h2, .item2 h2, .item3 h2, .item4 h2, .item5 h2, .item6 h2, .item7 h2, .item8 h2 {
+  color: #f6f6ff;
+}
 .item a:hover, .item1 a:hover, .item2 a:hover, .item3 a:hover, .item4 a:hover, .item5 a:hover, .item6 a:hover, .item7 a:hover, .item8 a:hover,
 .item a:visited,
 .item1 a:visited,
