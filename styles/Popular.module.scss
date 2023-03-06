@@ -7,29 +7,19 @@
   grid-auto-rows: 1fr;
   align-items: stretch;
   margin-bottom: 10px;
-}
-
-@media (max-width: 768px) {
-  .container {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
     max-width: 100vw;
   }
-}
-
-@media (min-width: 768px) {
-  .container {
+  @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
     max-width: 100vw;
   }
-}
-@media (min-width: 1280px) {
-  .container {
+  @media (min-width: 1280px) {
     grid-template-columns: repeat(3, 1fr);
     max-width: 85vw;
   }
-}
-@media (min-width: 1920px) {
-  .container {
+  @media (min-width: 1920px) {
     grid-template-columns: repeat(4, 1fr);
     max-width: 70vw;
   }
