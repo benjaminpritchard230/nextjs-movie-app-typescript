@@ -1,4 +1,6 @@
 .footer {
+  display: flex;
+  justify-content: space-around;
   position: inherit;
   left: 0;
   bottom: 0;
@@ -6,5 +8,14 @@
   background-color: #126da6;
   color: #f6f6ff;
   text-align: center;
-  margin-top: 30px;
+}
+.footer a {
+  color: #f6f6ff;
+  text-decoration: none;
+}
+
+.logo {
+  position: relative;
+  top: 2px;
+  right: 5px;
 }/*# sourceMappingURL=Footer.module.css.map */

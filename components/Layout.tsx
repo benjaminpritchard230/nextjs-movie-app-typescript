@@ -1,6 +1,7 @@
 // components/layout.js
 
 import Head from "next/head";
+import Footer from "./Footer";
 import Navbar from "./responsive-navbar/Navbar";
 
 export default function Layout({ children }: any) {
@@ -30,6 +31,7 @@ export default function Layout({ children }: any) {
       </Head>
       <Navbar />
       <main>{children}</main>
+      <Footer />
     </>
   );
 }
