@@ -103,28 +103,28 @@ const MovieDetail = ({ movieData, castData }: Props) => {
         {castData.cast.slice(0, 3).map((cast, index) => {
           return (
             <>
-              <Link href={`/people/${cast.id}/`}>
-                {" "}
-                <div key={cast.id} className={styles[`item${index + 5}`]}>
-                  <Image
-                    loader={myLoader}
-                    src={
-                      !error
-                        ? `https://www.themoviedb.org/t/p/w1280/${cast.profile_path}`
-                        : placeholder
-                    }
-                    alt={`${movieData.title}`}
-                    width={400}
-                    height={600}
-                    className={styles["img"]}
-                    onError={() => {
-                      setError(true);
-                    }}
-                    unoptimized
-                    priority
-                  />
-                  <p>{cast.name}</p>
-                </div>
+              <Link
+                href={`/people/${cast.id}/`}
+                className={styles[`item${index + 5}`]}
+              >
+                <Image
+                  loader={myLoader}
+                  src={
+                    !error
+                      ? `https://www.themoviedb.org/t/p/w1280/${cast.profile_path}`
+                      : placeholder
+                  }
+                  alt={`${movieData.title}`}
+                  width={400}
+                  height={600}
+                  className={styles["img"]}
+                  onError={() => {
+                    setError(true);
+                  }}
+                  unoptimized
+                  priority
+                />
+                <p>{cast.name}</p>
               </Link>
             </>
           );

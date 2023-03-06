@@ -48,6 +48,7 @@
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   background-position: top;
   background-repeat: no-repeat;
+  text-decoration: none;
 }
 .item1 {
   grid-area: 1/1/2/2;
@@ -150,14 +151,42 @@
 .item p, .item1 p, .item2 p, .item3 p, .item4 p, .item5 p, .item6 p, .item7 p, .item8 p {
   text-decoration: none;
   color: #f6f6ff;
+  margin-top: 30px;
+}
+.item a:hover, .item1 a:hover, .item2 a:hover, .item3 a:hover, .item4 a:hover, .item5 a:hover, .item6 a:hover, .item7 a:hover, .item8 a:hover,
+.item a:visited,
+.item1 a:visited,
+.item2 a:visited,
+.item3 a:visited,
+.item4 a:visited,
+.item5 a:visited,
+.item6 a:visited,
+.item7 a:visited,
+.item8 a:visited,
+.item a:link,
+.item1 a:link,
+.item2 a:link,
+.item3 a:link,
+.item4 a:link,
+.item5 a:link,
+.item6 a:link,
+.item7 a:link,
+.item8 a:link,
+.item a:active,
+.item1 a:active,
+.item2 a:active,
+.item3 a:active,
+.item4 a:active,
+.item5 a:active,
+.item6 a:active,
+.item7 a:active,
+.item8 a:active {
+  text-decoration: none;
+  color: #f6f6ff;
 }
 .item ul, .item1 ul, .item2 ul, .item3 ul, .item4 ul, .item5 ul, .item6 ul, .item7 ul, .item8 ul {
   text-decoration: none;
   list-style-type: none;
-}
-.item a, .item1 a, .item2 a, .item3 a, .item4 a, .item5 a, .item6 a, .item7 a, .item8 a {
-  text-decoration: none;
-  color: #f6f6ff;
 }
 
 .input-container {

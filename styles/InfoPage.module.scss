@@ -44,6 +44,7 @@
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   background-position: top;
   background-repeat: no-repeat;
+  text-decoration: none;
 
   &1 {
     @extend .item;
@@ -138,14 +139,18 @@
   p {
     text-decoration: none;
     color: colors.$white;
+    margin-top: 30px;
+  }
+  a:hover,
+  a:visited,
+  a:link,
+  a:active {
+    text-decoration: none;
+    color: colors.$white;
   }
   ul {
     text-decoration: none;
     list-style-type: none;
-  }
-  a {
-    text-decoration: none;
-    color: colors.$white;
   }
 }
 
