@@ -3,9 +3,7 @@
 .footer {
   display: flex;
   justify-content: space-around;
-  position: inherit;
-  left: 0;
-  bottom: 0;
+  position: absolute;
   width: 100%;
   background-color: colors.$darkblue;
   color: colors.$white;
