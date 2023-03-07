@@ -8,7 +8,7 @@ import type { AppProps } from "next/app";
 import type { ReactElement, ReactNode } from "react";
 import { SSRProvider } from "react-bootstrap";
 
-import "../styles/style.css";
+import "../styles/style.scss";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;

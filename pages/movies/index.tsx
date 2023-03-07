@@ -2,7 +2,7 @@ import CoreCar from "@/components/CoreCar";
 import Header from "@/components/Header";
 import { useSearchText } from "@/context/SearchTextContext";
 import placeholder from "@/public/placeholder.png";
-import styles from "@/styles/MovieHome.module.css";
+import styles from "@/styles/MovieHome.module.scss";
 import { IMovie, IResponse } from "@/types/movies/types";
 import { CCarousel, CCarouselItem, CImage } from "@coreui/react";
 import { GetStaticProps } from "next";

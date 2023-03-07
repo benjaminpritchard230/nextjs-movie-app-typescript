@@ -1,6 +1,6 @@
 import React from "react";
 import { SiGithub, SiThemoviedatabase } from "react-icons/si";
-import styles from "../styles/Footer.module.css";
+import styles from "../styles/Footer.module.scss";
 type Props = {};
 
 const Footer = (props: Props) => {

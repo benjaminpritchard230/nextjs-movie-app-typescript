@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import InfoCard from "@/components/InfoCard";
 import placeholder from "@/public/placeholder.png";
-import styles from "@/styles/InfoPage.module.css";
+import styles from "@/styles/InfoPage.module.scss";
 import { IResponse, ITvShow, ITvShowDetails } from "@/types/tv-shows/types";
 import { ITvShowCredits } from "@/types/tvShowCredits/types";
 import { GetStaticPaths, GetStaticProps } from "next";

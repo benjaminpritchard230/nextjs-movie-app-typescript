@@ -1,4 +1,4 @@
-import styles from "@/styles/SortableTable.module.css";
+import styles from "@/styles/SortableTable.module.scss";
 import { useState } from "react";
 
 const TableHead = ({ columns, handleSorting }) => {

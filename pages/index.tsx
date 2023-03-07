@@ -1,5 +1,5 @@
 import { useSearchText } from "@/context/SearchTextContext";
-import styles from "@/styles/HomePage.module.css";
+import styles from "@/styles/HomePage.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 

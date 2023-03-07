@@ -1,14 +1,10 @@
-import styles from "@/styles/InfoCard.module.css";
+import styles from "@/styles/InfoCard.module.scss";
 
 import placeholder from "@/public/placeholder.png";
-import type { IMovie } from "@/types/movies/types";
-import { profile } from "console";
-import Image, { ImageLoader } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-import { Card } from "react-bootstrap";
+import { useState } from "react";
 import "react-circular-progressbar/dist/styles.css";
-import profilePic from "../public/pib.jpg";
 
 type Props = {
   title: string;

@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import { useSearchText } from "@/context/SearchTextContext";
-import styles from "@/styles/TvHome.module.css";
+import styles from "@/styles/TvHome.module.scss";
 import { IResponse } from "@/types/tv-shows/types";
 import { CCarousel, CCarouselItem, CImage } from "@coreui/react";
 import { GetStaticProps } from "next";

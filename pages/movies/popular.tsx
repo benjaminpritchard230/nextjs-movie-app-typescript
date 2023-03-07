@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import InfoCard from "@/components/InfoCard";
-import styles from "@/styles/Popular.module.css";
+import styles from "@/styles/Popular.module.scss";
 import type { IMovie, IResponse } from "@/types/movies/types";
 import { GetStaticProps } from "next";
 

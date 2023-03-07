@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import InfoCard from "@/components/InfoCard";
 import Table from "@/components/sortable-table/Table";
-import styles from "@/styles/Popular.module.css";
+import styles from "@/styles/Popular.module.scss";
 import { ITvShowCredits } from "@/types/tvShowCredits/types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";

@@ -1,4 +1,4 @@
-import styles from "@/styles/Navbar.module.css";
+import styles from "@/styles/Navbar.module.scss";
 import Link from "next/link";
 import React, { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";

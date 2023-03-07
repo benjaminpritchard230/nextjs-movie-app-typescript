@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import InfoCard from "@/components/InfoCard";
 import placeholder from "@/public/placeholder.png";
-import styles from "@/styles/InfoPage.module.css";
+import styles from "@/styles/InfoPage.module.scss";
 import { ICreditsResponse } from "@/types/movieCredits/types";
 import type { IMovie, IMovieDetails, IResponse } from "@/types/movies/types";
 import { GetStaticPaths, GetStaticProps } from "next";

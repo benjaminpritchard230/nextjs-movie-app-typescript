@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import InfoCard from "@/components/InfoCard";
 import SearchSelector from "@/components/SearchSelector";
-import styles from "@/styles/Popular.module.css";
+import styles from "@/styles/Popular.module.scss";
 import { IResponse, ITvShow } from "@/types/tv-shows/types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";

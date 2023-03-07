@@ -1,4 +1,4 @@
-import styles from "@/styles/SortableTable.module.css";
+import styles from "@/styles/SortableTable.module.scss";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
 import { useSortableTable } from "./useSortableTable";

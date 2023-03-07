@@ -1,7 +1,7 @@
 import { useSearchText } from "@/context/SearchTextContext";
 import { useRouter } from "next/router";
 import React from "react";
-import styles from "../styles/SearchSelector.module.css";
+import styles from "../styles/SearchSelector.module.scss";
 
 type Props = {
   selected: string;
