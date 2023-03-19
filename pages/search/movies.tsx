@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import InfoCard from "@/components/InfoCard";
+import NextPrevious from "@/components/NextPrevious";
 import SearchSelector from "@/components/SearchSelector";
 import styles from "@/styles/Popular.module.scss";
 import type { IMovie, IResponse } from "@/types/movies/types";
@@ -13,6 +14,7 @@ interface Props {
 const MovieSearch = ({ data }: Props) => {
   const router = useRouter();
   const searchText = router.query.searchText as string;
+  const pageNumber = router.query.pageNumber;
   return (
     <>
       <Header text={`Showing movies matching "${searchText}":`} />
@@ -29,6 +31,7 @@ const MovieSearch = ({ data }: Props) => {
           );
         })}
       </div>
+      <NextPrevious current={pageNumber as string} />
     </>
   );
 };
@@ -38,10 +41,12 @@ export default MovieSearch;
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const key = process.env.DB_KEY;
   const searchText = context.query.searchText;
+  const pageNumber = context.query.pageNumber ? context.query.pageNumber : 1;
   const res = await fetch(
-    `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${searchText}&page=1&include_adult=false`
+    `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${searchText}&page=${pageNumber}&include_adult=false`
   );
   const data: IResponse = await res.json();
+  console.log(data);
   return {
     props: {
       data,
