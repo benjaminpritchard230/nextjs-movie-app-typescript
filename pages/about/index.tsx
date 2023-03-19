@@ -8,7 +8,7 @@ const AboutPage = (props: Props) => {
   return (
     <>
       <Header text={"About"} />
-      <div className={styles["parent"]}></div>
+      <div className={styles["container"]}></div>
     </>
   );
 };

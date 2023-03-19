@@ -17,7 +17,7 @@ const HomePage = () => {
   };
   return (
     <>
-      <div className={styles["parent"]}>
+      <div className={styles["container"]}>
         <div className={styles["item1"]}>
           <div className={styles["search"]}>
             <h2>Search now for movies, TV shows or people...</h2>

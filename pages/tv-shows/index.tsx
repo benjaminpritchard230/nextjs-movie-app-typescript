@@ -29,7 +29,7 @@ const TvShowHome = ({ data }: Props) => {
   return (
     <>
       <Header text="TV Shows home" />
-      <div className={styles["parent"]}>
+      <div className={styles["container"]}>
         <div className={styles["item0"]}>
           <div className={styles["search"]}>
             <form

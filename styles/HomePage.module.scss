@@ -1,7 +1,7 @@
 @use "./colors";
 @use "./grid";
 
-.parent {
+.container {
   @extend .grid-container;
   min-height: 1200px;
   grid-template-columns: repeat(3, 1fr);

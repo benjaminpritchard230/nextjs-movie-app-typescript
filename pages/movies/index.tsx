@@ -36,7 +36,7 @@ const MovieHome = ({ data }: Props) => {
   return (
     <>
       <Header text="Movies home" />
-      <div className={styles["parent"]}>
+      <div className={styles["container"]}>
         <div className={styles["item0"]}>
           <div className={styles["search"]}>
             <form

@@ -27,7 +27,7 @@ const PeopleHome = ({ data }: Props) => {
   return (
     <>
       <Header text="People home" />
-      <div className={styles["parent"]}>
+      <div className={styles["container"]}>
         <div className={styles["item0"]}>
           <div className="local-bootstrap">
             <CCarousel controls>

@@ -55,7 +55,7 @@ const MovieDetail = ({ movieData, castData }: Props) => {
   return (
     <>
       <Header text={movieData.title} />
-      <div className={styles["parent"]}>
+      <div className={styles["container"]}>
         <div className={styles["item1"]}>
           <MyImage />
         </div>

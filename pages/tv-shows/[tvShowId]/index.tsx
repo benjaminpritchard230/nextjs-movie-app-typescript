@@ -52,7 +52,7 @@ const TvShowDetail = ({ tvShowData, castData }: Props) => {
   return (
     <>
       <Header text={tvShowData.name} />
-      <div className={styles["parent"]}>
+      <div className={styles["container"]}>
         <div className={styles["item1"]}>
           <MyImage />
         </div>

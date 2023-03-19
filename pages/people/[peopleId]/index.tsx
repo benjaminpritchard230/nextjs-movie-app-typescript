@@ -154,7 +154,7 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
   return (
     <>
       <Header text={personData.name} />
-      <div className={styles["parent"]}>
+      <div className={styles["container"]}>
         <div className={styles["item1"]}>
           <MyImage />
         </div>
