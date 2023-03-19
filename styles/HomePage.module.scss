@@ -86,39 +86,3 @@
     }
   }
 }
-
-.input-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  font-size: 20px;
-  border-radius: 0;
-
-  input {
-    border: 3px solid transparent;
-    width: 100%;
-    max-width: 900px;
-    min-width: 25vw;
-    height: 47px;
-    color: colors.$blue;
-    &:focus {
-      outline: none;
-      border: 3px solid colors.$gold;
-    }
-  }
-  button {
-    background-color: colors.$lightblue;
-    color: colors.$white;
-    border: 2px solid transparent;
-    height: 47px;
-    width: 100px;
-    margin-left: 2px;
-    &:hover {
-      border: 3px solid colors.$gold;
-    }
-    &:active {
-      transform: scale(0.98);
-    }
-  }
-}

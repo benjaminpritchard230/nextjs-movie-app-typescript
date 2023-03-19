@@ -1,0 +1,39 @@
+@use "./colors";
+
+.button {
+  background-color: colors.$lightblue;
+  color: colors.$white;
+  border: 2px solid transparent;
+  height: 47px;
+  width: 100px;
+  margin-left: 2px;
+  &:hover {
+    border: 3px solid colors.$gold;
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.large-button {
+  width: 100%;
+  height: 100%;
+  color: colors.$white;
+  background-color: colors.$blue;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background-color: colors.$lightblue;
+    color: colors.$white;
+  }
+  &:active {
+    transform: scale(0.995);
+  }
+}
+
+.large-button--selected {
+  @extend .large-button;
+  background-color: colors.$darkblue;
+  text-transform: uppercase;
+  border: 5px solid colors.$gold;
+}

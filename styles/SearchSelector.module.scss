@@ -38,25 +38,3 @@
   font-size: 20px;
   font-size: 1.5rem;
 }
-
-.btn {
-  width: 100%;
-  height: 100%;
-  color: colors.$white;
-  background-color: colors.$blue;
-  border: none;
-  &:hover {
-    background-color: colors.$lightblue;
-    color: colors.$white;
-  }
-  &:active {
-    transform: scale(0.995);
-  }
-}
-
-.btn-selected {
-  @extend .btn;
-  background-color: colors.$darkblue;
-  text-transform: uppercase;
-  border: 5px solid colors.$gold;
-}

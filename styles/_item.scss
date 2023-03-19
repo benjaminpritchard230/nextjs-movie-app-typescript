@@ -1,0 +1,24 @@
+@use "./colors";
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: colors.$blue;
+  color: colors.$white;
+  font-size: 20px;
+  padding: 1.5em;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  background-position: top;
+  background-repeat: no-repeat;
+  text-decoration: none;
+  &:hover {
+    background-color: colors.$lightblue;
+    color: colors.$white;
+  }
+  &:active {
+    transform: scale(0.995);
+  }
+}

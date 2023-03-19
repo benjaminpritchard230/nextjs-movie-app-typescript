@@ -57,7 +57,7 @@ const PeopleHome = ({ data }: Props) => {
                 handleSubmit(e);
               }}
             >
-              <div className={styles["input-container"]}>
+              <div className={"input-container"}>
                 <input
                   type="search"
                   placeholder="Search for people"
@@ -67,7 +67,9 @@ const PeopleHome = ({ data }: Props) => {
                     newSearch(e.target.value);
                   }}
                 />
-                <button type="submit">Search</button>
+                <button className="button" type="submit">
+                  Search
+                </button>
               </div>
             </form>
           </div>
