@@ -10,6 +10,41 @@
 body {
   position: relative;
 }
+
+.header {
+  padding: 60px;
+  text-align: center;
+  background: colors.$blue;
+  color: colors.$white;
+  height: 10em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  width: 100%;
+  background-color: colors.$darkblue;
+  color: colors.$white;
+  text-align: center;
+  a {
+    color: colors.$white;
+    text-decoration: none;
+  }
+}
+
+.footer__logo {
+  position: relative;
+  top: 2px;
+  right: 5px;
+}
+
 .local-bootstrap {
   @import "~bootstrap/scss/bootstrap";
 }

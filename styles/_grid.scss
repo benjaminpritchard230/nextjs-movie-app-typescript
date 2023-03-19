@@ -1,0 +1,62 @@
+@use "./colors";
+@use "./variables";
+
+.grid-container {
+  display: grid;
+  gap: variables.$base-column-gap;
+  margin: auto;
+  margin-top: variables.$base-margin;
+  margin-bottom: variables.$base-margin;
+
+  @media (max-width: 768px) {
+    max-width: 100vw;
+  }
+  @media (min-width: 768px) {
+    max-width: 100vw;
+  }
+  @media (min-width: 1280px) {
+    max-width: 85vw;
+  }
+  @media (min-width: 1920px) {
+    max-width: 80vw;
+  }
+}
+
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: colors.$blue;
+  color: colors.$white;
+  font-size: variables.$base-font-size;
+  padding: variables.$base-padding;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: variables.$base-box-shadow;
+  text-decoration: none;
+  ul {
+    list-style-type: none;
+  }
+  h2 {
+    color: colors.$white;
+  }
+  p {
+    color: colors.$white;
+  }
+  a {
+    color: colors.$white;
+  }
+  &--non-clickable {
+    @extend .grid-item;
+  }
+  &--clickable {
+    @extend .grid-item;
+    &:hover {
+      background-color: colors.$lightblue;
+      color: colors.$white;
+    }
+    &:active {
+      transform: scale(0.995);
+    }
+  }
+}

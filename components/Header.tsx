@@ -1,11 +1,10 @@
 import React from "react";
-import styles from "../styles/Header.module.scss";
 
 type Props = { text: string; style?: string };
 
 const Header = ({ text }: Props) => {
   return (
-    <header className={styles["header"]}>
+    <header className="header">
       <h1>{text}</h1>
     </header>
   );

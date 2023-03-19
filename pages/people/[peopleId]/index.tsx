@@ -155,10 +155,10 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
     <>
       <Header text={personData.name} />
       <div className={styles["parent"]}>
-        <div className={styles["item"]}>
+        <div className={styles["item1"]}>
           <MyImage />
         </div>
-        <div className={styles["item"]}>
+        <div className={styles["item2"]}>
           <ul>
             <li>
               <p>Date of birth: {personData.birthday}</p>
@@ -196,10 +196,10 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
             </li>
           </ul>
         </div>
-        <div className={styles["item"]}>
+        <div className={styles["item3"]}>
           <p>{personData.biography}</p>
         </div>
-        <div className={styles["item"]}>
+        <div className={styles["item4"]}>
           <p>Popularity rating: {personData.popularity}</p>
         </div>
 
