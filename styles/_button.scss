@@ -1,4 +1,5 @@
 @use "./colors";
+@use "./variables";
 
 .button {
   background-color: colors.$lightblue;
@@ -7,6 +8,8 @@
   height: 47px;
   width: 100px;
   margin-left: 2px;
+  transition: background-color variables.$base-transition-time;
+
   &:hover {
     border: 3px solid colors.$gold;
   }
@@ -21,6 +24,8 @@
   color: colors.$white;
   background-color: colors.$blue;
   border: none;
+  transition: background-color variables.$base-transition-time;
+
   cursor: pointer;
   &:hover {
     background-color: colors.$lightblue;

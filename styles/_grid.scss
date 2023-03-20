@@ -36,6 +36,7 @@
   box-shadow: variables.$base-box-shadow;
   text-decoration: none;
   height: 100%;
+  transition: background-color variables.$base-transition-time;
 
   ul {
     list-style-type: none;

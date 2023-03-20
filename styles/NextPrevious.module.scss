@@ -14,7 +14,7 @@
     color: colors.$white;
     padding: 8px 16px;
     text-decoration: none;
-    transition: background-color 0.3s;
+    transition: background-color variables.$base-transition-time;
     border: none;
     box-shadow: variables.$base-box-shadow;
     &:hover {
