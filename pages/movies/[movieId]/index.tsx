@@ -5,7 +5,7 @@ import styles from "@/styles/InfoPage.module.scss";
 import { ICreditsResponse } from "@/types/movieCredits/types";
 import type { IMovie, IMovieDetails, IResponse } from "@/types/movies/types";
 import { GetStaticPaths, GetStaticProps } from "next";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -15,9 +15,12 @@ type Props = {
   castData: ICreditsResponse;
 };
 
+type ImgProps = {
+  src: string | StaticImageData;
+};
+
 const MovieDetail = ({ movieData, castData }: Props) => {
   const router = useRouter();
-  const movieId = router.query.movieId;
 
   const getRunTime = (totalMinutes: number) => {
     const hours = Math.floor(totalMinutes / 60);
@@ -29,23 +32,19 @@ const MovieDetail = ({ movieData, castData }: Props) => {
     return src;
   };
 
-  const [error, setError] = useState(false);
+  const MyImage = ({ src }: ImgProps) => {
+    const [imgSrc, setImgSrc] = useState(src);
 
-  const MyImage = () => {
     return (
       <Image
         loader={myLoader}
-        src={
-          !error
-            ? `https://www.themoviedb.org/t/p/w1280/${movieData.poster_path}`
-            : placeholder
-        }
+        src={imgSrc}
         alt={`${movieData.title}`}
         width={400}
         height={600}
-        className={styles["img"]}
+        className={styles.img}
         onError={() => {
-          setError(true);
+          setImgSrc(placeholder);
         }}
         unoptimized
         priority
@@ -57,7 +56,9 @@ const MovieDetail = ({ movieData, castData }: Props) => {
       <Header text={movieData.title} />
       <div className={styles["container"]}>
         <div className={styles["item1"]}>
-          <MyImage />
+          <MyImage
+            src={`https://www.themoviedb.org/t/p/w1280/${movieData.poster_path}`}
+          />
         </div>
         <div className={styles["item2"]}>
           <ul>
@@ -107,22 +108,8 @@ const MovieDetail = ({ movieData, castData }: Props) => {
                 href={`/people/${cast.id}/`}
                 className={styles[`item${index + 5}`]}
               >
-                <Image
-                  loader={myLoader}
-                  src={
-                    !error
-                      ? `https://www.themoviedb.org/t/p/w1280/${cast.profile_path}`
-                      : placeholder
-                  }
-                  alt={`${movieData.title}`}
-                  width={400}
-                  height={600}
-                  className={styles["img"]}
-                  onError={() => {
-                    setError(true);
-                  }}
-                  unoptimized
-                  priority
+                <MyImage
+                  src={`https://www.themoviedb.org/t/p/w1280/${cast.profile_path}`}
                 />
                 <p>{cast.name}</p>
               </Link>
