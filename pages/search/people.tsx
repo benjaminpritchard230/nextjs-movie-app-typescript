@@ -42,7 +42,7 @@ const PeopleSearch = ({ data }: Props) => {
       </div>
       <NextPrevious
         current={pageNumber as string}
-        category="movies"
+        category="people"
         totalPages={data.total_pages}
       />
     </>
