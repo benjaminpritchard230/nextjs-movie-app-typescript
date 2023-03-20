@@ -8,15 +8,17 @@
   width: 100%;
   margin-bottom: variables.$base-margin;
   button {
+    margin-left: variables.$base-margin;
+    margin-right: variables.$base-margin;
     background-color: colors.$blue;
     color: colors.$white;
     padding: 8px 16px;
     text-decoration: none;
     transition: background-color 0.3s;
-    border-left: 0.25rem solid colors.$white;
-    border-right: 0.25rem solid colors.$white;
-    border-top: none;
-    border-bottom: none;
+    // border-left: variables.$base-margin solid white;
+    // border-right: variables.$base-margin solid white;
+    border: none;
+    box-shadow: variables.$base-box-shadow;
     &:hover {
       &:not(.active) {
         background-color: colors.$lightblue;
@@ -28,5 +30,8 @@
     background-color: #4caf50;
     color: white;
     border: 1px solid #4caf50;
+  }
+  p {
+    color: colors.$blue;
   }
 }

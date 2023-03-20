@@ -19,6 +19,11 @@ const MovieSearch = ({ data }: Props) => {
     <>
       <Header text={`Showing movies matching "${searchText}":`} />
       <SearchSelector selected="Movies" />
+      <NextPrevious
+        current={pageNumber as string}
+        category="movies"
+        totalPages={data.total_pages}
+      />
       <div className={styles.container}>
         {data.results.map((movie: IMovie) => {
           return (
@@ -31,7 +36,11 @@ const MovieSearch = ({ data }: Props) => {
           );
         })}
       </div>
-      <NextPrevious current={pageNumber as string} />
+      <NextPrevious
+        current={pageNumber as string}
+        category="movies"
+        totalPages={data.total_pages}
+      />
     </>
   );
 };
