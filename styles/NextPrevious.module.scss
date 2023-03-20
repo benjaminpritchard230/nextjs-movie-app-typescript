@@ -8,15 +8,13 @@
   width: 100%;
   margin-bottom: variables.$base-margin;
   button {
-    margin-left: variables.$base-margin;
-    margin-right: variables.$base-margin;
+    margin-left: calc(variables.$base-margin/2);
+    margin-right: calc(variables.$base-margin/2);
     background-color: colors.$blue;
     color: colors.$white;
     padding: 8px 16px;
     text-decoration: none;
     transition: background-color 0.3s;
-    // border-left: variables.$base-margin solid white;
-    // border-right: variables.$base-margin solid white;
     border: none;
     box-shadow: variables.$base-box-shadow;
     &:hover {
@@ -33,5 +31,7 @@
   }
   p {
     color: colors.$blue;
+    width: 10rem;
+    text-align: center;
   }
 }
