@@ -49,41 +49,45 @@ const NextPrevious = ({ current = "1", category, totalPages }: Props) => {
       );
     }
   };
-  return (
-    <div className={styles["pagination"]}>
-      <button
-        onClick={() => {
-          handleFirst();
-        }}
-      >
-        ❮❮
-      </button>
-      <button
-        onClick={() => {
-          handlePrevious();
-        }}
-      >
-        ❮
-      </button>
-      <p>
-        Page {current} of {totalPages}
-      </p>
-      <button
-        onClick={() => {
-          handleNext();
-        }}
-      >
-        ❯
-      </button>
-      <button
-        onClick={() => {
-          handleLast();
-        }}
-      >
-        ❯❯
-      </button>
-    </div>
-  );
+  if (totalPages > 1) {
+    return (
+      <div className={styles["pagination"]}>
+        <button
+          onClick={() => {
+            handleFirst();
+          }}
+        >
+          ❮❮
+        </button>
+        <button
+          onClick={() => {
+            handlePrevious();
+          }}
+        >
+          ❮
+        </button>
+        <p>
+          Page {current} of {totalPages}
+        </p>
+        <button
+          onClick={() => {
+            handleNext();
+          }}
+        >
+          ❯
+        </button>
+        <button
+          onClick={() => {
+            handleLast();
+          }}
+        >
+          ❯❯
+        </button>
+      </div>
+    );
+  } else {
+    return null;
+  }
 };
 
 export default NextPrevious;
