@@ -78,34 +78,33 @@ const PeopleDetail = ({ personData, creditsData }: Props) => {
         .slice(0, 3)
         .map((credit, index) => {
           return (
-            <>
-              <Link
-                href={`/movies/${credit.id}/`}
-                className={styles[`item${index + 5}`]}
-              >
-                <Image
-                  loader={myLoader}
-                  src={
-                    !error
-                      ? `https://www.themoviedb.org/t/p/w1280/${credit.poster_path}`
-                      : placeholder
-                  }
-                  alt={`${credit.title}`}
-                  width={400}
-                  height={600}
-                  className={styles["img"]}
-                  onError={() => {
-                    setError(true);
-                  }}
-                  unoptimized
-                  priority
-                  onClick={() => {
-                    router.push(`/movies/${credit.id}/`);
-                  }}
-                />
-                <p>{credit.title}</p>
-              </Link>
-            </>
+            <Link
+              key={credit.id}
+              href={`/movies/${credit.id}/`}
+              className={styles[`item${index + 5}`]}
+            >
+              <Image
+                loader={myLoader}
+                src={
+                  !error
+                    ? `https://www.themoviedb.org/t/p/w1280/${credit.poster_path}`
+                    : placeholder
+                }
+                alt={`${credit.title}`}
+                width={400}
+                height={600}
+                className={styles["img"]}
+                onError={() => {
+                  setError(true);
+                }}
+                unoptimized
+                priority
+                onClick={() => {
+                  router.push(`/movies/${credit.id}/`);
+                }}
+              />
+              <p>{credit.title}</p>
+            </Link>
           );
         });
     } else {
