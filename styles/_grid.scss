@@ -37,6 +37,7 @@
   text-decoration: none;
   height: 100%;
   transition: background-color variables.$base-transition-time;
+  max-height: 750px;
 
   ul {
     list-style-type: none;
