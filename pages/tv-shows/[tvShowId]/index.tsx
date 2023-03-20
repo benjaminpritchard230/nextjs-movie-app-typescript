@@ -5,7 +5,7 @@ import styles from "@/styles/InfoPage.module.scss";
 import { IResponse, ITvShow, ITvShowDetails } from "@/types/tv-shows/types";
 import { ITvShowCredits } from "@/types/tvShowCredits/types";
 import { GetStaticPaths, GetStaticProps } from "next";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -13,6 +13,10 @@ import { useState } from "react";
 type Props = {
   tvShowData: ITvShowDetails;
   castData: ITvShowCredits;
+};
+
+type ImgProps = {
+  src: string | StaticImageData;
 };
 
 const TvShowDetail = ({ tvShowData, castData }: Props) => {
@@ -23,26 +27,22 @@ const TvShowDetail = ({ tvShowData, castData }: Props) => {
     type: "language",
   });
 
-  const [error, setError] = useState(false);
-
   const myLoader = ({ src }: any) => {
     return src;
   };
-  const MyImage = () => {
+  const MyImage = ({ src }: ImgProps) => {
+    const [imgSrc, setImgSrc] = useState(src);
+
     return (
       <Image
         loader={myLoader}
-        src={
-          !error
-            ? `https://www.themoviedb.org/t/p/w1280/${tvShowData.poster_path}`
-            : placeholder
-        }
+        src={imgSrc}
         alt={`${tvShowData.name}`}
         width={400}
         height={600}
         className={styles.img}
         onError={() => {
-          setError(true);
+          setImgSrc(placeholder);
         }}
         unoptimized
         priority
@@ -54,7 +54,9 @@ const TvShowDetail = ({ tvShowData, castData }: Props) => {
       <Header text={tvShowData.name} />
       <div className={styles["container"]}>
         <div className={styles["item1"]}>
-          <MyImage />
+          <MyImage
+            src={`https://www.themoviedb.org/t/p/w1280/${tvShowData.poster_path}`}
+          />
         </div>
         <div className={styles["item2"]}>
           <ul>
@@ -91,31 +93,16 @@ const TvShowDetail = ({ tvShowData, castData }: Props) => {
 
         {castData.cast.slice(0, 3).map((cast, index) => {
           return (
-            <>
-              <Link
-                href={`/people/${cast.id}`}
-                className={styles[`item${index + 5}`]}
-              >
-                <Image
-                  loader={myLoader}
-                  src={
-                    !error
-                      ? `https://www.themoviedb.org/t/p/w1280/${cast.profile_path}`
-                      : placeholder
-                  }
-                  alt={`${cast.name}`}
-                  width={400}
-                  height={600}
-                  className={styles["img"]}
-                  onError={() => {
-                    setError(true);
-                  }}
-                  unoptimized
-                  priority
-                />
-                <p>{cast.name}</p>
-              </Link>
-            </>
+            <Link
+              key={index}
+              href={`/people/${cast.id}`}
+              className={styles[`item${index + 5}`]}
+            >
+              <MyImage
+                src={`https://www.themoviedb.org/t/p/w1280/${cast.profile_path}`}
+              />
+              <p>{cast.name}</p>
+            </Link>
           );
         })}
         <Link
@@ -171,21 +158,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: "blocking",
   };
 };
-
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const key = process.env.DB_KEY;
-//   const response = await fetch(
-//     `https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`
-//   );
-//   const data: IResponse = await response.json();
-//   const paths = data.results.map((show: ITvShow) => ({
-//     params: { tvShowId: `${show.id}` },
-//   }));
-//   return {
-//     paths,
-//     fallback: "blocking",
-//   };
-// };
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const key = process.env.DB_KEY;
