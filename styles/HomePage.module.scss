@@ -47,6 +47,7 @@
   &4 {
     @extend .grid-item--clickable;
     grid-area: 2/ 3 / 4 / 4;
+    max-height: none;
     @media (max-width: 768px) {
       grid-area: 4/1/5/2;
     }
