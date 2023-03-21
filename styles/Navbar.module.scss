@@ -16,7 +16,6 @@
 .navbar-logo {
   color: colors.$gold;
   justify-self: start;
-  // margin-left: 23px;
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
@@ -116,7 +115,7 @@
     left: -100%;
     opacity: 1;
     transition: all 0.5s ease;
-    background: #242222;
+    background: colors.$blue;
     left: 0;
     opacity: 1;
     transition: all 0.5s ease;
