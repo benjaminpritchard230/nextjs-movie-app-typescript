@@ -20,12 +20,7 @@
     h2 {
       margin-bottom: 1em;
     }
-    &:hover {
-      background-color: colors.$blue;
-    }
-    &:active {
-      transform: scale(1);
-    }
+
     @media (max-width: 768px) {
       grid-area: 1 / 1 / 2 / 2;
     }
