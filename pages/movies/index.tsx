@@ -61,9 +61,6 @@ const MovieHome = ({ data }: Props) => {
             </form>
           </div>
         </div>
-        {/* <div className={styles["item1"]}>
-          <CoreCar />
-        </div> */}
         <div className={styles["item1"]}>
           <div className="local-bootstrap">
             <CCarousel controls>
