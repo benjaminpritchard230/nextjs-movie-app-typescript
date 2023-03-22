@@ -128,6 +128,36 @@ const AboutPage = (props: Props) => {
         {/* credits */}
         <div className={styles["item3"]}>
           <h2>Credits</h2>
+          <br />
+          <ul>
+            <li>
+              The sortable table was adapted from the one created by Ibaslogic:{" "}
+              <a href="https://github.com/Ibaslogic/react-sortable-table">
+                github link.
+              </a>
+            </li>
+            <br />
+            <li>
+              The responsive navbar was adapted from the one created by
+              BrianCodex:{" "}
+              <a href="https://github.com/briancodex/react-navbar-dropdown">
+                github link.
+              </a>{" "}
+            </li>
+            <br />
+            <li>
+              Movie data for this website is from the{" "}
+              <a href="https://www.themoviedb.org/">themoviedb.org</a> API.
+            </li>
+          </ul>
+          <br />
+          <Image
+            className={styles["img"]}
+            height={300}
+            width={300}
+            src={mdbLogo}
+            alt="Next JS Logo"
+          />
         </div>
       </div>
     </>
