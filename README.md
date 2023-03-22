@@ -1,7 +1,7 @@
-Next.js Website using TheMovieDB.com API
+## Next.js Website using TheMovieDB.com API
 This is a website created with Next.js, which allows users to search for information about movies, TV shows, and actors. The website retrieves the information from The Movie DB API (www.themoviedb.org) and displays it in a user-friendly interface.
 
-Features
+# Features
 Search for movies, TV shows, and actors
 View information about each movie or TV show, including synopsis, rating, and release date
 View information about each actor, including biography, birthday, and movies/TV shows they have appeared in
@@ -10,7 +10,7 @@ Built with SCSS and some CoreUI
 Getting Started
 To run the website locally, follow these steps:
 
-Clone this repository
+# Clone this repository
 Install dependencies: npm install
 Create a .env.local file in the root directory and add your The Movie DB API key: API_KEY=your-api-key-here
 Run the development server: npm run dev
@@ -20,8 +20,8 @@ This website can be deployed to a hosting service of your choice, such as Vercel
 
 A live version of this website can be viewed at: https://nextjs-movie-app-typescript-fdw7-22z9veyyt-benjaminpritchard230.vercel.app/
 
-Acknowledgements
+# Acknowledgements
 This website was created using Next.js and The Movie DB API. The navbar was adapted from a design by BrianCodex and the sortable credits table was adapted from a design by Ibaslogic.
 
-License
+# License
 This project is licensed under the MIT License.
