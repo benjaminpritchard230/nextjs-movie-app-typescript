@@ -21,11 +21,13 @@
   // about
   &1 {
     @extend .grid-item--non-clickable;
+    justify-content: unset;
     max-height: unset;
     grid-area: 1/1/3/2;
     overflow-y: auto;
     background-position: top;
     background-repeat: no-repeat;
+    padding: calc(variables.$base-padding * 5);
     @media (max-width: 768px) {
       grid-area: 1/1/2/2;
     }
