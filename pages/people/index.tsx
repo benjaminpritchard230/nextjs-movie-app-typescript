@@ -17,7 +17,7 @@ const PeopleHome = ({ data }: Props) => {
   const router = useRouter();
 
   const handleSearch = () => {
-    router.push(`/search/movies?searchText=${searchText}`);
+    router.push(`/search/people?searchText=${searchText}`);
   };
 
   const handleSubmit = (e: any) => {
