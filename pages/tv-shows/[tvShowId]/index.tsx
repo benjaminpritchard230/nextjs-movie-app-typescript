@@ -183,6 +183,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         tvShowData,
         castData,
       },
+      revalidate: 86400,
     };
   }
 };

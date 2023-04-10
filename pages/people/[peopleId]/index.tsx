@@ -262,6 +262,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         personData,
         creditsData,
       },
+      revalidate: 86400,
     };
   }
 };
